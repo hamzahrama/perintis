@@ -1,0 +1,3 @@
+-- Intentionally empty: db reset must not create shared demo credentials or
+-- attach synthetic data to a real user's account. For an explicit local-only
+-- demo account and fixtures, run `npm run seed:demo:local` after `supabase start`.

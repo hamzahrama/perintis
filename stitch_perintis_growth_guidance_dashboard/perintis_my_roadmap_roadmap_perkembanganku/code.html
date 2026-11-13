@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#4a444f", "on-primary-fixed": "#290350", "secondary-container": "#00cbe6", "surface-bright": "#37374d", "inverse-primary": "#704f98", "on-primary-fixed-variant": "#57377f", "inverse-surface": "#e2e0fc", "surface-container-high": "#28283d", "surface": "#111125", "on-background": "#e2e0fc", "on-surface": "#e2e0fc", "secondary-fixed": "#a2eeff", "background": "#111125", "inverse-on-surface": "#2f2e44", "on-secondary-container": "#00515d", "primary": "#e2c7ff", "surface-container-lowest": "#0c0c20", "tertiary-container": "#89c485", "on-error-container": "#ffdad6", "primary-container": "#cba6f7", "tertiary-fixed": "#b4f2af", "on-tertiary-fixed-variant": "#19511f", "on-tertiary": "#00390c", "tertiary": "#a3e09f", "surface-container": "#1e1e32", "primary-fixed-dim": "#d9b9ff", "secondary": "#5de6ff", "surface-container-low": "#1a1a2e", "on-secondary-fixed-variant": "#004e5a", "error": "#ffb4ab", "on-secondary": "#00363e", "secondary-fixed-dim": "#2fd9f4", "outline": "#968e9a", "on-tertiary-container": "#1a5220", "on-primary-container": "#57377f", "primary-fixed": "#eedbff", "on-error": "#690005", "tertiary-fixed-dim": "#99d595", "on-tertiary-fixed": "#002205", "surface-tint": "#d9b9ff", "surface-dim": "#111125", "surface-container-highest": "#333348", "on-primary": "#3f1e66", "on-surface-variant": "#cdc3d1", "surface-variant": "#333348", "error-container": "#93000a", "on-secondary-fixed": "#001f25" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1.5rem", "space-md": "1.25rem", "margin": "2.5rem", "space-lg": "2rem", "gutter-sm": "1rem", "space-xs": "0.375rem", "space-xl": "3rem", "space-sm": "0.75rem", "margin-mobile": "1.25rem" }, "fontFamily": { "label-md": ["Inter"], "headline-xl-mobile": ["Inter"], "title-md": ["Inter"], "display-lg": ["Inter"], "headline-sm": ["Inter"], "headline-xl": ["Inter"], "display-lg-mobile": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "label-sm": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["18px", { "lineHeight": "26px", "fontWeight": "500" }], "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }] } } } }</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.4)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-20 px-space-md flex items-center gap-3"><img alt="PERINTIS Emblem Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDcPXoEK6WQ48rbp7d_d2mTuIOeGjzjFJ6PL1wFxnxfZzYF_liD3u-sQwkgX3-w7ij_-vS9BNNzMyux5JCSz0zxi5L0cMxrL3kQRx3h1_6HySvJqEuVf1atmyDKUgBVfLO70X7E2GHYGJ3EAw8kpPFTaGrCquJFpIDm77lpdcE1lQhLGv2dDuSFkAgFZQo8-cw2_tk0aQShFvJ-q_PrtiLEmtbIoXXq7Blc5hPvMUdZ"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface font-semibold tracking-wide">PERINTIS</span><span class="font-label-sm text-label-sm text-on-surface-variant">Panduan Bertumbuh</span></div></div><div class="px-space-sm pt-space-xs"><div class="px-space-sm pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Navigasi Utama</div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="perintis-my-direction-arah-perkembanganku" href="#">My Direction</a><a class="flex items-center px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="perintis-remember-your-why-kenapa-aku-memulai" href="#">Remember Your Why</a><a class="flex items-center px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="perintis-my-roadmap-roadmap-perkembanganku" href="#">My Roadmap</a><a class="flex items-center px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="perintis-know-your-next-step-langkah-selanjutnya" href="#">Know Your Next Step</a></nav></div></div><div class="px-space-sm pb-space-md flex flex-col gap-space-sm"><div class="bg-surface-container rounded-xl p-space-sm relative overflow-hidden shadow-[0_4px_20px_-2px_rgba(10,10,20,0.45)]"><div class="flex items-center justify-between mb-space-xs"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-tertiary font-semibold">Online &amp; Siap</span></div><span class="material-symbols-outlined text-secondary text-sm">smart_toy</span></div><div class="font-title-md text-title-md text-on-surface font-semibold">Kak Arya</div><div class="font-label-sm text-label-sm text-on-surface-variant mb-space-xs">Mentor Pertumbuhan &amp; AI</div><a class="w-full flex items-center justify-center gap-2 py-2 px-space-sm bg-surface-container-high hover:bg-primary-container text-on-surface hover:text-on-primary-container rounded-lg font-label-md text-label-md transition-colors" data-path="perintis-personal-coach-ruang-pendamping" href="#"><span class="material-symbols-outlined text-sm">forum</span><span>Chat Coach</span></a></div><div class="bg-surface-container-lowest rounded-xl p-space-sm flex items-center gap-3"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp6znq-U0VMemXW6rCRq3XeJ-VF-dnl-3GHHbUAlhfiRm7EckYB5W72BGsL0U2uuto9PCQa45hb0tMSEzaECUp4BYA7SaDNwpUCmJBkuotdIOTJ3qj2rv1SfNT0ouLeWakbOKR1Ur1TfmaZQ_z2If7IAKUw1WwCtHTei9lMgtwWHxxq8h1UnYS0BTcoWxmoEykHuGcNg3u_5BXOHZJIiPKfayXu6w2yKmheN7lfeLh"/><div class="flex flex-col flex-1 min-w-0"><div class="font-body-md text-body-md font-semibold text-on-surface truncate">Nadia Kirana</div><div class="font-label-sm text-label-sm text-on-surface-variant truncate">19 Thn • Mahasiswa Baru</div></div><div class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">Lvl 3</div></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-20 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-gutter flex items-center justify-between"><div class="flex items-center gap-gutter"><div class="flex flex-col"><div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-0.5"><span class="hover:text-on-surface transition-colors cursor-pointer">PERINTIS</span><span class="text-outline-variant">/</span><span class="text-primary font-medium">Dashboard Perjalanan</span></div><div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Halo, Nadia 👋</div></div><div class="hidden xl:flex items-center gap-3 bg-surface-container-low px-space-sm py-2 rounded-full"><span class="font-label-md text-label-md text-on-surface-variant">Bagaimana energimu hari ini?</span><div class="flex items-center gap-1.5 ml-1"><button class="px-2 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm transition-colors" type="button">Reflektif</button><button class="px-2 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm transition-colors" type="button">Fokus</button><button class="px-2 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm transition-colors" type="button">Tenang</button></div></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Fase Aktif</span></div><button class="w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors relative" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary"></span></button><button class="w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" type="button"><span class="material-symbols-outlined text-xl">search</span></button><img alt="Nadia Kirana Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp6znq-U0VMemXW6rCRq3XeJ-VF-dnl-3GHHbUAlhfiRm7EckYB5W72BGsL0U2uuto9PCQa45hb0tMSEzaECUp4BYA7SaDNwpUCmJBkuotdIOTJ3qj2rv1SfNT0ouLeWakbOKR1Ur1TfmaZQ_z2If7IAKUw1WwCtHTei9lMgtwWHxxq8h1UnYS0BTcoWxmoEykHuGcNg3u_5BXOHZJIiPKfayXu6w2yKmheN7lfeLh"/></div></header><main class="w-full pt-20 px-gutter pb-space-xl flex-1 bg-surface"><div class="flex flex-col w-full">
+<!-- Atmospheric Ambient Glows (Contained) -->
+<div class="relative w-full">
+<div class="absolute -top-10 left-1/4 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-48 right-10 w-80 h-80 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+<!-- Page Header -->
+<header class="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-space-lg">
+<div class="flex flex-col max-w-3xl">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm uppercase tracking-wider">
+          Fase 2 Dari 4
+        </span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-tertiary">check_circle</span>
+          Ritme Stabil • Bebas Tekanan
+        </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-semibold tracking-tight">
+        Roadmap Perkembanganku
+      </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 text-balance leading-relaxed">
+        Pecah impian besar menjadi langkah-langkah nyata yang ramah kapasitas diri. Kamu tidak harus berlari cepat, yang terpenting adalah melangkah dengan ritme yang konsisten.
+      </p>
+</div>
+<!-- Top Actions -->
+<div class="flex items-center gap-3 shrink-0">
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all duration-200 shadow-sm" id="openFilterBtn" type="button">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span>Saring Tampilan Fase</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded-full bg-primary-container hover:bg-primary text-on-primary-fixed font-label-md text-label-md transition-all duration-200 shadow-md hover:shadow-primary-container/30" id="quickAddStepTopBtn" type="button">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Tambah Langkah Baru</span>
+</button>
+</div>
+</header>
+<!-- Main Roadmap Hero Card (Grand Goal & Holistic Progress) -->
+<section class="relative z-10 w-full rounded-xl bg-surface-container p-space-md lg:p-space-lg shadow-xl mb-space-xl overflow-hidden">
+<!-- Visual Gradient Wash -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-secondary/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -left-12 -top-12 w-64 h-64 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left: Goal Text & Sub-details -->
+<div class="lg:col-span-8 flex flex-col gap-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary/15 text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+            Tujuan Utama Aktif
+          </span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">flag</span>
+            Target Jangka Menengah
+          </span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight leading-snug">
+            “Menjadi UI/UX Designer Mandiri &amp; Merilis Portofolio Pertama di Tahun ke-2 Kuliah”
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-tertiary">check_circle</span>
+            Fase 2: Praktik &amp; Proyek Portofolio Nyata <span class="text-outline-variant">•</span> Sedang Berjalan
+          </p>
+</div>
+<!-- Metric Badges Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low shadow-sm">
+<div class="w-9 h-9 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-lg">schedule</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Estimasi Fleksibel</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate">Akhir Semester 3</span>
+<span class="font-label-sm text-label-sm text-tertiary truncate">Dapat dijadwalkan ulang tanpa cemas</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low shadow-sm">
+<div class="w-9 h-9 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-lg">task_alt</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Capaian Langkah Kecil</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate">7 dari 13 Sub-langkah</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">54% langkah terselesaikan</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Circular Visual Progress Widget -->
+<div class="lg:col-span-4 flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low shadow-inner">
+<div class="relative w-44 h-44 flex items-center justify-center">
+<!-- Circular Progress Ring (Cyan #22D3EE) -->
+<svg class="w-full h-full -rotate-90" viewbox="0 0 120 120">
+<circle class="text-surface-container-highest opacity-40" cx="60" cy="60" fill="transparent" r="50" stroke="currentColor" stroke-width="9"></circle>
+<!-- 52% stroke-dashoffset: Circumference = 314.16; 52% progress = 314.16 * 0.48 = 150.8 -->
+<circle class="text-secondary transition-all duration-1000 ease-out" cx="60" cy="60" fill="transparent" r="50" stroke="currentColor" stroke-dasharray="314.16" stroke-dashoffset="150.8" stroke-linecap="round" stroke-width="9"></circle>
+</svg>
+<!-- Inside Ring Content -->
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Kemajuan</span>
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">52<span class="text-secondary text-headline-sm">%</span></span>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+              On Track
+            </span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between w-full px-2 pt-2 text-on-surface-variant">
+<span class="font-label-sm text-label-sm">Mulai: Desain Dasar</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Tujuan: Portofolio V1</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Workspace: Timeline (Left 8 cols) + Adaptive Controls (Right 4 cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-space-xl">
+<!-- LEFT: Interactive Vertical Timeline (8 Cols) -->
+<section class="lg:col-span-8 flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">route</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+            Urutan Langkah Nyata
+          </h3>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">
+          Urutkan berdasarkan prioritas kenyamanan
+        </span>
+</div>
+<!-- Vertical Timeline Flow -->
+<div class="relative flex flex-col gap-6 pl-4 sm:pl-8">
+<!-- Connecting Spine Line -->
+<div class="absolute left-7 sm:left-11 top-6 bottom-10 w-0.5 bg-surface-container-highest"></div>
+<!-- STEP 01 (Completed) -->
+<article class="relative flex items-start gap-4 sm:gap-6 group">
+<!-- Step Marker Node -->
+<div class="relative z-10 w-8 h-8 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-lg shadow-tertiary/20">
+<span class="material-symbols-outlined text-base font-bold">check</span>
+</div>
+<!-- Step Card -->
+<div class="flex-1 rounded-xl bg-surface-container p-space-md shadow-md transition-all duration-200 hover:bg-surface-container-high">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-label-sm font-semibold">
+                  Langkah 01 • Selesai 100%
+                </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">12 Okt 2024</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">verified</span>
+                Selesai Tepat Waktu
+              </span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface font-semibold mt-1">
+              Fondasi Riset Desain &amp; Design Thinking
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5 leading-relaxed">
+              Mempelajari 10 Heuristik Usability dan membedah alur studi kasus Airbnb &amp; Gojek secara rinci untuk memahami penalaran desainer senior.
+            </p>
+<!-- Card Actions -->
+<div class="flex flex-wrap items-center gap-3 mt-4 pt-3">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-sm text-tertiary">visibility</span>
+<span>Tinjau Hasil</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-sm text-primary">edit_note</span>
+<span>Catatan Refleksi</span>
+</button>
+<span class="text-on-surface-variant font-label-sm text-label-sm ml-auto hidden sm:inline">Terdokumentasi di jurnal</span>
+</div>
+</div>
+</article>
+<!-- STEP 02 (Active & In Focus) -->
+<article class="relative flex items-start gap-4 sm:gap-6 group">
+<!-- Step Marker Node (Active Cyan Glow) -->
+<div class="relative z-10 w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-lg shadow-secondary/40 ring-4 ring-secondary/20">
+            02
+          </div>
+<!-- Step Card (Highlighted Surface) -->
+<div class="flex-1 rounded-xl bg-surface-container-high p-space-md sm:p-space-lg shadow-xl relative overflow-hidden">
+<!-- Gentle Radial Highlight -->
+<div class="absolute -top-16 -left-16 w-48 h-48 bg-secondary/15 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary/20 text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>
+                  Fokus Aktif Saat Ini
+                </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm">
+                  Sedang Dikerjakan (60%)
+                </span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">hourglass_top</span>
+                Target: 15 Nov 2024 (Sisa 3 Pekan)
+              </span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface font-semibold mt-1">
+              Membangun 2 Studi Kasus Portofolio Nyata
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5 leading-relaxed">
+              Menyusun prototipe aplikasi mobilitas kampus dari wireframe hingga interaktif Figma. Menguji alur pemesanan tiket shuttle tanpa kebingungan pengguna.
+            </p>
+<!-- Subtask Progress Bar -->
+<div class="mt-4 p-3 rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Sub-langkah: Wireframing &amp; Hi-Fi Mockup</span>
+<span class="text-secondary font-semibold">3 dari 5 selesai</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 60%"></div>
+</div>
+</div>
+<!-- Action Buttons Grid -->
+<div class="flex flex-wrap items-center gap-2.5 mt-5">
+<!-- Mark Done Button -->
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-tertiary-container hover:bg-tertiary text-on-tertiary font-label-md text-label-md font-semibold transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">done_all</span>
+<span>Tandai Selesai</span>
+</button>
+<!-- External Tool Figma Link -->
+<a class="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container-lowest hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors" href="#" rel="noopener" target="_blank">
+<span class="material-symbols-outlined text-sm text-secondary">open_in_new</span>
+<span>Buka File Figma</span>
+</a>
+<!-- Reschedule Step Modal Trigger -->
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors" id="rescheduleBtn" type="button">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">calendar_clock</span>
+<span>Jadwalkan Ulang (Fleksibel)</span>
+</button>
+<!-- Edit Step Trigger -->
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">edit</span>
+<span>Edit</span>
+</button>
+</div>
+</div>
+</article>
+<!-- STEP 03 (Next Up / Near Queue) -->
+<article class="relative flex items-start gap-4 sm:gap-6 group">
+<!-- Step Marker Node (Lavender Outline/Surface) -->
+<div class="relative z-10 w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center font-label-md text-label-md font-bold shrink-0 shadow-sm">
+            03
+          </div>
+<!-- Step Card -->
+<div class="flex-1 rounded-xl bg-surface-container p-space-md shadow-md transition-all duration-200 hover:bg-surface-container-high">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+                  Langkah 03 • Antrean Dekat
+                </span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm">
+                  Menunggu Langkah 02
+                </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+                Target: 25 Nov 2024
+              </span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface font-semibold mt-1">
+              Uji Usabilitas Mandiri kepada 5 Rekan Sebaya
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5 leading-relaxed">
+              Menguji kemudahan navigasi dan mencatat titik hambatan pengguna tanpa membimbing jawaban. Cukup amati reaksi jujur mereka saat mencoba prototipe.
+            </p>
+<!-- Card Actions -->
+<div class="flex flex-wrap items-center gap-2.5 mt-4 pt-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-sm text-secondary">play_arrow</span>
+<span>Mulai Lebih Awal</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span>Edit Langkah</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Jadwalkan Ulang</span>
+</button>
+</div>
+</div>
+</article>
+<!-- STEP 04 (Future / Planned Phase) -->
+<article class="relative flex items-start gap-4 sm:gap-6 group">
+<!-- Step Marker Node (Subtle) -->
+<div class="relative z-10 w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant flex items-center justify-center font-label-md text-label-md font-medium shrink-0">
+            04
+          </div>
+<!-- Step Card -->
+<div class="flex-1 rounded-xl bg-surface-container/70 p-space-md shadow-sm transition-all duration-200 hover:bg-surface-container">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">
+                Rencana Tahap Lanjut
+              </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+                Target: Desember 2024
+              </span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface font-medium mt-1">
+              Public Speaking &amp; Simulasi Presentasi Portofolio
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5 leading-relaxed">
+              Melatih kepercayaan diri menjelaskan penalaran desain selama 10 menit di hadapan Kak Arya secara santai sebelum diserahkan ke kurator.
+            </p>
+<div class="flex items-center gap-2 mt-4 pt-1">
+<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+                Edit Rencana
+              </button>
+<span class="text-outline-variant">•</span>
+<button class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+                Jadwalkan Ulang
+              </button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- RIGHT: Supportive Adjustment Toolkit & Coach Support (4 Cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-6 sticky top-24">
+<!-- Quick Adjustment Panel (Tambah Langkah, Reschedule Ramah, Selesaikan) -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-lg flex flex-col gap-4">
+<div class="flex items-center gap-2 pb-1">
+<span class="material-symbols-outlined text-secondary">tune</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">
+            Kontrol Penyesuaian
+          </h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Sesuaikan peta perjalananmu kapan pun saat situasi nyata berubah. Tidak ada pengurangan skor atau rekam jejak negatif.
+        </p>
+<!-- Fast Actions Accordion / Form -->
+<div class="flex flex-col gap-3 pt-2">
+<!-- Instant Add Step Box -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">add_circle</span>
+                Tambah Langkah Baru Cepat
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm">Ringan</span>
+</div>
+<div class="flex flex-col gap-2">
+<input class="w-full px-3 py-2 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary/40 transition-all" placeholder="Nama langkah (cth: Baca 1 bab buku Figma)" type="text"/>
+<div class="grid grid-cols-2 gap-2">
+<input class="w-full px-3 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary/40 transition-all" type="date" value="2024-11-20"/>
+<button class="w-full py-2 px-3 rounded-lg bg-primary-container hover:bg-primary text-on-primary-fixed font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">save</span>
+                  Simpan
+                </button>
+</div>
+</div>
+</div>
+<!-- Non-Intrusive Reschedule Option -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-secondary">update</span>
+                Jadwalkan Ulang Langkah
+              </span>
+<span class="text-tertiary font-label-sm text-label-sm flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">shield</span>
+                Bebas Penalti
+              </span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+              Sedang ada ujian kampus atau butuh rehat mental? Perpanjang tenggat waktu tanpa rasa bersalah.
+            </p>
+<div class="flex items-center gap-2 pt-1">
+<button class="flex-1 py-1.5 px-2 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+                +1 Pekan Tenang
+              </button>
+<button class="flex-1 py-1.5 px-2 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+                +2 Pekan Fleksibel
+              </button>
+</div>
+</div>
+<!-- Complete Step Direct Action -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Tandai Langkah Selesai</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Rayakan kemajuan kecilmu hari ini</span>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-tertiary/20 text-tertiary hover:bg-tertiary hover:text-on-tertiary font-label-md text-label-md transition-colors shrink-0" type="button">
+              Pilih Selesai
+            </button>
+</div>
+</div>
+</div>
+<!-- Non-Intimidating Sanctuary Box (Mental Reassurance & AI Coach) -->
+<div class="rounded-xl bg-gradient-to-br from-surface-container-high to-surface-container p-space-md shadow-xl relative overflow-hidden">
+<!-- Calming Aura -->
+<div class="absolute -right-10 -top-10 w-36 h-36 bg-tertiary/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">spa</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface font-semibold">
+              Merasa beban langkah terlalu berat?
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Pecah langkah ini menjadi sub-tindakan 15 menit, atau konsultasikan penyesuaian tempo bersama <strong class="text-on-surface font-medium">Kak Arya</strong> agar sesuai energimu saat ini.
+          </p>
+<div class="pt-2">
+<a class="w-full flex items-center justify-center gap-2 py-2.5 px-space-md rounded-full bg-primary-container hover:bg-primary text-on-primary-fixed font-label-md text-label-md font-semibold transition-all shadow-md hover:shadow-primary-container/30" data-path="perintis-personal-coach-ruang-pendamping" href="#">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span>Konsultasikan Penyesuaian Roadmap</span>
+</a>
+</div>
+<div class="flex items-center justify-center gap-1 text-on-surface-variant font-label-sm text-label-sm pt-1">
+<span class="material-symbols-outlined text-xs text-tertiary">check</span>
+<span>Rasa ragu adalah bagian wajar dari eksplorasi.</span>
+</div>
+</div>
+</div>
+<!-- Quick Mood / Energy Gauge for Context -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Kapasitas Energi Mingguan</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Terkalibrasi 3-4 Jam / Pekan</span>
+</div>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-primary hover:bg-surface-bright font-label-sm text-label-sm transition-colors" type="button">
+          Ubah
+        </button>
+</div>
+</aside>
+</div>
+<!-- Reassurance Micro-banner at Bottom -->
+<footer class="w-full rounded-xl bg-surface-container-low p-space-md flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-tertiary/15 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">
+          Setiap pergeseran tanggal bukanlah kemunduran, melainkan penyesuaian menuju daya tahan jangka panjang.
+        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+          Prinsip PERINTIS • Menghargai ritme unik setiap penjelajah muda.
+        </span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-bright text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+        Bagikan Roadmap
+      </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-bright text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+        Unduh Ringkasan PDF
+      </button>
+</div>
+</footer>
+<!-- Modal / Overlay for Rescheduling Friendly Extension (Accessible via JS) -->
+<div class="fixed inset-0 z-50 bg-surface/80 backdrop-blur-md hidden items-center justify-center p-4" id="rescheduleModal">
+<div class="w-full max-w-lg rounded-xl bg-surface-container p-space-lg shadow-2xl flex flex-col gap-5 border border-primary/20">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary/15 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined">event_repeat</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+              Jadwalkan Ulang Tanpa Beban
+            </h4>
+<span class="font-label-sm text-label-sm text-tertiary">
+              Kesehatan mental dan kualitas lebih utama daripada kecepatan.
+            </span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-full transition-colors" id="closeModalBtn" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Pilih perpanjangan waktu untuk langkah <strong class="text-on-surface">"Membangun 2 Studi Kasus Portofolio Nyata"</strong>. Roadmap otomatis merapikan jadwal fase berikutnya tanpa menyalakan tanda peringatan merah.
+      </p>
+<!-- Preset Options -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+<button class="flex flex-col items-center justify-center p-3 rounded-xl bg-surface-container-high hover:bg-primary-container hover:text-on-primary-fixed text-on-surface transition-colors gap-1 group">
+<span class="font-label-md text-label-md font-semibold">+7 Hari</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-primary-fixed/80">Rehat Singkat</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-xl bg-surface-container-high hover:bg-primary-container hover:text-on-primary-fixed text-on-surface transition-colors gap-1 group">
+<span class="font-label-md text-label-md font-semibold">+14 Hari</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-primary-fixed/80">Fokus Ujian</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-xl bg-surface-container-high hover:bg-primary-container hover:text-on-primary-fixed text-on-surface transition-colors gap-1 group">
+<span class="font-label-md text-label-md font-semibold">Tentukan Sendiri</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-primary-fixed/80">Kalender Bebas</span>
+</button>
+</div>
+<div class="flex items-center justify-end gap-3 pt-3">
+<button class="px-4 py-2 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" id="cancelModalBtn" type="button">
+          Batal
+        </button>
+<button class="px-5 py-2 rounded-full bg-primary-container hover:bg-primary text-on-primary-fixed font-label-md text-label-md font-semibold transition-all shadow-md" id="confirmModalBtn" type="button">
+          Terapkan Ritme Baru
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive JavaScript Micro-interactions -->
+<script>
+    (function() {
+      const rescheduleBtn = document.getElementById('rescheduleBtn');
+      const rescheduleModal = document.getElementById('rescheduleModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const cancelModalBtn = document.getElementById('cancelModalBtn');
+      const confirmModalBtn = document.getElementById('confirmModalBtn');
+
+      function openModal() {
+        if (rescheduleModal) {
+          rescheduleModal.classList.remove('hidden');
+          rescheduleModal.classList.add('flex');
+        }
+      }
+
+      function closeModal() {
+        if (rescheduleModal) {
+          rescheduleModal.classList.add('hidden');
+          rescheduleModal.classList.remove('flex');
+        }
+      }
+
+      if (rescheduleBtn) rescheduleBtn.addEventListener('click', openModal);
+      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+      if (cancelModalBtn) cancelModalBtn.addEventListener('click', closeModal);
+      if (confirmModalBtn) {
+        confirmModalBtn.addEventListener('click', function() {
+          closeModal();
+        });
+      }
+
+      // Close modal on outside click
+      if (rescheduleModal) {
+        rescheduleModal.addEventListener('click', function(e) {
+          if (e.target === rescheduleModal) {
+            closeModal();
+          }
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#4a444f", "on-primary-fixed": "#290350", "secondary-container": "#00cbe6", "surface-bright": "#37374d", "inverse-primary": "#704f98", "on-primary-fixed-variant": "#57377f", "inverse-surface": "#e2e0fc", "surface-container-high": "#28283d", "surface": "#111125", "on-background": "#e2e0fc", "on-surface": "#e2e0fc", "secondary-fixed": "#a2eeff", "background": "#111125", "inverse-on-surface": "#2f2e44", "on-secondary-container": "#00515d", "primary": "#e2c7ff", "surface-container-lowest": "#0c0c20", "tertiary-container": "#89c485", "on-error-container": "#ffdad6", "primary-container": "#cba6f7", "tertiary-fixed": "#b4f2af", "on-tertiary-fixed-variant": "#19511f", "on-tertiary": "#00390c", "tertiary": "#a3e09f", "surface-container": "#1e1e32", "primary-fixed-dim": "#d9b9ff", "secondary": "#5de6ff", "surface-container-low": "#1a1a2e", "on-secondary-fixed-variant": "#004e5a", "error": "#ffb4ab", "on-secondary": "#00363e", "secondary-fixed-dim": "#2fd9f4", "outline": "#968e9a", "on-tertiary-container": "#1a5220", "on-primary-container": "#57377f", "primary-fixed": "#eedbff", "on-error": "#690005", "tertiary-fixed-dim": "#99d595", "on-tertiary-fixed": "#002205", "surface-tint": "#d9b9ff", "surface-dim": "#111125", "surface-container-highest": "#333348", "on-primary": "#3f1e66", "on-surface-variant": "#cdc3d1", "surface-variant": "#333348", "error-container": "#93000a", "on-secondary-fixed": "#001f25" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1.5rem", "space-md": "1.25rem", "margin": "2.5rem", "space-lg": "2rem", "gutter-sm": "1rem", "space-xs": "0.375rem", "space-xl": "3rem", "space-sm": "0.75rem", "margin-mobile": "1.25rem" }, "fontFamily": { "label-md": ["Inter"], "headline-xl-mobile": ["Inter"], "title-md": ["Inter"], "display-lg": ["Inter"], "headline-sm": ["Inter"], "headline-xl": ["Inter"], "display-lg-mobile": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "label-sm": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "title-md": ["18px", { "lineHeight": "26px", "fontWeight": "500" }], "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }] } } } }</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.4)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-20 px-space-md flex items-center gap-3"><img alt="PERINTIS Emblem Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDcPXoEK6WQ48rbp7d_d2mTuIOeGjzjFJ6PL1wFxnxfZzYF_liD3u-sQwkgX3-w7ij_-vS9BNNzMyux5JCSz0zxi5L0cMxrL3kQRx3h1_6HySvJqEuVf1atmyDKUgBVfLO70X7E2GHYGJ3EAw8kpPFTaGrCquJFpIDm77lpdcE1lQhLGv2dDuSFkAgFZQo8-cw2_tk0aQShFvJ-q_PrtiLEmtbIoXXq7Blc5hPvMUdZ"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface font-semibold tracking-wide">PERINTIS</span><span class="font-label-sm text-label-sm text-on-surface-variant">Panduan Bertumbuh</span></div></div><div class="px-space-sm pt-space-xs"><div class="px-space-sm pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Navigasi Utama</div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="perintis-my-direction-arah-perkembanganku" href="#">My Direction</a><a class="flex items-center px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="perintis-remember-your-why-kenapa-aku-memulai" href="#">Remember Your Why</a><a class="flex items-center px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="perintis-my-roadmap-roadmap-perkembanganku" href="#">My Roadmap</a><a class="flex items-center px-space-sm py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="perintis-know-your-next-step-langkah-selanjutnya" href="#">Know Your Next Step</a></nav></div></div><div class="px-space-sm pb-space-md flex flex-col gap-space-sm"><div class="bg-surface-container rounded-xl p-space-sm relative overflow-hidden shadow-[0_4px_20px_-2px_rgba(10,10,20,0.45)]"><div class="flex items-center justify-between mb-space-xs"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-tertiary font-semibold">Online &amp; Siap</span></div><span class="material-symbols-outlined text-secondary text-sm">smart_toy</span></div><div class="font-title-md text-title-md text-on-surface font-semibold">Kak Arya</div><div class="font-label-sm text-label-sm text-on-surface-variant mb-space-xs">Mentor Pertumbuhan &amp; AI</div><a class="w-full flex items-center justify-center gap-2 py-2 px-space-sm bg-surface-container-high hover:bg-primary-container text-on-surface hover:text-on-primary-container rounded-lg font-label-md text-label-md transition-colors" data-path="perintis-personal-coach-ruang-pendamping" href="#"><span class="material-symbols-outlined text-sm">forum</span><span>Chat Coach</span></a></div><div class="bg-surface-container-lowest rounded-xl p-space-sm flex items-center gap-3"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp6znq-U0VMemXW6rCRq3XeJ-VF-dnl-3GHHbUAlhfiRm7EckYB5W72BGsL0U2uuto9PCQa45hb0tMSEzaECUp4BYA7SaDNwpUCmJBkuotdIOTJ3qj2rv1SfNT0ouLeWakbOKR1Ur1TfmaZQ_z2If7IAKUw1WwCtHTei9lMgtwWHxxq8h1UnYS0BTcoWxmoEykHuGcNg3u_5BXOHZJIiPKfayXu6w2yKmheN7lfeLh"/><div class="flex flex-col flex-1 min-w-0"><div class="font-body-md text-body-md font-semibold text-on-surface truncate">Nadia Kirana</div><div class="font-label-sm text-label-sm text-on-surface-variant truncate">19 Thn • Mahasiswa Baru</div></div><div class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">Lvl 3</div></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-20 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-gutter flex items-center justify-between"><div class="flex items-center gap-gutter"><div class="flex flex-col"><div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-0.5"><span class="hover:text-on-surface transition-colors cursor-pointer">PERINTIS</span><span class="text-outline-variant">/</span><span class="text-primary font-medium">Dashboard Perjalanan</span></div><div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Halo, Nadia 👋</div></div><div class="hidden xl:flex items-center gap-3 bg-surface-container-low px-space-sm py-2 rounded-full"><span class="font-label-md text-label-md text-on-surface-variant">Bagaimana energimu hari ini?</span><div class="flex items-center gap-1.5 ml-1"><button class="px-2 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm transition-colors" type="button">Reflektif</button><button class="px-2 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm transition-colors" type="button">Fokus</button><button class="px-2 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm transition-colors" type="button">Tenang</button></div></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Fase Aktif</span></div><button class="w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors relative" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary"></span></button><button class="w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" type="button"><span class="material-symbols-outlined text-xl">search</span></button><img alt="Nadia Kirana Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp6znq-U0VMemXW6rCRq3XeJ-VF-dnl-3GHHbUAlhfiRm7EckYB5W72BGsL0U2uuto9PCQa45hb0tMSEzaECUp4BYA7SaDNwpUCmJBkuotdIOTJ3qj2rv1SfNT0ouLeWakbOKR1Ur1TfmaZQ_z2If7IAKUw1WwCtHTei9lMgtwWHxxq8h1UnYS0BTcoWxmoEykHuGcNg3u_5BXOHZJIiPKfayXu6w2yKmheN7lfeLh"/></div></header><main class="w-full pt-20 px-gutter pb-space-xl flex-1 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Intro Section -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-xl">
+<div class="flex flex-col max-w-3xl">
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Ruang Refleksi Intim</span>
+<span class="text-outline-variant font-label-sm text-label-sm">/</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Jangkar Niat &amp; Alasan Fundamental</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-semibold tracking-tight mb-space-xs">
+        Kenapa Aku Memulai?
+      </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+        Ketika rasa lelah atau sindrom imposter datang, kembalilah ke titik ini. Bukan untuk menuntut dirimu sempurna, tapi untuk mengingat apa yang sebenarnya membuat hatimu tergerak.
+      </p>
+</div>
+<!-- Top Action CTA -->
+<div class="flex items-center gap-space-sm flex-wrap shrink-0">
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-all shadow-sm" id="btnOpenNewReason" type="button">
+<span class="material-symbols-outlined text-sm text-primary">stylus_note</span>
+<span>Tulis Alasan Baru</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded-full bg-primary-container text-on-primary-container hover:shadow-[0_0_20px_rgba(203,166,247,0.4)] font-label-md text-label-md font-semibold transition-all" id="btnOpenEditAnchor" type="button">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+<span>Perbarui Alasan Terpilih</span>
+</button>
+</div>
+</div>
+<!-- Primary Anchor Card (Spotlight & Emotional Heart) -->
+<div class="relative w-full rounded-xl bg-surface-container overflow-hidden shadow-xl mb-space-xl">
+<!-- Subtle gradient glow behind handwritten style content -->
+<div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-secondary/10 blur-3xl pointer-events-none"></div>
+<div class="relative p-space-lg lg:p-space-xl flex flex-col lg:flex-row gap-space-xl items-start">
+<!-- Handwritten Diary Style Body -->
+<div class="flex-1 flex flex-col">
+<div class="flex items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm font-semibold">
+              Jangkar Utama (Ditulis 12 September 2024)
+            </span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs text-tertiary">lock</span>
+              Tersimpan Pribadi
+            </span>
+</div>
+<span class="material-symbols-outlined text-primary/40 text-2xl select-none">format_quote</span>
+</div>
+<blockquote class="font-title-md text-title-md text-on-surface leading-relaxed font-normal mb-space-lg relative pl-4 bg-gradient-to-r from-primary-container/30 to-transparent rounded-l">
+<p class="italic selection:bg-secondary/30 selection:text-on-surface">
+            “Aku memulai belajar desain ini bukan untuk mendapat tepuk tangan orang lain atau gaji bombastis semata. Aku ingin membuktikan pada diriku sendiri bahwa anak daerah sepertiku bisa merancang teknologi yang mempermudah orang tua dan teman-teman di kampung mengakses pendidikan layak. Aku ingin bertumbuh dengan cara yang sehat, tanpa harus mengorbankan jam tidur dan ketenangan mentalku.”
+          </p>
+</blockquote>
+<!-- Interaction Row for Anchor -->
+<div class="flex items-center gap-space-sm flex-wrap mt-auto pt-space-xs">
+<button class="group flex items-center gap-2.5 px-4 py-2 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface transition-all" id="btnAudioMemo" type="button">
+<span class="material-symbols-outlined text-sm text-secondary group-hover:scale-110 transition-transform" id="audioIcon">volume_up</span>
+<span class="font-label-md text-label-md">Dengarkan Audio Memo Niatku</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-lowest text-on-surface-variant">0:42</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface transition-all" id="btnShareMentor" type="button">
+<span class="material-symbols-outlined text-sm text-primary">forward_to_inbox</span>
+<span class="font-label-md text-label-md">Bagikan ke Kak Arya (Mentor)</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md ml-auto" id="btnQuickEdit" type="button">
+<span class="material-symbols-outlined text-sm">edit</span>
+<span>Edit Catatan</span>
+</button>
+</div>
+<!-- Audio Player Simulation Bar (Hidden by default, toggled via JS) -->
+<div class="hidden mt-space-sm p-3 rounded-lg bg-surface-container-lowest flex items-center gap-3 animate-fade-in" id="audioPlayerBar">
+<button class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0" id="btnPlayPause" type="button">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</button>
+<div class="flex-1 flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Rekaman Memo Suara Nadia</span>
+<span id="audioTimer">0:14 / 0:42</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-1/3"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer hover:text-on-surface" id="btnCloseAudio">close</span>
+</div>
+</div>
+<!-- Mood & Presence Graphic Card -->
+<div class="w-full lg:w-72 shrink-0 flex flex-col gap-space-md bg-surface-container-low rounded-xl p-space-md shadow-inner">
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-80" data-alt="Warm moody cinematic photograph of a reflective young student looking out the rain-streaked window at quiet dawn, deep indigo violet and soft teal ambiance, thoughtful serene atmosphere, minimal soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOmm-BUdmi8kx2H0IBFh4XcCaZTArJTAkZ48yr5_gfDBarLX0Yqjz_JutO8ZkzCsbZP4KuVocJUaiRsUYld_DkDGQs2X929RJjgfvQIyarQ-Tyz1CefRC5jflehiXwd6UsEQL5IkAqGR1xeykay6qlj-4a1xnlKId4n1K3NU2x0I376C9HNWk_eYbpNRRDS12D0LGzhIJhpT8r6NT_aKXkABxv-deE6PJJmtT6Cnq5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-lowest/80 backdrop-blur-sm text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">spa</span>
+<span>Pikiran Tenang</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Kekuatan Jangkar</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">48 Hari</span>
+<span class="font-label-sm text-label-sm text-tertiary">Tetap Bertahan</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 leading-normal">
+            Catatan ini telah kamu baca 14 kali saat keraguan menghampiri, membantu mengembalikan fokus tanpa perlu panik.
+          </p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Relevansi Hari Ini</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-semibold">100% Valid</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Mid Grid: Reflective Questions & Active Goals Connection -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg mb-space-xl">
+<!-- Left: Reflective Prompts (5 cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">psychology_alt</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+            Pertanyaan Reflektif Pembimbing
+          </h2>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+          Bukan Menguji
+        </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant -mt-1">
+        Gunakan pertanyaan ini untuk mengurai benang kusut dalam kepala saat motivasimu memudar.
+      </p>
+<!-- Interactive Question Cards Accordion/Cards -->
+<div class="flex flex-col gap-space-sm" id="reflectiveQuestionList">
+<!-- Prompt 1 -->
+<div class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col gap-2">
+<div class="flex items-start gap-3">
+<span class="w-6 h-6 rounded-full bg-primary-container/20 text-primary flex items-center justify-center font-label-sm text-label-sm font-semibold shrink-0 mt-0.5">01</span>
+<div class="flex flex-col flex-1">
+<span class="font-title-md text-title-md text-on-surface font-medium leading-snug">
+                Untuk siapa karya dan pertumbuhanmu ini kamu persembahkan?
+              </span>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">
+                Bukan untuk membungkam mereka yang meremehkan, tetapi untuk menyalakan harapan bagi yang kamu cintai.
+              </p>
+</div>
+</div>
+<div class="pt-2 flex justify-end">
+<button class="btn-prompt-write text-primary hover:text-on-surface font-label-md text-label-md flex items-center gap-1 transition-colors" data-prompt="Untuk siapa karya dan pertumbuhanmu ini kamu persembahkan?">
+<span>Tulis di Lembar Jurnal</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Prompt 2 -->
+<div class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col gap-2">
+<div class="flex items-start gap-3">
+<span class="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-label-sm text-label-sm font-semibold shrink-0 mt-0.5">02</span>
+<div class="flex flex-col flex-1">
+<span class="font-title-md text-title-md text-on-surface font-medium leading-snug">
+                Perasaan apa yang ingin kamu ciptakan saat berhasil melewati keraguan hari ini?
+              </span>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">
+                Fokuslah pada sensasi rasa lega dan kebanggaan hening di dalam dada, bukan kepuasan instan.
+              </p>
+</div>
+</div>
+<div class="pt-2 flex justify-end">
+<button class="btn-prompt-write text-secondary hover:text-on-surface font-label-md text-label-md flex items-center gap-1 transition-colors" data-prompt="Perasaan apa yang ingin kamu ciptakan saat berhasil melewati keraguan hari ini?">
+<span>Jawab Refleksi Sejenak</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Prompt 3 -->
+<div class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex flex-col gap-2">
+<div class="flex items-start gap-3">
+<span class="w-6 h-6 rounded-full bg-tertiary/20 text-tertiary flex items-center justify-center font-label-sm text-label-sm font-semibold shrink-0 mt-0.5">03</span>
+<div class="flex flex-col flex-1">
+<span class="font-title-md text-title-md text-on-surface font-medium leading-snug">
+                Nilai apa yang tidak ingin kamu gadaikan dalam proses belajar ini?
+              </span>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">
+                Kejujuran pada diri sendiri, integritas karya, atau waktu bersama keluarga yang tak tergantikan.
+              </p>
+</div>
+</div>
+<div class="pt-2 flex justify-end">
+<button class="btn-prompt-write text-tertiary hover:text-on-surface font-label-md text-label-md flex items-center gap-1 transition-colors" data-prompt="Nilai apa yang tidak ingin kamu gadaikan dalam proses belajar ini?">
+<span>Tulis di Lembar Jurnal</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Connection to Active Goals (7 cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-lg">hub</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+            Koneksi Nyata ke Realitas Hari Ini
+          </h2>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary/10 text-tertiary font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>Selaras 100% dengan Arah Hidupmu</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant -mt-1">
+        Alasanmu bukan sekadar kata-kata puitis; inilah bagaimana niat tersebut memandu tindakan nyata Nadia setiap harinya.
+      </p>
+<!-- Alignment Cards List -->
+<div class="flex flex-col gap-space-sm">
+<!-- Target Connection 1 -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col md:flex-row md:items-center justify-between gap-space-md hover:bg-surface-container-high transition-colors">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container/15 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">palette</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Tujuan Aktif #1</span>
+<span class="text-outline-variant font-label-sm text-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">My Roadmap</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">
+                Membangun Portofolio UI/UX Desain Mandiri
+              </h3>
+<div class="mt-2 flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Nilai yang dijaga:</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm font-medium">
+                  Aksesibilitas Pendidikan &amp; Karya Bermakna
+                </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0 md:self-center">
+<span class="material-symbols-outlined text-tertiary text-sm">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Terhubung Erat</span>
+</div>
+</div>
+<!-- Target Connection 2 -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col md:flex-row md:items-center justify-between gap-space-md hover:bg-surface-container-high transition-colors">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary/15 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">bedtime</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Tujuan Aktif #2</span>
+<span class="text-outline-variant font-label-sm text-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Habit Tracker</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">
+                Menjaga Ritme Tidur &amp; Deep Work 45 Menit
+              </h3>
+<div class="mt-2 flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Nilai yang dijaga:</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-secondary font-label-sm text-label-sm font-medium">
+                  Pertumbuhan Berkelanjutan Tanpa Burnout
+                </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0 md:self-center">
+<span class="material-symbols-outlined text-tertiary text-sm">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Terhubung Erat</span>
+</div>
+</div>
+<!-- Target Connection 3 -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col md:flex-row md:items-center justify-between gap-space-md hover:bg-surface-container-high transition-colors">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-tertiary/15 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">record_voice_over</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Tujuan Aktif #3</span>
+<span class="text-outline-variant font-label-sm text-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pengembangan Diri</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">
+                Public Speaking di Komunitas Pemuda
+              </h3>
+<div class="mt-2 flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Nilai yang dijaga:</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-tertiary font-label-sm text-label-sm font-medium">
+                  Menjadi Suara bagi Mereka yang Belum Terdengar
+                </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0 md:self-center">
+<span class="material-symbols-outlined text-tertiary text-sm">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Terhubung Erat</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Supporting Flashbacks / Small Reminder Anchors -->
+<div class="flex flex-col gap-space-md mb-space-xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">bookmarks</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+          Momen Pengingat Kecil &amp; Jejak Pemicu
+        </h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+        Catatan sejati saat realitas menguji
+      </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Card A -->
+<div class="p-space-lg rounded-xl bg-surface-container relative overflow-hidden flex flex-col justify-between group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-2xl"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">
+                Momen Saat Merasa Buntu di Semester 1
+              </span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base">push_pin</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+            “Ingat betapa bingungnya saat orang tuamu kesulitan membaca aplikasi administrasi desa? Kamu berjanji ingin mengubah itu lewat desain yang manusiawi.”
+          </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Ditandai sebagai jangkar darurat</span>
+<button class="hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">refresh</span>
+<span>Ulas kembali</span>
+</button>
+</div>
+</div>
+<!-- Card B -->
+<div class="p-space-lg rounded-xl bg-surface-container relative overflow-hidden flex flex-col justify-between group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-2xl"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">
+                Janji Kepada Diri Sendiri
+              </span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base">favorite</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+            “Boleh istirahat sejenak, tapi jangan biarkan keraguan orang lain menentukan batas kemampuanmu.”
+          </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Diteguhkan saat masa ospek</span>
+<button class="hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">refresh</span>
+<span>Ulas kembali</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Journal Modal / Inline Response Box (Hidden initially) -->
+<div class="fixed inset-0 z-50 bg-surface-container-lowest/80 backdrop-blur-md hidden items-center justify-center p-space-md" id="journalResponseModal">
+<div class="w-full max-w-xl bg-surface-container rounded-xl p-space-lg shadow-2xl flex flex-col gap-space-md relative animate-fade-in">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">auto_stories</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold" id="journalModalTitle">
+            Lembar Refleksi Diri
+          </h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface flex items-center justify-center" id="btnCloseModal" type="button">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant" id="journalModalPromptText">
+        Tuliskan apa yang melintas di pikiranmu saat ini secara jujur tanpa menyunting kalimatmu.
+      </p>
+<textarea class="w-full p-space-md rounded-xl bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-md outline-none focus:ring-1 focus:ring-secondary transition-all resize-none" id="journalInput" placeholder="Tuliskan di sini dengan tenang..." rows="5"></textarea>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-tertiary">check</span>
+          Hanya terbaca olehmu
+        </span>
+<div class="flex items-center gap-2">
+<button class="px-space-md py-2 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" id="btnCancelModal" type="button">
+            Batal
+          </button>
+<button class="px-space-md py-2 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold hover:shadow-[0_0_15px_rgba(203,166,247,0.3)] transition-all" id="btnSaveJournal" type="button">
+            Simpan Niat Ini
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar / Navigation Return -->
+<div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md bg-surface-container-low p-space-lg rounded-xl">
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="px-space-md py-2.5 rounded-full bg-primary-container text-on-primary-container hover:shadow-[0_0_20px_rgba(203,166,247,0.4)] font-label-md text-label-md font-semibold transition-all flex items-center gap-2" id="btnBottomUpdate" type="button">
+<span class="material-symbols-outlined text-sm">edit</span>
+<span>Perbarui Alasan</span>
+</button>
+<button class="px-space-md py-2.5 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-all flex items-center gap-2" id="btnBottomAddReminder" type="button">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+<span>Tulis Catatan Pengingat Baru</span>
+</button>
+</div>
+<a class="flex items-center gap-2 text-secondary hover:text-primary transition-colors font-label-md text-label-md group" data-path="perintis-my-direction-arah-perkembanganku" href="#">
+<span>Kembali ke Dashboard dengan Energi Baru</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">east</span>
+</a>
+</div>
+</div>
+<script>
+  (function () {
+    // Elements
+    const btnAudioMemo = document.getElementById('btnAudioMemo');
+    const audioPlayerBar = document.getElementById('audioPlayerBar');
+    const btnCloseAudio = document.getElementById('btnCloseAudio');
+    const btnPlayPause = document.getElementById('btnPlayPause');
+    const modal = document.getElementById('journalResponseModal');
+    const btnCloseModal = document.getElementById('btnCloseModal');
+    const btnCancelModal = document.getElementById('btnCancelModal');
+    const btnSaveJournal = document.getElementById('btnSaveJournal');
+    const journalModalPromptText = document.getElementById('journalModalPromptText');
+    const journalInput = document.getElementById('journalInput');
+    const promptButtons = document.querySelectorAll('.btn-prompt-write');
+    const btnOpenNewReason = document.getElementById('btnOpenNewReason');
+    const btnOpenEditAnchor = document.getElementById('btnOpenEditAnchor');
+    const btnQuickEdit = document.getElementById('btnQuickEdit');
+    const btnBottomUpdate = document.getElementById('btnBottomUpdate');
+    const btnBottomAddReminder = document.getElementById('btnBottomAddReminder');
+
+    // Audio Memo Toggle
+    let isPlaying = false;
+    if (btnAudioMemo && audioPlayerBar) {
+      btnAudioMemo.addEventListener('click', () => {
+        audioPlayerBar.classList.remove('hidden');
+      });
+    }
+
+    if (btnCloseAudio) {
+      btnCloseAudio.addEventListener('click', () => {
+        audioPlayerBar.classList.add('hidden');
+        isPlaying = false;
+        if (btnPlayPause) {
+          btnPlayPause.querySelector('span').textContent = 'play_arrow';
+        }
+      });
+    }
+
+    if (btnPlayPause) {
+      btnPlayPause.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        btnPlayPause.querySelector('span').textContent = isPlaying ? 'pause' : 'play_arrow';
+      });
+    }
+
+    // Modal Handling for Reflective Prompts & Add/Edit
+    const openModal = (promptText = '') => {
+      if (promptText) {
+        journalModalPromptText.textContent = `"${promptText}"`;
+      } else {
+        journalModalPromptText.textContent = 'Tuliskan niat murni atau alasan mengapa kamu ingin terus bertumbuh hari ini.';
+      }
+      journalInput.value = '';
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      journalInput.focus();
+    };
+
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+
+    promptButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.getAttribute('data-prompt') || '';
+        openModal(text);
+      });
+    });
+
+    [btnOpenNewReason, btnOpenEditAnchor, btnQuickEdit, btnBottomUpdate, btnBottomAddReminder].forEach(btn => {
+      if (btn) {
+        btn.addEventListener('click', () => openModal('Apa alasan fundamental yang ingin kamu tegaskan kembali hari ini?'));
+      }
+    });
+
+    if (btnCloseModal) btnCloseModal.addEventListener('click', closeModal);
+    if (btnCancelModal) btnCancelModal.addEventListener('click', closeModal);
+
+    if (btnSaveJournal) {
+      btnSaveJournal.addEventListener('click', () => {
+        const val = journalInput.value.trim();
+        if (val) {
+          btnSaveJournal.textContent = 'Tersimpan ✓';
+          setTimeout(() => {
+            btnSaveJournal.textContent = 'Simpan Niat Ini';
+            closeModal();
+          }, 600);
+        } else {
+          closeModal();
+        }
+      });
+    }
+
+    // Close on backdrop click
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+  })();
+</script></main></div></body></html>

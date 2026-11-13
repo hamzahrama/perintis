@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#290350", "primary-fixed-dim": "#d9b9ff", "surface-container-highest": "#333348", "inverse-primary": "#704f98", "tertiary-fixed": "#b4f2af", "on-tertiary-container": "#1a5220", "on-secondary": "#00363e", "on-background": "#e2e0fc", "on-tertiary-fixed-variant": "#19511f", "error": "#ffb4ab", "secondary-fixed": "#a2eeff", "on-primary-fixed-variant": "#57377f", "on-secondary-container": "#00515d", "on-surface-variant": "#cdc3d1", "outline-variant": "#4a444f", "surface-container-low": "#1a1a2e", "surface-container": "#1e1e32", "on-surface": "#e2e0fc", "primary-container": "#cba6f7", "on-tertiary-fixed": "#002205", "inverse-on-surface": "#2f2e44", "surface-dim": "#111125", "secondary-container": "#00cbe6", "error-container": "#93000a", "outline": "#968e9a", "surface-bright": "#37374d", "secondary": "#5de6ff", "primary-fixed": "#eedbff", "on-primary": "#3f1e66", "on-secondary-fixed-variant": "#004e5a", "surface-container-high": "#28283d", "secondary-fixed-dim": "#2fd9f4", "inverse-surface": "#e2e0fc", "background": "#111125", "tertiary-container": "#89c485", "on-error": "#690005", "surface-variant": "#333348", "on-error-container": "#ffdad6", "surface-container-lowest": "#0c0c20", "surface": "#111125", "on-tertiary": "#00390c", "tertiary-fixed-dim": "#99d595", "tertiary": "#a3e09f", "surface-tint": "#d9b9ff", "primary": "#e2c7ff", "on-secondary-fixed": "#001f25", "on-primary-container": "#57377f" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1.25rem", "space-xs": "0.375rem", "space-sm": "0.75rem", "gutter": "1.5rem", "space-lg": "2rem", "margin-mobile": "1.25rem", "margin": "2.5rem", "gutter-sm": "1rem", "space-xl": "3rem" }, "fontFamily": { "headline-lg": ["Inter"], "headline-xl": ["Inter"], "headline-sm": ["Inter"], "headline-xl-mobile": ["Inter"], "label-md": ["Inter"], "label-sm": ["Inter"], "body-lg": ["Inter"], "title-md": ["Inter"], "display-lg-mobile": ["Inter"], "body-md": ["Inter"], "display-lg": ["Inter"] }, "fontSize": { "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "title-md": ["18px", { "lineHeight": "26px", "fontWeight": "500" }], "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }] } } } }</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.4)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-20 px-space-md flex items-center gap-3"><img alt="PERINTIS Emblem Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDcPXoEK6WQ48rbp7d_d2mTuIOeGjzjFJ6PL1wFxnxfZzYF_liD3u-sQwkgX3-w7ij_-vS9BNNzMyux5JCSz0zxi5L0cMxrL3kQRx3h1_6HySvJqEuVf1atmyDKUgBVfLO70X7E2GHYGJ3EAw8kpPFTaGrCquJFpIDm77lpdcE1lQhLGv2dDuSFkAgFZQo8-cw2_tk0aQShFvJ-q_PrtiLEmtbIoXXq7Blc5hPvMUdZ"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface font-semibold tracking-wide">PERINTIS</span><span class="font-label-sm text-label-sm text-on-surface-variant">Panduan Bertumbuh</span></div></div><div class="px-space-sm pt-space-xs"><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-3 px-space-sm py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span class="font-body-md text-body-md">Overview</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="my-direction" href="#"><span class="material-symbols-outlined text-lg">explore</span><span class="font-body-md text-body-md">Arahku</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="my-roadmap" href="#"><span class="material-symbols-outlined text-lg">alt_route</span><span class="font-body-md text-body-md">Peta Jalan</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="daily-guidance" href="#"><span class="material-symbols-outlined text-lg">wb_sunny</span><span class="font-body-md text-body-md">Panduan Harian</span></a><a aria-current="page" class="flex items-center gap-3 px-space-sm py-2 rounded-xl transition-colors bg-primary-container text-on-primary-container font-semibold" data-path="my-habits" href="#"><span class="material-symbols-outlined text-lg">check_circle</span><span class="font-body-md text-body-md">Kebiasaan Positif</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="growth-review" href="#"><span class="material-symbols-outlined text-lg">history_edu</span><span class="font-body-md text-body-md">Refleksi Berkala</span></a></nav></div></div><div class="px-space-sm pb-space-md flex flex-col gap-space-sm"><div class="bg-surface-container rounded-xl p-space-sm relative overflow-hidden shadow-[0_4px_20px_-2px_rgba(10,10,20,0.45)]"><div class="flex items-center justify-between mb-space-xs"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-tertiary font-semibold">Online &amp; Siap</span></div><span class="material-symbols-outlined text-secondary text-sm">smart_toy</span></div><div class="font-title-md text-title-md text-on-surface font-semibold">Kak Arya</div><div class="font-label-sm text-label-sm text-on-surface-variant mb-space-xs">Mentor Pertumbuhan &amp; AI</div><a class="w-full flex items-center justify-center gap-2 py-2 px-space-sm bg-surface-container-high hover:bg-primary-container text-on-surface hover:text-on-primary-container rounded-lg font-label-md text-label-md transition-colors" data-path="personal-coach" href="#"><span class="material-symbols-outlined text-sm">forum</span><span>Chat Coach</span></a></div><div class="bg-surface-container-lowest rounded-xl p-space-sm flex items-center gap-3"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp6znq-U0VMemXW6rCRq3XeJ-VF-dnl-3GHHbUAlhfiRm7EckYB5W72BGsL0U2uuto9PCQa45hb0tMSEzaECUp4BYA7SaDNwpUCmJBkuotdIOTJ3qj2rv1SfNT0ouLeWakbOKR1Ur1TfmaZQ_z2If7IAKUw1WwCtHTei9lMgtwWHxxq8h1UnYS0BTcoWxmoEykHuGcNg3u_5BXOHZJIiPKfayXu6w2yKmheN7lfeLh"/><div class="flex flex-col flex-1 min-w-0"><div class="font-body-md text-body-md font-semibold text-on-surface truncate">Nadia Kirana</div><div class="font-label-sm text-label-sm text-on-surface-variant truncate">19 Thn • Mahasiswa Baru</div></div><div class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">Lvl 3</div></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-20 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-gutter flex items-center justify-between"><div class="flex items-center gap-gutter"><div class="flex flex-col"><div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Halo, Nadia 👋</div><div class="font-label-md text-label-md text-on-surface-variant">Rabu, 24 Oktober • Pekan Pengembangan Mandiri</div></div><div class="hidden xl:flex items-center gap-3 bg-surface-container-low px-space-sm py-2 rounded-full"><span class="material-symbols-outlined text-secondary text-base">arrow_back_ios_new</span><span class="font-label-md text-label-md text-on-surface-variant">Bagaimana energimu hari ini?</span><div class="flex items-center gap-1.5 ml-1"><button class="px-2 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm transition-colors" type="button">Reflektif</button><button class="px-2 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm transition-colors" type="button">Fokus</button><button class="px-2 py-0.5 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm transition-colors" type="button">Tenang</button></div></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Fase Aktif</span></div><button class="w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors relative" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary"></span></button><button class="w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" type="button"><span class="material-symbols-outlined text-xl">search</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp6znq-U0VMemXW6rCRq3XeJ-VF-dnl-3GHHbUAlhfiRm7EckYB5W72BGsL0U2uuto9PCQa45hb0tMSEzaECUp4BYA7SaDNwpUCmJBkuotdIOTJ3qj2rv1SfNT0ouLeWakbOKR1Ur1TfmaZQ_z2If7IAKUw1WwCtHTei9lMgtwWHxxq8h1UnYS0BTcoWxmoEykHuGcNg3u_5BXOHZJIiPKfayXu6w2yKmheN7lfeLh"/></div></header><main class="w-full pt-20 px-gutter pb-space-xl flex-1 bg-surface"><div class="flex flex-col w-full gap-space-lg">
+<!-- TOP SUMMARY & ACTION ROW -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-lg shadow-xl">
+<!-- Ambient Glow Orbs -->
+<div class="absolute -top-16 -right-16 w-80 h-80 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-20 left-1/3 w-64 h-64 rounded-full bg-secondary/10 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="max-w-2xl flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-label-sm">
+            Ritme Mingguan Aktif
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">• Pekan ke-42</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+          Kebiasaan Positif &amp; Ritme Hidup 🌱
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Bangun identitas baru melalui tindakan-tindakan kecil harian. Konsistensi mengalahkan intensitas sesaat — ruang bertumbuh tanpa vonis gagal.
+        </p>
+</div>
+<!-- Quick Metrics & CTA -->
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Weekly Success Capsule -->
+<div class="flex items-center gap-4 bg-surface-container-high px-5 py-3.5 rounded-xl shadow-md">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-12 h-12 -rotate-90 transform" viewbox="0 0 48 48">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="transparent" r="19" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-tertiary" cx="24" cy="24" fill="transparent" r="19" stroke="currentColor" stroke-dasharray="119.38" stroke-dashoffset="21.48" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute font-label-md text-label-md font-bold text-on-surface">82%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tingkat Keberhasilan</span>
+<div class="flex items-center gap-1.5 font-title-md text-title-md font-semibold text-on-surface">
+<span>82% Selesai</span>
+<span class="flex items-center font-label-sm text-label-sm text-tertiary font-medium">
+<span class="material-symbols-outlined text-xs">trending_up</span> +5%
+              </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">dibanding pekan kemarin</span>
+</div>
+</div>
+<!-- Add Habit CTA -->
+<button class="group flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold transition-all hover:shadow-[0_0_24px_rgba(203,166,247,0.45)] hover:scale-[1.02] active:scale-[0.98]" id="btn-open-create" type="button">
+<span class="material-symbols-outlined text-base transition-transform group-hover:rotate-90">add</span>
+<span>+ Buat Kebiasaan Baru</span>
+</button>
+</div>
+</div>
+</div>
+<!-- MAIN TWO-COLUMN WORKSPACE: 8 COLS (HABITS GRID) + 4 COLS (INSIGHTS & CALENDAR) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: CATEGORIES + HABIT CARDS (8 COLS) -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<!-- FILTER TABS & SEARCH -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low p-2 rounded-xl">
+<div class="flex items-center gap-1.5 overflow-x-auto">
+<button class="tab-btn px-4 py-2 rounded-lg font-label-md text-label-md bg-primary-container text-on-primary-container font-semibold transition-all shadow-sm" data-filter="all">
+            Semua Kategori (6)
+          </button>
+<button class="tab-btn px-4 py-2 rounded-lg font-label-md text-label-md bg-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-filter="diri">
+            Pengembangan Diri (3)
+          </button>
+<button class="tab-btn px-4 py-2 rounded-lg font-label-md text-label-md bg-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-filter="mental">
+            Kesehatan Mental (2)
+          </button>
+<button class="tab-btn px-4 py-2 rounded-lg font-label-md text-label-md bg-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-filter="fisik">
+            Kebugaran Fisik (1)
+          </button>
+</div>
+<div class="flex items-center gap-2 pr-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline">Pekan: 20-26 Okt</span>
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+</span>
+</div>
+</div>
+<!-- HABITS LIST -->
+<div class="flex flex-col gap-space-sm" id="habits-container">
+<!-- HABIT CARD 1: Reading -->
+<div class="habit-card group rounded-xl bg-surface-container hover:bg-surface-container-high p-space-md transition-all shadow-md relative overflow-hidden" data-category="diri">
+<div class="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-primary/10 blur-2xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative z-10">
+<!-- Habit Details -->
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-2xl">auto_stories</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">
+                    Intelektual • Diri
+                  </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">local_fire_department</span> 12 Hari Streak
+                  </span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-label-sm font-semibold">
+                    Sudah Selesai
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface truncate">
+                  Membaca Buku Non-Fiksi 15 Halaman
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Buku aktif: <span class="text-on-surface italic">"Atomic Habits" oleh James Clear</span> (Halaman 142/280)
+                </p>
+</div>
+</div>
+<!-- Heatmap Day Pills -->
+<div class="flex flex-col lg:items-end gap-2 shrink-0">
+<div class="flex items-center gap-1.5">
+<!-- Sen -->
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sn</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+<!-- Sel -->
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sl</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+<!-- Rab (Today) -->
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-primary font-bold">Rb</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs ring-2 ring-primary shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+<!-- Kam -->
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Km</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+<!-- Jum -->
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Jm</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+<!-- Sab (Gentle Gap) -->
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sb</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface-variant/40 flex items-center justify-center text-xs" title="Istirahat santai tanpa sanksi">
+                    •
+                  </span>
+</div>
+<!-- Min -->
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mn</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">Konsistensi Pekan: 6/7 hari</span>
+</div>
+</div>
+</div>
+<!-- HABIT CARD 2: Deep Work Design (Interactive Checklist) -->
+<div class="habit-card group rounded-xl bg-surface-container hover:bg-surface-container-high p-space-md transition-all shadow-md relative overflow-hidden" data-category="diri">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative z-10">
+<!-- Habit Details -->
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 text-secondary flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-2xl">laptop_mac</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary font-label-sm text-label-sm">
+                    Karier • Diri
+                  </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">local_fire_department</span> 8 Hari Streak
+                  </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm" id="badge-deepwork">
+                    Belum Dicentang
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface truncate">
+                  Deep Work Desain 45 Menit Tanpa Notifikasi
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Fokus portofolio UI/UX • Mode ponsel hening, fokus penuh pada problem-solving.
+                </p>
+</div>
+</div>
+<!-- Heatmap + Quick Check Button -->
+<div class="flex flex-col lg:items-end gap-3 shrink-0">
+<div class="flex items-center gap-1.5">
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sn</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sl</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-secondary font-bold">Rb</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-xs transition-colors" id="pill-deepwork-today">
+                    ○
+                  </span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Km</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface-variant/40 flex items-center justify-center text-xs">
+                    •
+                  </span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Jm</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sb</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mn</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+</span>
+</div>
+</div>
+<!-- Interactive Complete Button -->
+<button class="w-full lg:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-surface-container-highest hover:bg-secondary-container hover:text-on-secondary-container text-on-surface font-label-md text-label-md font-medium transition-all shadow-sm" id="btn-check-deepwork" type="button">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span id="text-check-deepwork">Tandai Selesai Hari Ini</span>
+</button>
+</div>
+</div>
+</div>
+<!-- HABIT CARD 3: Water Intake (Interactive Counter) -->
+<div class="habit-card group rounded-xl bg-surface-container hover:bg-surface-container-high p-space-md transition-all shadow-md relative overflow-hidden" data-category="fisik">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative z-10">
+<!-- Habit Details -->
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 text-secondary flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-2xl">water_drop</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary font-label-sm text-label-sm">
+                    Fisik • Hidrasi
+                  </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">local_fire_department</span> 21 Hari Streak
+                  </span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-sm text-label-sm" id="water-status-badge">
+                    75% Terpenuhi
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface truncate">
+                  Minum Air Putih 2 Liter
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5" id="water-text-desc">
+                  Progres: <span class="text-secondary font-semibold">1.5L / 2L</span> (Tinggal 2 gelas lagi sebelum tidur!)
+                </p>
+<!-- Water Micro-Bar -->
+<div class="w-full max-w-xs bg-surface-container-lowest h-2 rounded-full overflow-hidden mt-2.5">
+<div class="h-full bg-secondary transition-all duration-300 rounded-full" id="water-progress-fill" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+<!-- Interactive Quick Drink Buttons -->
+<div class="flex flex-col lg:items-end gap-2 shrink-0">
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface-variant hover:text-on-surface flex items-center justify-center font-bold text-sm transition-colors" id="btn-water-sub" type="button">
+                  -
+                </button>
+<div class="px-3 py-1 bg-surface-container-lowest rounded-lg font-label-md text-label-md text-on-surface font-semibold min-w-16 text-center" id="water-counter-val">
+                  6 / 8 Gelas
+                </div>
+<button class="w-8 h-8 rounded-lg bg-secondary-container hover:bg-secondary text-on-secondary-container hover:text-on-secondary flex items-center justify-center font-bold text-sm transition-colors shadow-sm" id="btn-water-add" type="button">
+                  +
+                </button>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1 gelas = 250ml</span>
+</div>
+</div>
+</div>
+<!-- HABIT CARD 4: Gratitude & Evening Reflection -->
+<div class="habit-card group rounded-xl bg-surface-container hover:bg-surface-container-high p-space-md transition-all shadow-md relative overflow-hidden" data-category="mental">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative z-10">
+<!-- Habit Details -->
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-2xl">nights_stay</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">
+                    Mental • Mindfulness
+                  </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">local_fire_department</span> 14 Hari Streak
+                  </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-primary font-label-sm text-label-sm">
+                    Rutinitas Malam (21.00)
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface truncate">
+                  Jurnal Syukur &amp; Refleksi 5 Menit
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Tuliskan 3 hal kecil yang patut disyukuri dan 1 momen pembelajaran hari ini.
+                </p>
+</div>
+</div>
+<!-- Prompt & Action -->
+<div class="flex flex-col lg:items-end gap-2 shrink-0">
+<button class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-md text-label-md transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+<span>Buka Lembar Refleksi</span>
+</button>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Siap ditinjau nanti malam</span>
+</div>
+</div>
+</div>
+<!-- HABIT CARD 5: Morning Movement / Walk -->
+<div class="habit-card group rounded-xl bg-surface-container hover:bg-surface-container-high p-space-md transition-all shadow-md relative overflow-hidden" data-category="fisik">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative z-10">
+<!-- Habit Details -->
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/30 text-tertiary flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-2xl">directions_walk</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-label-sm">
+                    Fisik • Kebugaran
+                  </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">local_fire_department</span> 5 Hari Streak
+                  </span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-label-sm font-semibold">
+                    Sudah Selesai (Pagi)
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface truncate">
+                  Jalan Kaki / Peregangan 20 Menit
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Udara segar pagi hari di sekitar kampus • 2.450 langkah tercapai.
+                </p>
+</div>
+</div>
+<!-- Heatmap Day Pills -->
+<div class="flex flex-col lg:items-end gap-1.5 shrink-0">
+<div class="flex items-center gap-1.5">
+<span class="w-7 h-7 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center text-xs font-bold">✓</span>
+<span class="w-7 h-7 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center text-xs font-bold">✓</span>
+<span class="w-7 h-7 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center text-xs font-bold ring-2 ring-tertiary">✓</span>
+<span class="w-7 h-7 rounded-lg bg-surface-container-highest text-on-surface-variant/40 flex items-center justify-center text-xs">•</span>
+<span class="w-7 h-7 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center text-xs font-bold">✓</span>
+<span class="w-7 h-7 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center text-xs font-bold">✓</span>
+<span class="w-7 h-7 rounded-lg bg-surface-container-highest text-on-surface-variant/40 flex items-center justify-center text-xs">•</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Selesai pukul 07.15 WIB</span>
+</div>
+</div>
+</div>
+<!-- HABIT CARD 6: Mental Clarity / Digital Sunset -->
+<div class="habit-card group rounded-xl bg-surface-container hover:bg-surface-container-high p-space-md transition-all shadow-md relative overflow-hidden" data-category="mental">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative z-10">
+<!-- Habit Details -->
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-2xl">phonelink_erase</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">
+                    Kesehatan Mental • Istirahat
+                  </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">local_fire_department</span> 19 Hari Streak
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface truncate">
+                  Digital Sunset: Bebas Layar 30 Menit Sebelum Tidur
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Menjauhkan gawai dari tempat tidur untuk kualitas istirahat yang lebih mendalam.
+                </p>
+</div>
+</div>
+<!-- State Button -->
+<div class="flex flex-col lg:items-end gap-1.5 shrink-0">
+<span class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">schedule</span> Dijadwalkan 22:30
+              </span>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-highest hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">
+                Ingatkan Saya
+              </button>
+</div>
+</div>
+</div>
+</div>
+<!-- PHILOSOPHY REMINDER BANNER -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex items-center gap-4 shadow-sm">
+<div class="w-10 h-10 rounded-full bg-tertiary/20 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">spa</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-medium text-on-surface">Prinsip ‘Jangan Pernah Bolong Dua Kali Berturut-turut’</span>
+<span class="font-body-md text-body-md text-on-surface-variant">
+            Jika kamu melewatkan satu hari karena kelelahan atau urusan darurat, tidak apa-apa. Fokusmu bukan kesempurnaan 100%, melainkan segera kembali ke ritme keesokan harinya tanpa rasa bersalah.
+          </span>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: COACHING INSIGHTS, MONTHLY STATS & MINI HABIT GENERATOR (4 COLS) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- COACHING CARD: ATURAN 2 MENIT -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-xl relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-secondary/15 blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-3 mb-space-sm relative z-10">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl">lightbulb</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Tips Dari Kak Arya</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface">Aturan 2 Menit (Micro-Habit)</span>
+</div>
+</div>
+<div class="relative z-10 bg-surface-container-low p-space-sm rounded-xl mb-space-sm">
+<p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+            “Jika kamu merasa malas memulai sesi membaca, cukup buka buku dan baca 1 paragraf saja. Sering kali momentum terkecil akan membawamu menyelesaikan target tanpa beban mental.”
+          </p>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm relative z-10">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-tertiary">check_circle</span> Terbukti efektif oleh 84% kawan Perintis
+          </span>
+<a class="text-primary hover:underline font-medium" href="#">Pelajari →</a>
+</div>
+</div>
+<!-- MONTHLY STATS & CELEBRATION -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Statistik Bulan Ini</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Oktober 2024</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-xl flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Selesai</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-tertiary">142</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">kali</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Ceklis tuntas penuh rasa puas</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-xl flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Streak Terpanjang</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-secondary">21</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Hari</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Minum Air Putih 2L</span>
+</div>
+</div>
+<!-- Monthly Consistency Mini Sparkline / Day Map -->
+<div class="bg-surface-container-low p-space-sm rounded-xl flex flex-col gap-2">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Peta Konsistensi 28 Hari Terakhir</span>
+<span class="text-tertiary font-semibold">89% Konsisten</span>
+</div>
+<!-- 4 rows x 7 days micro dot grid -->
+<div class="grid grid-cols-7 gap-1.5 py-1">
+<!-- Row 1 -->
+<div class="h-4 rounded bg-tertiary" title="Hari 1: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 2: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 3: 80%"></div>
+<div class="h-4 rounded bg-surface-container-highest" title="Hari 4: Rehat"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 5: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 6: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 7: 100%"></div>
+<!-- Row 2 -->
+<div class="h-4 rounded bg-tertiary" title="Hari 8: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 9: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 10: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 11: 80%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 12: 100%"></div>
+<div class="h-4 rounded bg-surface-container-highest" title="Hari 13: Rehat"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 14: 100%"></div>
+<!-- Row 3 -->
+<div class="h-4 rounded bg-tertiary" title="Hari 15: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 16: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 17: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 18: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 19: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 20: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 21: 100%"></div>
+<!-- Row 4 (Current) -->
+<div class="h-4 rounded bg-tertiary" title="Hari 22: 100%"></div>
+<div class="h-4 rounded bg-tertiary" title="Hari 23: 100%"></div>
+<div class="h-4 rounded bg-primary-container" title="Hari 24 (Hari Ini): Berjalan"></div>
+<div class="h-4 rounded bg-surface-container-highest/40"></div>
+<div class="h-4 rounded bg-surface-container-highest/40"></div>
+<div class="h-4 rounded bg-surface-container-highest/40"></div>
+<div class="h-4 rounded bg-surface-container-highest/40"></div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Minggu 1</span>
+<span>Minggu 4 (Sekarang)</span>
+</div>
+</div>
+</div>
+<!-- INSPIRING COMMUNITY REFLECTION -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Close-up serene portrait of an Indonesian young woman smiling softly in a cozy cafe with warm ambient lighting and soft purple background glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzfkRj-7N3F0ZHZ4JV9WdqlC82hEM_-iew_4Z_-LOBrzqjOhCiTtTFl4ka-lajuxq3OoQTRVlxhJ6FM-6F9YycdEUGNpxRFNZtnb6GfcXi2dXPcbWCWbuWUoqxA2eCpoMKezbPhkf-OrSmNfE3Q6NzXwQNcawDQnyM03GUV-qHyOKKoq3DeqgvXMq1m8dZrcCxzonVvjqRzif4Gg8DyVN-wd2EITRTB5eKisFmDtcQ"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Cerita Sesama Perintis</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Siti Raihan • Arsitektur Univ. Brawijaya</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic">
+          “Dulu aku selalu merasa gagal kalau melewatkan satu hari gym atau baca buku. Di Perintis, aku belajar merangkul jeda sebagai bagian dari ritme alamiah. Sekarang streak-ku justru jauh lebih bertahan lama.”
+        </p>
+</div>
+</div>
+</div>
+<!-- INTERACTIVE CREATE HABIT MODAL OVERLAY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-200" id="modal-create-habit">
+<div class="relative w-full max-w-lg rounded-xl bg-surface-container p-space-lg shadow-2xl overflow-hidden transform scale-95 transition-transform duration-200">
+<div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-primary/20 blur-3xl pointer-events-none"></div>
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-lg">add_task</span>
+</span>
+<h2 class="font-title-md text-title-md font-semibold text-on-surface">Buat Kebiasaan Positif Baru</h2>
+</div>
+<button class="w-8 h-8 rounded-full hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" id="btn-close-modal" type="button">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<form class="flex flex-col gap-space-sm" id="form-new-habit">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Nama Kebiasaan</label>
+<input class="w-full px-4 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-secondary text-body-md font-body-md transition-all" id="input-habit-title" placeholder="Contoh: Menulis jurnal 1 halaman setiap pagi" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Kategori</label>
+<select class="w-full px-3 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary text-body-md font-body-md transition-all" id="select-habit-cat">
+<option value="diri">Pengembangan Diri</option>
+<option value="mental">Kesehatan Mental</option>
+<option value="fisik">Kebugaran Fisik</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Target Harian</label>
+<input class="w-full px-3 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-secondary text-body-md font-body-md transition-all" id="input-habit-target" placeholder="10 Menit / 1 Bab" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Waktu / Pemicu (*Trigger*)</label>
+<input class="w-full px-4 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-secondary text-body-md font-body-md transition-all" id="input-habit-trigger" placeholder="Setelah sarapan pagi / Sebelum menyalakan laptop" type="text"/>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-start gap-2.5 mt-1">
+<span class="material-symbols-outlined text-secondary text-base shrink-0 mt-0.5">tips_and_updates</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+            Buat target awal seringan mungkin. Kemenangan kecil di 7 hari pertama menciptakan identitas diri yang kuat.
+          </p>
+</div>
+<div class="flex items-center justify-end gap-3 mt-space-sm">
+<button class="px-5 py-2.5 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-colors" id="btn-cancel-modal" type="button">
+            Batal
+          </button>
+<button class="px-6 py-2.5 rounded-full bg-primary-container text-on-primary-container hover:shadow-[0_0_20px_rgba(203,166,247,0.4)] font-label-md text-label-md font-semibold transition-all" type="submit">
+            Simpan Kebiasaan
+          </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- INLINE INTERACTION LOGIC (VANILLA JS) -->
+<script>
+  // 1. Water Tracker Interactivity
+  let waterCount = 6;
+  const maxWater = 8;
+  const waterCounterVal = document.getElementById('water-counter-val');
+  const waterProgressFill = document.getElementById('water-progress-fill');
+  const waterStatusBadge = document.getElementById('water-status-badge');
+  const waterTextDesc = document.getElementById('water-text-desc');
+
+  function updateWaterDisplay() {
+    const liters = (waterCount * 0.25).toFixed(2).replace(/\.00$/, '').replace(/\.50$/, '.5');
+    const percent = Math.min(100, Math.round((waterCount / maxWater) * 100));
+    
+    waterCounterVal.textContent = `${waterCount} / ${maxWater} Gelas`;
+    waterProgressFill.style.width = `${percent}%`;
+    waterStatusBadge.textContent = `${percent}% Terpenuhi`;
+    
+    if (waterCount >= maxWater) {
+      waterStatusBadge.className = 'px-2 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-label-sm font-semibold';
+      waterStatusBadge.textContent = 'Target Tercapai! 🌿';
+      waterTextDesc.innerHTML = `Progres: <span class="text-tertiary font-semibold">${liters}L / 2L</span> (Luar biasa, tubuhmu terhidrasi penuh!)`;
+    } else {
+      waterStatusBadge.className = 'px-2 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-sm text-label-sm';
+      const remaining = maxWater - waterCount;
+      waterTextDesc.innerHTML = `Progres: <span class="text-secondary font-semibold">${liters}L / 2L</span> (Tinggal ${remaining} gelas lagi!)`;
+    }
+  }
+
+  document.getElementById('btn-water-add')?.addEventListener('click', () => {
+    if (waterCount < 12) {
+      waterCount++;
+      updateWaterDisplay();
+    }
+  });
+
+  document.getElementById('btn-water-sub')?.addEventListener('click', () => {
+    if (waterCount > 0) {
+      waterCount--;
+      updateWaterDisplay();
+    }
+  });
+
+  // 2. Deep Work Toggle Checkbox
+  let deepWorkDone = false;
+  const btnCheckDeepwork = document.getElementById('btn-check-deepwork');
+  const pillDeepworkToday = document.getElementById('pill-deepwork-today');
+  const badgeDeepwork = document.getElementById('badge-deepwork');
+  const textCheckDeepwork = document.getElementById('text-check-deepwork');
+
+  btnCheckDeepwork?.addEventListener('click', () => {
+    deepWorkDone = !deepWorkDone;
+    if (deepWorkDone) {
+      pillDeepworkToday.className = 'w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs shadow-sm ring-2 ring-primary';
+      pillDeepworkToday.textContent = '✓';
+      badgeDeepwork.className = 'px-2 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-label-sm font-semibold';
+      badgeDeepwork.textContent = 'Sudah Selesai';
+      textCheckDeepwork.textContent = 'Batalkan Ceklis';
+      btnCheckDeepwork.classList.add('bg-tertiary/20', 'text-tertiary');
+    } else {
+      pillDeepworkToday.className = 'w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-xs';
+      pillDeepworkToday.textContent = '○';
+      badgeDeepwork.className = 'px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm';
+      badgeDeepwork.textContent = 'Belum Dicentang';
+      textCheckDeepwork.textContent = 'Tandai Selesai Hari Ini';
+      btnCheckDeepwork.classList.remove('bg-tertiary/20', 'text-tertiary');
+    }
+  });
+
+  // 3. Tab Filtering
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const habitCards = document.querySelectorAll('.habit-card');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Toggle Tab Style
+      tabButtons.forEach(b => {
+        b.className = 'tab-btn px-4 py-2 rounded-lg font-label-md text-label-md bg-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all';
+      });
+      btn.className = 'tab-btn px-4 py-2 rounded-lg font-label-md text-label-md bg-primary-container text-on-primary-container font-semibold transition-all shadow-sm';
+
+      const filter = btn.getAttribute('data-filter');
+      habitCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // 4. Modal Open & Close Logic
+  const modal = document.getElementById('modal-create-habit');
+  const btnOpenCreate = document.getElementById('btn-open-create');
+  const btnCloseModal = document.getElementById('btn-close-modal');
+  const btnCancelModal = document.getElementById('btn-cancel-modal');
+  const formNewHabit = document.getElementById('form-new-habit');
+
+  function openModal() {
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      modal.classList.remove('opacity-0');
+      modal.firstElementChild.classList.remove('scale-95');
+      modal.firstElementChild.classList.add('scale-100');
+    }, 10);
+  }
+
+  function closeModal() {
+    modal.classList.add('opacity-0');
+    modal.firstElementChild.classList.remove('scale-100');
+    modal.firstElementChild.classList.add('scale-95');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 200);
+  }
+
+  btnOpenCreate?.addEventListener('click', openModal);
+  btnCloseModal?.addEventListener('click', closeModal);
+  btnCancelModal?.addEventListener('click', closeModal);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Form Submit (Appends dummy card seamlessly)
+  formNewHabit?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = document.getElementById('input-habit-title').value;
+    const cat = document.getElementById('select-habit-cat').value;
+    const target = document.getElementById('input-habit-target').value || '1 Sesi harian';
+
+    const container = document.getElementById('habits-container');
+    const newCard = document.createElement('div');
+    newCard.setAttribute('data-category', cat);
+    newCard.className = 'habit-card group rounded-xl bg-surface-container hover:bg-surface-container-high p-space-md transition-all shadow-md relative overflow-hidden';
+    newCard.innerHTML = `
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative z-10">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center shrink-0 shadow-inner">
+            <span class="material-symbols-outlined text-2xl">spa</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm uppercase">
+                ${cat}
+              </span>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-label-sm text-label-sm">
+                Hari ke-1 Baru
+              </span>
+            </div>
+            <h3 class="font-title-md text-title-md font-semibold text-on-surface truncate">${title}</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Target: ${target} &bull; Dimulai hari ini!</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md">Siap Memulai</span>
+        </div>
+      </div>
+    `;
+    container.prepend(newCard);
+    formNewHabit.reset();
+    closeModal();
+  });
+</script></main></div></body></html>
