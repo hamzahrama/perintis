@@ -9,25 +9,16 @@ export type OnboardingFormState = {
   success?: string;
 };
 
-type OnboardingFormProps = {
-  fullName: string;
-};
-
-export function OnboardingForm({ fullName }: OnboardingFormProps) {
-  const [state, formAction, isPending] = useActionState(
-    saveOnboardingAction,
-    {},
-  );
+export function OnboardingForm() {
+  const [state, formAction, isPending] = useActionState(saveOnboardingAction, {});
 
   return (
     <form action={formAction} className="onboarding-form">
       <label className="form-field">
         Kondisi (Condition)
         <TextInput
-          autoComplete="name"
-          defaultValue={fullName}
-          maxLength={200}
           name="condition"
+          placeholder="Contoh: Saya baru pindah ke kota baru."
           required
         />
       </label>
@@ -36,8 +27,7 @@ export function OnboardingForm({ fullName }: OnboardingFormProps) {
         Minat (Interests)
         <TextInput
           name="interests"
-          placeholder="Contoh: programming, travel..."
-          maxLength={400}
+          placeholder="Contoh: belajar coding, membaca, olahraga"
           required
           type="text"
         />
@@ -47,8 +37,7 @@ export function OnboardingForm({ fullName }: OnboardingFormProps) {
         Tantangan (Challenges)
         <TextInput
           name="challenges"
-          placeholder="Contoh: waktu, fokus..."
-          maxLength={400}
+          placeholder="Contoh: sering lupa, lemot, lemah"
           required
           type="text"
         />
@@ -58,8 +47,7 @@ export function OnboardingForm({ fullName }: OnboardingFormProps) {
         Arah (Direction)
         <TextInput
           name="direction"
-          placeholder="Contoh: career, study..."
-          maxLength={400}
+          placeholder="Contoh: jadi lebih produktif, mulai belajar programming"
           required
           type="text"
         />

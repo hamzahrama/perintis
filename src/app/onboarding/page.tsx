@@ -22,20 +22,15 @@ export default async function OnboardingPage() {
     redirect("/login");
   }
 
-  const [{ data: profile }, { data: onboarding }] = await Promise.all([
-    supabase.from("profiles").select("full_name").eq("user_id", user.id).maybeSingle(),
-    supabase
-      .from("onboarding_responses")
-      .select("completed_at")
-      .eq("user_id", user.id)
-      .maybeSingle(),
-  ]);
+  const { data: onboarding } = await supabase
+    .from("onboarding_responses")
+    .select("completed_at")
+    .eq("user_id", user.id)
+    .maybeSingle();
 
   if (onboarding?.completed_at) {
     redirect("/dashboard");
   }
-
-  const fullName = profile?.full_name ?? user.user_metadata?.full_name ?? "";
 
   return (
     <DashboardShell initialTheme="dark">
@@ -48,7 +43,7 @@ export default async function OnboardingPage() {
             Jawaban ini membantu PERINTIS menyesuaikan saran dan panduan untukmu. Bukan diagnosis — hanya
             ringkasan reflektif untuk memulai dengan arah yang lebih jelas.
           </p>
-          <OnboardingForm fullName={fullName} />
+          <OnboardingForm />
         </Card>
       </div>
     </DashboardShell>
