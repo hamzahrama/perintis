@@ -496,6 +496,43 @@ dialog.dialog::backdrop {
   margin-top: 1.25rem;
 }
 
+.profile-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.profile-form .button {
+  justify-self: start;
+  margin-top: 0.25rem;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.section-description {
+  margin: 0.5rem 0 0;
+  color: var(--text-secondary);
+}
+
+.profile-account-card {
+  margin-top: 1.25rem;
+}
+
+.profile-email {
+  display: inline-block;
+  margin: 1rem 0 0;
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  background: var(--background);
+  padding: 0.7rem 0.85rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

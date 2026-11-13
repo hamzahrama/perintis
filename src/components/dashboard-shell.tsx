@@ -11,11 +11,13 @@ import { Button } from "@/components/ui";
 type DashboardShellProps = {
   children: ReactNode;
   initialTheme: Theme;
+  activePath?: "/dashboard" | "/profile";
 };
 
 export function DashboardShell({
   children,
   initialTheme,
+  activePath = "/dashboard",
 }: DashboardShellProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -48,12 +50,20 @@ export function DashboardShell({
         <nav aria-label="Navigasi utama">
           <p className="sidebar-label">Menu</p>
           <Link
-            aria-current="page"
+            aria-current={activePath === "/dashboard" ? "page" : undefined}
             className="sidebar-link"
             href="/dashboard"
             onClick={() => setMenuOpen(false)}
           >
             Ringkasan
+          </Link>
+          <Link
+            aria-current={activePath === "/profile" ? "page" : undefined}
+            className="sidebar-link"
+            href="/profile"
+            onClick={() => setMenuOpen(false)}
+          >
+            Profil & pengaturan
           </Link>
         </nav>
         <div className="sidebar-footer">

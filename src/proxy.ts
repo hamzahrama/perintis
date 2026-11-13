@@ -30,7 +30,10 @@ export async function proxy(request: NextRequest) {
   const { response, hasSession } = await updateSupabaseSession(request);
   const pathname = request.nextUrl.pathname;
 
-  if (pathname.startsWith("/dashboard") && !hasSession) {
+  if (
+    (pathname.startsWith("/dashboard") || pathname === "/profile" || pathname.startsWith("/profile/")) &&
+    !hasSession
+  ) {
     return redirectWithSessionCookies(request, response, "/login");
   }
 
@@ -45,5 +48,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/register", "/dashboard/:path*"],
+  matcher: ["/login", "/register", "/dashboard/:path*", "/profile/:path*"],
 };

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { DashboardShell } from "@/components/dashboard-shell";
 import { Card } from "@/components/ui";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getOnboardingStatus } from "@/lib/onboarding";
 
 export default async function ProtectedPage() {
   const supabase = await createSupabaseServerClient();
@@ -12,12 +13,13 @@ export default async function ProtectedPage() {
     error: userError,
   } = await supabase.auth.getUser();
 
-  if (userError) {
-    throw new Error("Sesi pengguna belum dapat diverifikasi.");
+  if (userError || !user) {
+    redirect("/login");
   }
 
-  if (!user) {
-    redirect("/login");
+  const { completed: onboardingCompleted } = await getOnboardingStatus();
+  if (!onboardingCompleted) {
+    redirect("/onboarding");
   }
 
   const { data: preferences, error: preferencesError } = await supabase
