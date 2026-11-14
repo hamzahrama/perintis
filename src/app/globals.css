@@ -646,6 +646,13 @@ dialog.dialog::backdrop {
 .goals-create-card {
   display: grid;
   gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.why-card {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 .goal-form {

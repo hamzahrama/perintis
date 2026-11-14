@@ -6,7 +6,6 @@ import { DashboardShell } from "@/components/dashboard-shell";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingStatus } from "@/lib/onboarding";
 import { WhyForm } from "./why/why-form";
-import { updateWhyAction } from "./why/actions";
 
 export default async function GoalDetailPage({
   params,

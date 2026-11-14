@@ -3,7 +3,6 @@
 import { useActionState } from "react";
 import { Button, Notice, TextInput } from "@/components/ui";
 import { saveWhyAction } from "./actions";
-import type { WhyFormState } from "./actions";
 
 type WhyFormProps = {
   goalId: string;
