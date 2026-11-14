@@ -109,9 +109,9 @@ Setiap task memiliki kriteria selesai. Agent tidak boleh menandai `[x]` hanya ka
 **Status:** selesai dan diverifikasi. Form assessment (Condition, Interests, Challenges, Direction) tersimpan di `onboarding_responses`, user baru redirect ke onboarding, onboarding selesai → dashboard, login setelah onboarding selesai → dashboard.
 
 ### Day 10 — Dashboard Overview
-- [ ] Implementasi dashboard dari data user.
-- [ ] Empty state untuk pengguna baru.
-- [ ] Ringkasan aktivitas dan goal yang relevan.
+- [x] Implementasi dashboard dari data user.
+- [x] Empty state untuk pengguna baru.
+- [x] Ringkasan aktivitas dan goal yang relevan.
 **Acceptance:** tidak ada angka statistik palsu; dashboard membaca data aktual.
 
 ### Day 11 — My Direction
