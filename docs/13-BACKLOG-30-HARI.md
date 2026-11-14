@@ -87,24 +87,26 @@ Setiap task memiliki kriteria selesai. Agent tidak boleh menandai `[x]` hanya ka
 - [x] Implementasi font stack, warna, token, button, input, card, dialog, toast, dan state umum.
 - [-] Implementasi sidebar desktop dan navigasi mobile untuk halaman yang sudah tersedia; menunggu smoke test dashboard terautentikasi.
 - [ ] Implementasi layout responsif sesuai DEC-027, termasuk adaptasi tujuh area tanpa kandidat mobile.
-- [-] Implementasi toggle Dark/Light dengan Dark sebagai default dan penyimpanan di preferensi pengguna (DEC-035); menunggu uji end-to-end dengan Supabase lokal.
+- [-] Implementasi toggle Dark/Light dengan Dark sebagai default dan penyimpanan di preferensi pengguna (DEC-035); uji end-to-end dengan Supabase lokal telah dilakukan (toggle dark/light tersimpan dan bertahan).
 **Acceptance:** komponen global konsisten dan halaman utama dapat dinavigasi.
-**Status:** sebagian; sistem visual global, navigasi responsif untuk halaman yang tersedia, dan preferensi tema tersimpan telah dibuat. Day 7 belum selesai karena adaptasi tujuh area fitur belum dapat diverifikasi; halaman fiturnya belum dibuat dan aset screenshot Stitch tidak tersedia di workspace.
+**Status:** sebagian; sistem visual global, navigasi responsif untuk halaman yang tersedia, dan preferensi tema tersimpan telah diverifikasi. Adaptasi tujuh area fitur belum dapat diverifikasi; halaman fiturnya belum dibuat dan aset screenshot Stitch tidak tersedia di workspace.
 
 ### Day 8 — Profile & Settings
-- [ ] Implementasi profil minimum.
-- [ ] Simpan preferensi dasar yang sudah diputuskan.
-- [ ] Implementasi logout dari menu profil.
-- [ ] Uji data profil antar-user.
+- [x] Implementasi profil minimum.
+- [x] Simpan preferensi dasar yang sudah diputuskan.
+- [x] Implementasi logout dari menu profil.
+- [x] Uji data profil antar-user.
 **Acceptance:** profil tersimpan dan tidak dapat diakses user lain.
+**Status:** selesai dan diverifikasi. Akun demo login/login ulang, profil tersimpan, logout berfungsi, akses tanpa login ke `/profile` terproteksi, data antar-user terisolasi (UPH saya periksa terpisah dengan test akun kedua, bukan hanya eyeball).
 
 ## Sprint 2 — Hari 9–14: Personal Growth
 
 ### Day 9 — Onboarding
-- [ ] Implementasi form assessment.
-- [ ] Validasi dan penyimpanan jawaban.
-- [ ] Status onboarding selesai/belum.
+- [x] Implementasi form assessment.
+- [x] Validasi dan penyimpanan jawaban.
+- [x] Status onboarding selesai/belum.
 **Acceptance:** pengguna baru diarahkan ke onboarding; jawaban tersimpan.
+**Status:** selesai dan diverifikasi. Form assessment (Condition, Interests, Challenges, Direction) tersimpan di `onboarding_responses`, user baru redirect ke onboarding, onboarding selesai → dashboard, login setelah onboarding selesai → dashboard.
 
 ### Day 10 — Dashboard Overview
 - [ ] Implementasi dashboard dari data user.
