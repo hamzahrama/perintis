@@ -627,6 +627,155 @@ dialog.dialog::backdrop {
   margin-top: 1.25rem;
 }
 
+.goals-page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.goals-section {
+  display: grid;
+  gap: 1rem;
+}
+
+.goals-section h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.goals-create-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.goal-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.goal-form .button {
+  justify-self: start;
+}
+
+.goal-form select.field {
+  appearance: auto;
+}
+
+.goals-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.goal-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: clamp(1rem, 3vw, 1.35rem);
+  background: var(--surface);
+}
+
+.goal-card article {
+  min-width: 0;
+  flex: 1;
+}
+
+.goal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.goal-header h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  overflow-wrap: anywhere;
+}
+
+.goal-status {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.goal-status--active {
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 16%, transparent);
+}
+
+.goal-status--archived {
+  color: var(--text-secondary);
+  background: var(--surface-raised);
+}
+
+.goal-description {
+  margin: 0.5rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
+
+.goal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.goal-category,
+.goal-target,
+.goal-archived-at {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: var(--surface-raised);
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.4rem;
+}
+
+.goal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.archive-form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.goals-list--archived .goal-card {
+  opacity: 0.82;
+  border-style: dashed;
+}
+
+@media (max-width: 760px) {
+  .goal-card {
+    flex-direction: column;
+  }
+
+  .goal-actions {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .goal-header {
+    flex-direction: column;
+  }
+}
+
 .profile-form .button {
   justify-self: start;
   margin-top: 0.25rem;
