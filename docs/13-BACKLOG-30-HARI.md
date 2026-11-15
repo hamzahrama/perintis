@@ -115,21 +115,21 @@ Setiap task memiliki kriteria selesai. Agent tidak boleh menandai `[x]` hanya ka
 **Acceptance:** tidak ada angka statistik palsu; dashboard membaca data aktual.
 
 ### Day 11 — My Direction
-- [ ] CRUD goal.
-- [ ] Status goal dan validasi.
-- [ ] Empty state dan detail goal.
+- [x] CRUD goal.
+- [x] Status goal dan validasi.
+- [x] Empty state dan detail goal.
 **Acceptance:** goal dapat dibuat, dibaca, diubah, dan dihapus/diarsipkan sesuai keputusan.
 
 ### Day 12 — Remember Your Why
-- [ ] Form alasan personal terkait goal.
-- [ ] Edit dan tampilkan kembali alasan.
-- [ ] Integrasi tampilan dengan goal.
+- [x] Form alasan personal terkait goal.
+- [x] Edit dan tampilkan kembali alasan.
+- [x] Integrasi tampilan dengan goal.
 **Acceptance:** alasan tersimpan dan terhubung ke goal yang benar.
 
 ### Day 13 — My Roadmap
-- [ ] CRUD roadmap dan langkah.
-- [ ] Urutan langkah dan status.
-- [ ] Hubungkan roadmap dengan goal.
+- [x] CRUD roadmap dan langkah.
+- [x] Urutan langkah dan status.
+- [x] Hubungkan roadmap dengan goal.
 **Acceptance:** pengguna dapat menyusun langkah yang dapat dikelola.
 
 ### Day 14 — Know Your Next Step

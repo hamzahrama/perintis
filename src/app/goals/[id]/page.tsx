@@ -80,9 +80,14 @@ export default async function GoalDetailPage({
               Simpan alasan pribadimu. Ingat mengapa goal ini penting, tanpa tekanan.
             </p>
           </div>
-          <Link className="button button--secondary" href="/goals">
-            Kembali ke goal
-          </Link>
+          <div className="goal-detail-actions">
+            <Link className="button button--secondary" href={`/goals/${goalId}/roadmap`}>
+              My Roadmap
+            </Link>
+            <Link className="button button--secondary" href="/goals">
+              Kembali ke goal
+            </Link>
+          </div>
         </header>
 
         <Card className="goal-detail-summary">
