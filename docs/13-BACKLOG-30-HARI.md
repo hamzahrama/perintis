@@ -133,9 +133,9 @@ Setiap task memiliki kriteria selesai. Agent tidak boleh menandai `[x]` hanya ka
 **Acceptance:** pengguna dapat menyusun langkah yang dapat dikelola.
 
 ### Day 14 — Know Your Next Step
-- [ ] Buat alur Understand → Explore → Choose.
-- [ ] Tampilkan 2–4 opsi tindakan yang masuk akal.
-- [ ] Dukung pilih, gabungkan, buat sendiri, tunda, atau skip.
+- [x] Buat alur Understand → Explore → Choose.
+- [x] Tampilkan 2–4 opsi tindakan yang masuk akal.
+- [x] Dukung pilih, gabungkan, buat sendiri, tunda, atau skip.
 - [ ] Simpan keputusan pengguna jika menjadi roadmap/task.
 **Acceptance:** pengguna memegang keputusan; tidak ada tindakan otomatis yang dipaksakan.
 

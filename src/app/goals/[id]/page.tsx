@@ -84,6 +84,9 @@ export default async function GoalDetailPage({
             <Link className="button button--secondary" href={`/goals/${goalId}/roadmap`}>
               My Roadmap
             </Link>
+            <Link className="button button--secondary" href={`/goals/${goalId}/roadmap/next-step`}>
+              Know Your Next Step
+            </Link>
             <Link className="button button--secondary" href="/goals">
               Kembali ke goal
             </Link>
