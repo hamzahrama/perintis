@@ -142,9 +142,9 @@ Setiap task memiliki kriteria selesai. Agent tidak boleh menandai `[x]` hanya ka
 ## Sprint 3 — Hari 15–20: Daily Execution
 
 ### Day 15 — Daily Guidance
-- [ ] Tampilkan aktivitas berdasarkan tanggal.
-- [ ] Tambah/detail aktivitas sesuai model data.
-- [ ] Implementasi status aktivitas.
+- [x] Tampilkan aktivitas berdasarkan tanggal.
+- [x] Tambah/detail aktivitas sesuai model data.
+- [x] Implementasi status aktivitas.
 **Acceptance:** planner menampilkan aktivitas user yang tepat pada tanggal yang tepat.
 
 ### Day 16 — Reschedule & Skip

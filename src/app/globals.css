@@ -627,9 +627,62 @@ dialog.dialog::backdrop {
   margin-top: 1.25rem;
 }
 
-.goals-page {
+.goals-page,
+.daily-page {
   display: grid;
   gap: 1.5rem;
+}
+
+.activity-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.activity-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: clamp(1rem, 3vw, 1.35rem);
+  background: var(--surface);
+}
+
+.activity-content {
+  min-width: 0;
+}
+
+.activity-content h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.activity-content p {
+  margin: 0.4rem 0;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.activity-status-form {
+  display: grid;
+  flex: 0 0 min(12rem, 100%);
+  gap: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .activity-card {
+    flex-direction: column;
+  }
+
+  .activity-status-form {
+    width: 100%;
+    flex-basis: auto;
+  }
 }
 
 .goals-section {
