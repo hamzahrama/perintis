@@ -767,6 +767,101 @@ dialog.dialog::backdrop {
   border-style: dashed;
 }
 
+.goal-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.goal-detail-summary {
+  padding: clamp(1.1rem, 3vw, 1.5rem);
+}
+
+.goal-detail-summary p {
+  margin: 0;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.roadmap-steps {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roadmap-step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(11rem, 0.6fr);
+  align-items: start;
+  gap: 0.85rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.roadmap-step-number {
+  display: grid;
+  width: 1.7rem;
+  height: 1.7rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--surface-raised);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.roadmap-step-content h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+.roadmap-step-content p {
+  margin: 0.3rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.roadmap-step-actions,
+.roadmap-step-actions form {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.roadmap-step-actions .button {
+  min-height: 2.35rem;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 760px) {
+  .goal-detail-actions {
+    justify-content: flex-start;
+  }
+
+  .roadmap-step {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .roadmap-step-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .goal-detail-actions {
+    width: 100%;
+  }
+
+  .goal-detail-actions .button {
+    flex: 1;
+  }
+}
+
 @media (max-width: 760px) {
   .goal-card {
     flex-direction: column;
