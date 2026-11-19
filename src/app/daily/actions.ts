@@ -15,6 +15,13 @@ const activitySchema = z.object({
 const validStatuses = ["not_started", "in_progress", "completed", "rescheduled", "skipped"] as const;
 type ValidStatus = (typeof validStatuses)[number];
 const statusSchema = z.enum(validStatuses);
+const allowedTransitions: Record<ValidStatus, readonly ValidStatus[]> = {
+  not_started: ["in_progress", "completed", "rescheduled", "skipped"],
+  in_progress: ["not_started", "completed", "rescheduled", "skipped"],
+  rescheduled: ["not_started", "in_progress", "completed", "skipped"],
+  completed: ["not_started"],
+  skipped: ["not_started", "rescheduled"],
+};
 
 async function logStatusEvent(
   supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
@@ -84,6 +91,10 @@ export async function updateActivityStatusAction(_previous: ActivityFormState, f
   const previousStatus = activity.status as ValidStatus;
   const previousScheduledAt = activity.scheduled_at;
 
+  if (!allowedTransitions[previousStatus].includes(statusParsed.data)) {
+    return { error: `Transisi dari ${previousStatus} ke ${statusParsed.data} tidak diizinkan.` };
+  }
+
   const updateData: { status: ValidStatus; completed_at?: string | null } = { status: statusParsed.data };
   if (statusParsed.data === "completed") {
     updateData.completed_at = new Date().toISOString();
@@ -122,6 +133,10 @@ export async function rescheduleActivityAction(_previous: ActivityFormState, for
   const previousScheduledAt = activity.scheduled_at;
   const newDate = new Date(newScheduledAt).toISOString();
 
+  if (!allowedTransitions[previousStatus].includes("rescheduled")) {
+    return { error: `Transisi dari ${previousStatus} ke rescheduled tidak diizinkan.` };
+  }
+
   const { error } = await supabase.from("activities").update({
     status: "rescheduled",
     scheduled_at: newDate,
@@ -154,6 +169,10 @@ export async function skipActivityAction(_previous: ActivityFormState, formData:
 
   const previousStatus = activity.status as ValidStatus;
   const previousScheduledAt = activity.scheduled_at;
+
+  if (!allowedTransitions[previousStatus].includes("skipped")) {
+    return { error: `Transisi dari ${previousStatus} ke skipped tidak diizinkan.` };
+  }
 
   const { error } = await supabase.from("activities").update({
     status: "skipped",
@@ -190,6 +209,10 @@ export async function reopenActivityAction(_previous: ActivityFormState, formDat
 
   const previousStatus = activity.status as ValidStatus;
   const previousScheduledAt = activity.scheduled_at;
+
+  if (!allowedTransitions[previousStatus].includes("not_started")) {
+    return { error: `Transisi dari ${previousStatus} ke not_started tidak diizinkan.` };
+  }
 
   const { error } = await supabase.from("activities").update({
     status: "not_started",

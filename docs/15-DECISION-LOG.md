@@ -97,13 +97,49 @@ Pengguna dapat mengubah proposal ini; OPEN terkait tetap berlaku sampai dikonfir
 | ID | Topik | Pilihan yang perlu diputuskan |
 |---|---|---|
 | OPEN-013 | Retensi sebelum rilis publik | Tetapkan jangka retensi dan proses yang sesuai sebelum produk dibuka ke publik; untuk demo berlaku DEC-030 |
-| OPEN-014 | Matriks transisi aktivitas | DEC-031 menetapkan reopen dari completed/skipped ke `not_started`; transisi sah lainnya perlu ditentukan sebelum implementasi Day 16 |
+| OPEN-014 | Matriks transisi aktivitas | DEC-031 menetapkan reopen dari completed/skipped ke `not_started`; transisi sah lainnya perlu ditentukan sebelum implementasi Day 16 | Diselesaikan oleh DEC-037 |
 | OPEN-018 | Ketersediaan region | Diselesaikan oleh DEC-038 berdasarkan endpoint Singapore yang diberikan pengguna; koneksi database tetap perlu diuji setelah password diisi lokal |
 | OPEN-019 | Tooling tambahan | Komponen UI, library grafik, dan test runner tambahan tetap belum dipilih; gunakan baseline minimal DEC-036 sampai ada kebutuhan |
 | OPEN-022 | Zona waktu tersimpan | Tinjau PROP-001: simpan IANA dari browser otomatis atau gunakan timezone per request |
 | OPEN-023 | Target My Commitment | Tinjau PROP-002: komitmen generik dengan target opsional atau wajib terkait Goal/Activity |
 | OPEN-024 | Status Roadmap Step | Tinjau PROP-003; Goal mengikuti active/archived dan Habit memakai is_active. Field onboarding/reflection dapat difinalkan pada task UI terkait. |
 | OPEN-025 | Minimum password | Tinjau PROP-004 sebelum provisioning remote |
+
+### DEC-037 — Matriks transisi status aktivitas
+- Tanggal: 2026-11-17
+- Status: FIX
+- Konteks:
+  - Transisi status aktivitas belum disepakati (OPEN-014).
+  - Sistem memiliki status `not_started`, `in_progress`, `completed`, `rescheduled`, `skipped`.
+- Opsi yang dipertimbangkan:
+  - Rekomendasi: matriks transisi terstruktur di bawah.
+  - Bebas: gunakan set default.
+- Rekomendasi:
+  - `not_started` → `in_progress`, `completed`, `rescheduled`, `skipped`
+  - `in_progress` → `not_started`, `completed`, `rescheduled`, `skipped`
+  - `rescheduled` → `not_started`, `in_progress`, `completed`, `skipped`
+  - `completed` → `not_started`
+  - `skipped` → `not_started`, `rescheduled`
+  - Skip tanpa hukuman otomatis; alasan opsional.
+  - Reopen (`completed`/`skipped` → `not_started`) diizinkan.
+  - Reschedule mengubah aktivitas yang sama; tidak membuat duplikasi.
+  - Semua perubahan mencatat `activity_status_events`.
+  - Validasi server dengan Zod; transisi yang tidak diizinkan mengembalikan error.
+- Keputusan final:
+  - Matriks transisi status aktivitas disetujui sesuai rekomendasi.
+  - Berlaku untuk MVP Day 16.
+- Dampak terhadap UI/UX:
+  - Tombol Reschedule, Skip, Reopen di `ActivityStatusForm`.
+  - Validasi status di server.
+- Dampak terhadap database:
+  - RLS updates.
+  - Record events.
+- Dampak terhadap backlog:
+  - Day 16 ditandai selesai (`[x]`).
+  - Menutup OPEN-014.
+- Disetujui oleh: agent (perlu konfirmasi pengguna)
+- Tanggal persetujuan: 2026-11-17
+- Batas biaya: N/A
 
 ## Template keputusan baru
 
