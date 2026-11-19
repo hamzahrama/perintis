@@ -11,7 +11,7 @@ import { Button } from "@/components/ui";
 type DashboardShellProps = {
   children: ReactNode;
   initialTheme: Theme;
-  activePath?: "/dashboard" | "/goals" | "/daily" | "/habits" | "/reminders" | "/profile";
+  activePath?: "/dashboard" | "/goals" | "/daily" | "/habits" | "/reminders" | "/commitment" | "/profile";
 };
 
 export function DashboardShell({
@@ -88,6 +88,14 @@ export function DashboardShell({
             onClick={() => setMenuOpen(false)}
           >
             Reminder
+          </Link>
+          <Link
+            aria-current={activePath === "/commitment" ? "page" : undefined}
+            className="sidebar-link"
+            href="/commitment"
+            onClick={() => setMenuOpen(false)}
+          >
+            Commitment
           </Link>
           <Link
             aria-current={activePath === "/profile" ? "page" : undefined}

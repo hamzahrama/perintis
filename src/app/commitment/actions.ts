@@ -1,0 +1,33 @@
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { z } from "zod";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+
+export type CommitmentState = { error?: string; success?: string };
+const schema = z.object({ description: z.string().trim().min(1, "Komitmen wajib diisi.").max(500), goalId: z.string().uuid().optional().or(z.literal("")), activityId: z.string().uuid().optional().or(z.literal("")) });
+
+export async function saveCommitmentAction(_prev: CommitmentState, formData: FormData): Promise<CommitmentState> {
+  const parsed = schema.safeParse({ description: formData.get("description"), goalId: formData.get("goalId") ?? "", activityId: formData.get("activityId") ?? "" });
+  if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? "Komitmen tidak valid." };
+  if (parsed.data.goalId && parsed.data.activityId) return { error: "Pilih goal atau aktivitas, bukan keduanya." };
+  const supabase = await createSupabaseServerClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: "Sesi tidak valid." };
+  const { error } = await supabase.from("commitments").insert({ user_id: user.id, description: parsed.data.description, goal_id: parsed.data.goalId || null, activity_id: parsed.data.activityId || null });
+  if (error) return { error: "Komitmen belum dapat disimpan." };
+  revalidatePath("/commitment");
+  return { success: "Komitmen disimpan secara sukarela." };
+}
+
+export async function disableCommitmentAction(_prev: CommitmentState, formData: FormData): Promise<CommitmentState> {
+  const id = String(formData.get("commitmentId") ?? "");
+  if (!z.string().uuid().safeParse(id).success) return { error: "Komitmen tidak valid." };
+  const supabase = await createSupabaseServerClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: "Sesi tidak valid." };
+  const { error } = await supabase.from("commitments").update({ is_active: false }).eq("id", id).eq("user_id", user.id);
+  if (error) return { error: "Komitmen belum dapat dinonaktifkan." };
+  revalidatePath("/commitment");
+  return { success: "Komitmen dinonaktifkan." };
+}
