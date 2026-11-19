@@ -41,7 +41,7 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 | 17 | My Habits | [-] | CRUD habit, log harian, anti-duplikat dikerjakan; smoke DB belum. |
 | 18 | Reminder in-app | [-] | Reminder CRUD dikerjakan; pemeriksaan due saat buka app belum. |
 | 19 | My Commitment | [-] | Komitmen sukarela dan nonaktif tersedia; edit target belum lengkap. |
-| 20 | Calendar View | [ ] | Sumber data sama dengan planner dan habit. |
+| 20 | Calendar View | [-] | Kalender bulanan aktif; sumber data planner dan habit. |
 
 ## Sprint 4 — Coach & Evaluation (Hari 21–25)
 
