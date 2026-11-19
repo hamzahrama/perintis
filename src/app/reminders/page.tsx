@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { Card, Notice, Button, TextInput } from "@/components/ui";
+import { Card } from "@/components/ui";
 import { DashboardShell } from "@/components/dashboard-shell";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingStatus } from "@/lib/onboarding";

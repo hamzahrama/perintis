@@ -19,6 +19,7 @@ export async function saveReflectionAction(_prev: ReflectionState, formData: For
     blockers: formData.get("blockers") ?? "",
   });
   if (!parsed.success) return { error: "Data refleksi tidak valid." };
+  if (!parsed.data.wins && !parsed.data.blockers) return { error: "Isi minimal satu jawaban refleksi." };
 
   const supabase = await createSupabaseServerClient();
   const { data: { user } } = await supabase.auth.getUser();
