@@ -5,6 +5,7 @@ import { Card } from "@/components/ui";
 import { DashboardShell } from "@/components/dashboard-shell";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingStatus } from "@/lib/onboarding";
+import { NextStepForm } from "./next-step-form";
 
 export default async function KnowYourNextStepPage({ params }: { params: Promise<{ id: string }> }) {
   const { id: goalId } = await params;
@@ -30,29 +31,8 @@ export default async function KnowYourNextStepPage({ params }: { params: Promise
         </header>
         <Card className="goals-create-card">
           <h2 className="section-title">Opsi yang tersedia</h2>
-          <p className="section-description">Pilih satu atau gabungkan — keputusanmu disimpan saat kamu siap bertindak.</p>
-          <div className="notice notice--info" style={{ marginBottom: "1rem" }}>
-            Catatan: Fitur ini menggunakan data sampel demo. Integrasi akhir akan menghubungkan pilihan ke timeline aktivitas yang sebenarnya.
-          </div>
-          <form action="#">
-            <label className="form-field">
-              <input type="checkbox" name="choice" value="habit" /> Pelatih habit harian (3x seminggu)
-            </label>
-            <label className="form-field">
-              <input type="checkbox" name="choice" value="learn" /> Pelajari konsep dasar (30 menit)
-            </label>
-            <label className="form-field">
-              <input type="checkbox" name="choice" value="read" /> Baca satu bab buku
-            </label>
-            <label className="form-field">
-              <textarea className="field" name="custom" placeholder="Tulis tindakan sendiri..." style={{ minHeight: "4rem", resize: "vertical" }} />
-            </label>
-            <div style={{ display: "grid", gap: "0.5rem", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", marginTop: "1rem" }}>
-              <button type="submit" className="button button--primary">Simpan pilihan</button>
-              <button type="button" className="button button--secondary">Tunda</button>
-              <button type="button" className="button button--ghost">Lewati</button>
-            </div>
-          </form>
+          <p className="section-description">Pilih satu atau gabungkan — keputusanmu disimpan sebagai langkah kecil.</p>
+          <NextStepForm goalId={goalId} />
         </Card>
       </div>
     </DashboardShell>
