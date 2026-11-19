@@ -18,7 +18,7 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 | 4 | Setup Next.js, TypeScript, lint, build | [x] | Lint, typecheck, build lulus. |
 | 5 | Supabase lokal, schema, RLS, fixture demo | [x] | Migration dan isolasi data diverifikasi. |
 | 6 | Register, login, logout, proteksi route | [x] | Matcher route fitur dilengkapi. |
-| 7 | Global UI, sidebar, tema responsif | [-] | Tujuh area mobile belum diuji. |
+| 7 | Global UI, sidebar, tema responsif | [-] | Adaptasi mobile tujuh area belum diverifikasi; aset Stitch belum tersedia. |
 | 8 | Profile dan preferences | [x] | Isolasi data antar-user diverifikasi. |
 
 ## Sprint 2 — Personal Growth (Hari 9–14)
