@@ -29,7 +29,7 @@ export default async function AnalyticsPage() {
   ]);
 
   return (
-    <DashboardShell initialTheme={preferences.theme} activePath="/dashboard">
+    <DashboardShell initialTheme={preferences.theme} activePath="/analytics">
       <div className="dashboard-content analytics-page">
         <header className="dashboard-welcome">
           <div>
