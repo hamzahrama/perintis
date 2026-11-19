@@ -47,10 +47,10 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 
 | Hari | Fokus | Status | Catatan |
 |---|---|:---:|---|
-| 21–22 | Personal Coach | [ ] | Panduan statis; tanpa AI live/chat bebas. |
-| 23 | Daily Reflection | [ ] | Simpan per user dan tanggal. |
-| 24 | Weekly Growth Review | [ ] | Hitungan aktual Senin–Minggu lokal. |
-| 25 | Progress Analytics | [ ] | Metrik aktual; tanpa skor palsu. |
+| 21–22 | Personal Coach | [-] | Panduan statis; tanpa AI live/chat bebas. |
+| 23 | Daily Reflection | [-] | Form refleksi harian, simpan per user, validasi data awal. |
+| 24 | Weekly Growth Review | [-] | Periode lokal; hitung aktual tanpa skor. |
+| 25 | Progress Analytics | [-] | Metrik aktual; tanpa skor palsu. |
 
 ## Sprint 5 — QA dan Demo (Hari 26–30)
 
