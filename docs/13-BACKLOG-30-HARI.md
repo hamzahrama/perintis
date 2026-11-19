@@ -48,7 +48,7 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 | Hari | Fokus | Status | Catatan |
 |---|---|:---:|---|
 | 21–22 | Personal Coach | [-] | Panduan statis; tanpa AI live/chat bebas. |
-| 23 | Daily Reflection | [-] | Form refleksi harian, simpan per user, validasi data awal. |
+| 23 | Daily Reflection | [x] | Form refleksi harian, simpan per user, validasi data. |
 | 24 | Weekly Growth Review | [-] | Periode lokal; hitung aktual tanpa skor. |
 | 25 | Progress Analytics | [-] | Metrik aktual; tanpa skor palsu. |
 

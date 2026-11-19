@@ -39,7 +39,9 @@ export async function proxy(request: NextRequest) {
       pathname.startsWith("/reminders") ||
       pathname.startsWith("/commitment") ||
       pathname.startsWith("/calendar") ||
-      pathname.startsWith("/coach")) &&
+      pathname.startsWith("/coach") ||
+      pathname.startsWith("/reflection") ||
+      pathname.startsWith("/review")) &&
     !hasSession
   ) {
     return redirectWithSessionCookies(request, response, "/login");
@@ -68,5 +70,7 @@ export const config = {
     "/commitment/:path*",
     "/calendar/:path*",
     "/coach/:path*",
+    "/reflection/:path*",
+    "/review/:path*",
   ],
 };
