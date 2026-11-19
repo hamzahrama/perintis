@@ -36,10 +36,10 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 
 | Hari | Fokus | Status | Catatan |
 |---|---|:---:|---|
-| 15 | Daily Guidance | [-] | Filter tanggal, timezone, riwayat status belum lengkap. |
+| 15 | Daily Guidance | [-] | Planner aktif; filter tanggal dan timezone lokal masih perlu smoke test. |
 | 16 | Reschedule dan skip | [x] | UI, status, dan riwayat transisi (OPEN-014) diverifikasi. |
 | 17 | My Habits | [-] | CRUD habit, log harian, anti-duplikat dikerjakan; smoke DB belum. |
-| 18 | Reminder in-app | [-] | Reminder CRUD dikerjakan; pemeriksaan due saat buka app belum. |
+| 18 | Reminder in-app | [-] | Reminder CRUD aktif; pemeriksaan due saat buka app dan notification belum selesai. |
 | 19 | My Commitment | [-] | Komitmen sukarela dan nonaktif tersedia; edit target belum lengkap. |
 | 20 | Calendar View | [-] | Kalender bulanan aktif; sumber data planner dan habit. |
 
@@ -49,8 +49,8 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 |---|---|:---:|---|
 | 21–22 | Personal Coach | [-] | Panduan statis; tanpa AI live/chat bebas. |
 | 23 | Daily Reflection | [x] | Form refleksi harian, simpan per user, validasi data. |
-| 24 | Weekly Growth Review | [-] | Periode lokal; hitung aktual tanpa skor. |
-| 25 | Progress Analytics | [-] | Metrik aktual; tanpa skor palsu. |
+| 24 | Weekly Growth Review | [-] | Route aktif; metrik aktual tersedia, timezone lokal perlu integrasi penuh. |
+| 25 | Progress Analytics | [-] | Route dan metrik aktual aktif; periode lokal perlu integrasi penuh. |
 
 ## Sprint 5 — QA dan Demo (Hari 26–30)
 

@@ -136,7 +136,7 @@ export default async function ProtectedPage() {
               <div className="dashboard-empty">
                 <h3>Belum ada goal</h3>
                 <p>Mulai dari satu arah yang terasa penting bagimu.</p>
-                <span className="empty-action">My Direction segera tersedia.</span>
+                <Link className="button button--secondary" href="/goals">Buat goal pertama</Link>
               </div>
             )}
           </Card>
