@@ -39,7 +39,7 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 | 15 | Daily Guidance | [-] | Filter tanggal, timezone, riwayat status belum lengkap. |
 | 16 | Reschedule dan skip | [x] | UI, status, dan riwayat transisi (OPEN-014) diverifikasi. |
 | 17 | My Habits | [-] | CRUD habit, log harian, anti-duplikat dikerjakan; smoke DB belum. |
-| 18 | Reminder in-app | [ ] | Cek saat aplikasi dibuka, tanpa push/email. |
+| 18 | Reminder in-app | [-] | Reminder CRUD dikerjakan; pemeriksaan due saat buka app belum. |
 | 19 | My Commitment | [ ] | Sukarela, aman, dapat edit/hapus. |
 | 20 | Calendar View | [ ] | Sumber data sama dengan planner dan habit. |
 
