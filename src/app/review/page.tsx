@@ -4,6 +4,7 @@ import { Card } from "@/components/ui";
 import { DashboardShell } from "@/components/dashboard-shell";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingStatus } from "@/lib/onboarding";
+import { getUserTimezone, utcToZonedDate, zonedDateToUtc } from "@/lib/timezone";
 
 export default async function WeeklyReviewPage() {
   const supabase = await createSupabaseServerClient();
@@ -11,18 +12,25 @@ export default async function WeeklyReviewPage() {
   if (userError || !user) redirect("/login");
   const { completed } = await getOnboardingStatus();
   if (!completed) redirect("/onboarding");
+
+  const timezone = await getUserTimezone(user.id);
   const { data: preferences } = await supabase.from("user_preferences").select("theme").eq("user_id", user.id).maybeSingle();
   if (!preferences) throw new Error("Preferensi pengguna tidak ditemukan.");
 
-  const now = new Date();
-  const day = now.getUTCDay();
+  // Hitung Senin-Minggu di timezone user
+  const todayLocal = utcToZonedDate(new Date(), timezone);
+  const today = new Date(`${todayLocal}T00:00:00Z`);
+  const day = today.getUTCDay();
   const diffToMonday = day === 0 ? -6 : 1 - day;
-  const monday = new Date(now);
-  monday.setUTCDate(now.getUTCDate() + diffToMonday);
-  monday.setUTCHours(0, 0, 0, 0);
+  const monday = new Date(today);
+  monday.setUTCDate(today.getUTCDate() + diffToMonday);
   const sunday = new Date(monday);
   sunday.setUTCDate(monday.getUTCDate() + 6);
-  sunday.setUTCHours(23, 59, 59, 999);
+
+  const mondayKey = `${monday.getUTCFullYear()}-${String(monday.getUTCMonth() + 1).padStart(2, "0")}-${String(monday.getUTCDate()).padStart(2, "0")}`;
+  const sundayKey = `${sunday.getUTCFullYear()}-${String(sunday.getUTCMonth() + 1).padStart(2, "0")}-${String(sunday.getUTCDate()).padStart(2, "0")}`;
+  const start = zonedDateToUtc(mondayKey, timezone);
+  const end = zonedDateToUtc(`${sundayKey}T23:59:59`, timezone);
 
   const [
     { count: scheduledCount },
@@ -31,11 +39,11 @@ export default async function WeeklyReviewPage() {
     { data: logs },
     { data: reflections }
   ] = await Promise.all([
-    supabase.from("activities").select("id", { count: "exact", head: true }).eq("user_id", user.id).gte("scheduled_at", monday.toISOString()).lte("scheduled_at", sunday.toISOString()),
-    supabase.from("activities").select("id", { count: "exact", head: true }).eq("user_id", user.id).eq("status", "completed").gte("completed_at", monday.toISOString()).lte("completed_at", sunday.toISOString()),
-    supabase.from("activity_status_events").select("id", { count: "exact", head: true }).eq("user_id", user.id).eq("to_status", "skipped").gte("created_at", monday.toISOString()).lte("created_at", sunday.toISOString()),
-    supabase.from("habit_logs").select("id, habit_id, log_date").eq("user_id", user.id).gte("log_date", monday.toISOString().slice(0, 10)).lte("log_date", sunday.toISOString().slice(0, 10)),
-    supabase.from("daily_reflections").select("reflection_date, answers").eq("user_id", user.id).gte("reflection_date", monday.toISOString().slice(0, 10)).lte("reflection_date", sunday.toISOString().slice(0, 10)),
+    supabase.from("activities").select("id", { count: "exact", head: true }).eq("user_id", user.id).gte("scheduled_at", start).lte("scheduled_at", end),
+    supabase.from("activities").select("id", { count: "exact", head: true }).eq("user_id", user.id).eq("status", "completed").gte("completed_at", start).lte("completed_at", end),
+    supabase.from("activity_status_events").select("id", { count: "exact", head: true }).eq("user_id", user.id).eq("to_status", "skipped").gte("created_at", start).lte("created_at", end),
+    supabase.from("habit_logs").select("id, habit_id, log_date").eq("user_id", user.id).gte("log_date", mondayKey).lte("log_date", sundayKey),
+    supabase.from("daily_reflections").select("reflection_date, answers").eq("user_id", user.id).gte("reflection_date", mondayKey).lte("reflection_date", sundayKey),
   ]);
 
   return (
@@ -46,7 +54,7 @@ export default async function WeeklyReviewPage() {
             <p className="eyebrow">Weekly Growth Review</p>
             <h1 className="page-title">Review Mingguan</h1>
             <p className="dashboard-intro">
-              Periode Senin sampai Minggu. Hitungan di bawah murni dari data aktualmu, tanpa skor palsu.
+              Periode {mondayKey} s/d {sundayKey} (zona {timezone}). Hitungan murni dari data aktualmu, tanpa skor palsu.
             </p>
           </div>
         </header>

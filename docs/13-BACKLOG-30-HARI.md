@@ -36,12 +36,12 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 
 | Hari | Fokus | Status | Catatan |
 |---|---|:---:|---|
-| 15 | Daily Guidance | [-] | Planner aktif; filter tanggal dan timezone lokal masih perlu smoke test. |
+| 15 | Daily Guidance | [-] | Filter aktivitas memakai tanggal lokal user; smoke browser masih belum dilakukan. |
 | 16 | Reschedule dan skip | [x] | UI, status, dan riwayat transisi (OPEN-014) diverifikasi. |
-| 17 | My Habits | [-] | CRUD habit, log harian, anti-duplikat dikerjakan; smoke DB belum. |
-| 18 | Reminder in-app | [-] | Reminder CRUD aktif; pemeriksaan due saat buka app dan notification belum selesai. |
-| 19 | My Commitment | [-] | Komitmen sukarela dan nonaktif tersedia; edit target belum lengkap. |
-| 20 | Calendar View | [-] | Kalender bulanan aktif; sumber data planner dan habit. |
+| 17 | My Habits | [-] | CRUD, log harian, anti-duplikat, dan toggle aktif/nonaktif tersedia; smoke DB belum. |
+| 18 | Reminder in-app | [-] | Due check saat `/reminders` dibuka membuat notification idempotent; smoke browser/DB belum. |
+| 19 | My Commitment | [-] | Create, edit target tervalidasi ownership, dan nonaktif tersedia; smoke browser belum. |
+| 20 | Calendar View | [-] | Boundary bulan dan item memakai timezone user; smoke browser belum.
 
 ## Sprint 4 — Coach & Evaluation (Hari 21–25)
 
@@ -49,8 +49,8 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 |---|---|:---:|---|
 | 21–22 | Personal Coach | [-] | Panduan statis; tanpa AI live/chat bebas. |
 | 23 | Daily Reflection | [x] | Form refleksi harian, simpan per user, validasi data. |
-| 24 | Weekly Growth Review | [-] | Route aktif; metrik aktual tersedia, timezone lokal perlu integrasi penuh. |
-| 25 | Progress Analytics | [-] | Route dan metrik aktual aktif; periode lokal perlu integrasi penuh. |
+| 24 | Weekly Growth Review | [-] | Rentang minggu memakai timezone user; smoke browser/DB belum. |
+| 25 | Progress Analytics | [-] | Route dan metrik aktual aktif; audit periode lokal dan smoke browser belum. |
 
 ## Sprint 5 — QA dan Demo (Hari 26–30)
 

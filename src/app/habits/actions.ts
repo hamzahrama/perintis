@@ -100,6 +100,29 @@ export async function deleteHabitAction(_prev: HabitFormState, formData: FormDat
   return { success: "Habit dihapus." };
 }
 
+export async function toggleHabitActiveAction(_prev: HabitFormState, formData: FormData): Promise<HabitFormState> {
+  const habitId = String(formData.get("habitId") ?? "").trim();
+  const nextActive = String(formData.get("isActive") ?? "").trim();
+
+  if (!habitId) return { error: "Habit tidak ditemukan." };
+  if (nextActive !== "true" && nextActive !== "false") return { error: "Status tidak valid." };
+
+  const supabase = await createSupabaseServerClient();
+  const { data: { user }, error: userError } = await supabase.auth.getUser();
+  if (userError || !user) return { error: "Sesi tidak valid." };
+
+  const { data: habit } = await supabase.from("habits").select("id, user_id, is_active").eq("id", habitId).eq("user_id", user.id).maybeSingle();
+  if (!habit) return { error: "Habit tidak ditemukan." };
+  if (habit.is_active === (nextActive === "true")) {
+    return { success: nextActive === "true" ? "Habit sudah aktif." : "Habit sudah tidak aktif." };
+  }
+
+  const { error } = await supabase.from("habits").update({ is_active: nextActive === "true", updated_at: new Date().toISOString() }).eq("id", habitId).eq("user_id", user.id);
+  if (error) return { error: "Gagal mengubah status habit." };
+  revalidatePath("/habits");
+  return { success: nextActive === "true" ? "Habit diaktifkan." : "Habit dinonaktifkan." };
+}
+
 export async function logHabitAction(_prev: HabitFormState, formData: FormData): Promise<HabitFormState> {
   const habitId = String(formData.get("habitId") ?? "").trim();
   const logDate = String(formData.get("logDate") ?? "").trim();
@@ -113,16 +136,26 @@ export async function logHabitAction(_prev: HabitFormState, formData: FormData):
   const { data: { user }, error: userError } = await supabase.auth.getUser();
   if (userError || !user) return { error: "Sesi tidak valid." };
 
-  const { data: habit } = await supabase.from("habits").select("id, user_id").eq("id", habitId).eq("user_id", user.id).maybeSingle();
+  const { data: habit } = await supabase.from("habits").select("id, user_id, is_active").eq("id", habitId).eq("user_id", user.id).maybeSingle();
   if (!habit) return { error: "Habit tidak ditemukan." };
+  if (!habit.is_active) return { error: "Habit tidak aktif." };
 
+  const { data: habitLog } = await supabase
+    .from("habit_logs")
+    .select("id")
+    .eq("habit_id", habitId)
+    .eq("user_id", user.id)
+    .eq("log_date", logDate)
+    .maybeSingle();
+  if (habitLog) return { error: "Sudah ada log untuk tanggal ini." };
+
+  // log_date disimpan sebagai DATE (YYYY-MM-DD) sesuai tanggal lokal user
   const { error } = await supabase.from("habit_logs").insert({
     habit_id: habitId,
     user_id: user.id,
     log_date: logDate,
     note: note || null,
   });
-  if (error?.code === "23505") return { error: "Sudah ada log untuk tanggal ini." };
   if (error) return { error: "Gagal mencatat habit." };
 
   revalidatePath("/habits");

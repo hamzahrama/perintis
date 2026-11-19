@@ -6,6 +6,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingStatus } from "@/lib/onboarding";
 import { HabitForm } from "./habit-form";
 import { HabitLogForm } from "./habit-log-form";
+import { ToggleHabitActiveForm } from "./toggle-form";
 
 export default async function HabitsPage() {
   const supabase = await createSupabaseServerClient();
@@ -52,19 +53,6 @@ export default async function HabitsPage() {
       .order("created_at", { ascending: false }),
   ]);
 
-  const { data: logs } = await supabase
-    .from("habit_logs")
-    .select("id, habit_id, log_date, note, created_at")
-    .eq("user_id", user.id)
-    .order("log_date", { ascending: false });
-
-  const logsByHabit = new Map<string, { log_date: string; note: string | null }[]>();
-  logs?.forEach((log) => {
-    const arr = logsByHabit.get(log.habit_id) ?? [];
-    arr.push({ log_date: log.log_date, note: log.note });
-    logsByHabit.set(log.habit_id, arr);
-  });
-
   return (
     <DashboardShell initialTheme={preferences.theme} activePath="/habits">
       <div className="dashboard-content habits-page">
@@ -107,6 +95,7 @@ export default async function HabitsPage() {
                     <a href={`/habits/${habit.id}/edit`} className="button button--secondary">
                       Edit
                     </a>
+                    <ToggleHabitActiveForm habitId={habit.id} isActive={true} />
                     <HabitLogForm habitId={habit.id} />
                   </div>
                 </li>
@@ -134,14 +123,12 @@ export default async function HabitsPage() {
                       <span className="habit-status habit-status--inactive">Tidak aktif</span>
                     </header>
                     {habit.description && <p className="habit-description">{habit.description}</p>}
-                    <div className="habit-meta">
-                      {habit.goal_id && <span className="habit-goal">Kait ke goal</span>}
-                    </div>
                   </article>
                   <div className="habit-actions">
                     <a href={`/habits/${habit.id}/edit`} className="button button--secondary">
                       Edit
                     </a>
+                    <ToggleHabitActiveForm habitId={habit.id} isActive={false} />
                   </div>
                 </li>
               ))}

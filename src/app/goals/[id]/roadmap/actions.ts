@@ -259,27 +259,44 @@ export async function reorderStepsAction(
     return { error: "Sesi pengguna belum dapat diverifikasi." };
   }
 
+  // Validasi kepemilikan dan keberadaan seluruh step sekaligus sebelum update
+  const stepIds = parsed.data.steps.map((s) => s.id);
+  const { data: userSteps, error: fetchError } = await supabase
+    .from("roadmap_steps")
+    .select("id, roadmap_id, user_id, position")
+    .in("id", stepIds)
+    .eq("user_id", user.id);
+
+  if (fetchError || !userSteps || userSteps.length !== stepIds.length) {
+    return { error: "Salah satu langkah tidak ditemukan atau bukan milikmu." };
+  }
+
+  // Siapkan map posisi lama untuk rollback jika salah satu update gagal
+  const originalPositions = new Map(userSteps.map((s) => [s.id, s.position]));
+  const updatedStepIds: string[] = [];
+
   for (const item of parsed.data.steps) {
-    const { data: step } = await supabase
-      .from("roadmap_steps")
-      .select("id, roadmap_id, user_id")
-      .eq("id", item.id)
-      .maybeSingle();
-
-    if (!step || step.user_id !== user.id) {
-      return { error: "Salah satu langkah tidak ditemukan atau bukan milikmu." };
-    }
-
     const { error } = await supabase
       .from("roadmap_steps")
-      .update({ position: item.position })
+      .update({ position: item.position, updated_at: new Date().toISOString() })
       .eq("id", item.id)
-      .eq("roadmap_id", step.roadmap_id)
       .eq("user_id", user.id);
 
     if (error) {
+      // Rollback posisi yang sudah ter-update
+      for (const id of updatedStepIds) {
+        const oldPos = originalPositions.get(id);
+        if (oldPos !== undefined) {
+          await supabase
+            .from("roadmap_steps")
+            .update({ position: oldPos })
+            .eq("id", id)
+            .eq("user_id", user.id);
+        }
+      }
       return { error: "Urutan langkah belum dapat disimpan. Silakan coba lagi." };
     }
+    updatedStepIds.push(item.id);
   }
 
   return { success: "Urutan langkah diperbarui." };
