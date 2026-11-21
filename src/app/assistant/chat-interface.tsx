@@ -1,13 +1,20 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Button, Notice, TextInput } from "@/components/ui";
 import { SUGGESTED_PROMPTS } from "@/lib/ai/prompts";
-import { createConversationAction, saveMessageAction } from "./actions";
+import {
+  createConversationAction,
+  deleteConversationAction,
+  saveMessageAction,
+  getConversationMessagesAction,
+} from "./actions";
 
 type Message = {
+  id?: string;
   role: "user" | "assistant";
   content: string;
+  created_at?: string;
 };
 
 type Conversation = {
@@ -16,35 +23,72 @@ type Conversation = {
   updated_at: string;
 };
 
-export function ChatInterface({ 
+export function ChatInterface({
   initialConversations,
-  isConfigured 
-}: { 
-  initialConversations: Conversation[],
-  isConfigured: boolean
+  isConfigured,
+}: {
+  initialConversations: Conversation[];
+  isConfigured: boolean;
 }) {
   const [conversations, setConversations] = useState(initialConversations);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingHistory, setIsLoadingHistory] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto scroll to bottom
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
-  // Load messages when conversation changes
-  useEffect(() => {
-    if (activeId) {
-      // In a real app, we'd fetch from Supabase here.
-      // For Phase 1, we'll keep it simple or just start new.
+  const loadConversation = useCallback(async (id: string) => {
+    setIsLoadingHistory(true);
+    setError(null);
+    try {
+      const result = await getConversationMessagesAction(id);
+      if (result.error) throw new Error(result.error);
+      setMessages((result.data as Message[]) || []);
+      setActiveId(id);
+    } catch {
+      setError("Gagal memuat riwayat percakapan.");
+    } finally {
+      setIsLoadingHistory(false);
     }
-  }, [activeId]);
+  }, []);
+
+  const handleNewConversation = () => {
+    setActiveId(null);
+    setMessages([]);
+    setError(null);
+    setDeleteConfirm(null);
+  };
+
+  const handleDeleteConversation = async (id: string) => {
+    if (deleteConfirm !== id) {
+      setDeleteConfirm(id);
+      return;
+    }
+    setError(null);
+    try {
+      const result = await deleteConversationAction(id);
+      if (result.error) throw new Error(result.error);
+      setConversations((prev) => prev.filter((c) => c.id !== id));
+      if (activeId === id) {
+        handleNewConversation();
+      }
+    } catch {
+      setError("Gagal menghapus percakapan.");
+    } finally {
+      setDeleteConfirm(null);
+    }
+  };
 
   async function handleSendMessage(text: string) {
     if (!text.trim() || isLoading || !isConfigured) return;
@@ -56,10 +100,12 @@ export function ChatInterface({
     setIsLoading(true);
     setError(null);
 
+    abortRef.current = new AbortController();
+    const signal = abortRef.current.signal;
+
     let currentConversationId = activeId;
 
     try {
-      // 1. Create conversation if none active
       if (!currentConversationId) {
         const result = await createConversationAction(new FormData());
         if (result.error || !result.data) {
@@ -74,17 +120,20 @@ export function ChatInterface({
         throw new Error("Percakapan tidak ditemukan");
       }
 
-      // 2. Save user message to DB
       await saveMessageAction(currentConversationId, "user", text);
 
-      // 3. Request streaming response from AI
       const response = await fetch("/api/assistant", {
         method: "POST",
         body: JSON.stringify({ messages: newMessages }),
+        signal,
       });
 
       if (!response.ok) {
-        const errData = await response.json();
+        const errData = await response.json().catch(() => ({}));
+        if (response.status === 429) {
+          const retry = errData.retryAfter ?? 60;
+          throw new Error(`Batas permintaan tercapai. Coba lagi dalam ${Math.ceil(retry)} detik.`);
+        }
         throw new Error(errData.error || "Gagal menghubungi assistant");
       }
 
@@ -98,63 +147,92 @@ export function ChatInterface({
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-        
+
         const chunk = decoder.decode(value);
         assistantContent += chunk;
-        
+
         setMessages([...newMessages, { role: "assistant", content: assistantContent }]);
       }
 
-      // 4. Save assistant message to DB
       await saveMessageAction(currentConversationId, "assistant", assistantContent);
 
-    } catch {
-      setError("Terjadi kesalahan koneksi. Silakan coba lagi.");
+    } catch (err: unknown) {
+      if (err instanceof DOMException && err.name === "AbortError") {
+        return;
+      }
+      const msg = err instanceof Error ? err.message : "Terjadi kesalahan. Silakan coba lagi.";
+      setError(msg);
     } finally {
       setIsLoading(false);
     }
   }
 
+  const handleStop = () => {
+    if (abortRef.current) {
+      abortRef.current.abort();
+    }
+    setIsLoading(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage(input);
+    }
+  };
+
   return (
     <div className="assistant-layout">
-      {/* Sidebar - Desktop */}
       <aside className="assistant-sidebar">
-        <Button 
-          variant="secondary" 
+        <Button
+          variant="secondary"
           className="w-full mb-4"
-          onClick={() => {
-            setActiveId(null);
-            setMessages([]);
-          }}
+          onClick={handleNewConversation}
+          disabled={isLoading}
         >
           + Percakapan Baru
         </Button>
         <div className="conversation-list">
-          {conversations.map((c) => (
-            <button
-              key={c.id}
-              className={`conversation-item ${activeId === c.id ? 'active' : ''}`}
-              onClick={() => setActiveId(c.id)}
-            >
-              <span className="title">{c.title}</span>
-              <span className="date">{new Date(c.updated_at).toLocaleDateString()}</span>
-            </button>
-          ))}
+          {conversations.length === 0 ? (
+            <p className="conversation-empty">Belum ada percakapan</p>
+          ) : (
+            conversations.map((c) => (
+              <div key={c.id} className="conversation-row">
+                <button
+                  className={`conversation-item ${activeId === c.id ? "active" : ""}`}
+                  onClick={() => loadConversation(c.id)}
+                  disabled={isLoading}
+                >
+                  <span className="title">{c.title}</span>
+                  <span className="date">{new Date(c.updated_at).toLocaleDateString()}</span>
+                </button>
+                <button
+                  className={`button button--ghost button--sm ${deleteConfirm === c.id ? "delete-confirm" : ""}`}
+                  onClick={() => handleDeleteConversation(c.id)}
+                  disabled={isLoading || deleteConfirm === c.id}
+                  aria-label={deleteConfirm === c.id ? "Konfirmasi hapus" : "Hapus percakapan"}
+                >
+                  {deleteConfirm === c.id ? "✓" : "🗑"}
+                </button>
+              </div>
+            ))
+          )}
         </div>
       </aside>
 
-      {/* Chat Area */}
       <section className="assistant-chat">
         <div className="messages-container" ref={scrollRef}>
-          {messages.length === 0 ? (
+          {isLoadingHistory ? (
+            <div className="loading-history">Memuat riwayat...</div>
+          ) : messages.length === 0 ? (
             <div className="empty-chat">
               <div className="assistant-avatar">🌱</div>
               <h2>Ada yang bisa aku bantu hari ini?</h2>
               <p>Aku memahami goals dan jadwalmu. Coba tanya sesuatu:</p>
               <div className="suggested-prompts">
                 {SUGGESTED_PROMPTS.map((prompt) => (
-                  <button 
-                    key={prompt} 
+                  <button
+                    key={prompt}
                     className="prompt-chip"
                     onClick={() => handleSendMessage(prompt)}
                     disabled={!isConfigured || isLoading}
@@ -166,23 +244,33 @@ export function ChatInterface({
             </div>
           ) : (
             messages.map((m, i) => (
-              <div key={i} className={`message-bubble ${m.role}`}>
-                <div className="avatar">{m.role === 'user' ? '👤' : '🌱'}</div>
+              <div key={m.id ?? i} className={`message-bubble ${m.role}`}>
+                <div className="avatar">{m.role === "user" ? "👤" : "🌱"}</div>
                 <div className="content">{m.content}</div>
               </div>
             ))
           )}
-          {isLoading && !messages.find(m => m.role === 'assistant' && m.content) && (
+          {isLoading && (
             <div className="message-bubble assistant">
               <div className="avatar">🌱</div>
               <div className="content loading-dots">Mengetik<span>.</span><span>.</span><span>.</span></div>
             </div>
           )}
-          {error && <Notice tone="error" className="m-4">{error}</Notice>}
+          {error && (
+            <Notice tone="error" className="m-4" role="alert">
+              {error}
+              {isLoading && (
+                <Button variant="secondary" onClick={handleStop} className="ml-2">
+                  Hentikan
+                </Button>
+              )}
+            </Notice>
+          )}
+          <div ref={messagesEndRef} />
         </div>
 
-        <form 
-          className="input-area" 
+        <form
+          className="input-area"
           onSubmit={(e) => {
             e.preventDefault();
             handleSendMessage(input);
@@ -191,13 +279,20 @@ export function ChatInterface({
           <TextInput
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ketik pesan..."
+            onKeyDown={handleKeyDown}
+            placeholder="Ketik pesan... (Shift+Enter untuk baris baru)"
             disabled={!isConfigured || isLoading}
             autoFocus
           />
-          <Button type="submit" disabled={!isConfigured || isLoading || !input.trim()}>
-            Kirim
-          </Button>
+          {isLoading ? (
+            <Button type="button" variant="secondary" onClick={handleStop}>
+              Hentikan
+            </Button>
+          ) : (
+            <Button type="submit" disabled={!isConfigured || !input.trim()}>
+              Kirim
+            </Button>
+          )}
         </form>
       </section>
 
@@ -218,13 +313,26 @@ export function ChatInterface({
           overflow-y: auto;
         }
 
+        .conversation-empty {
+          padding: 1rem;
+          font-size: 0.85rem;
+          color: var(--color-text-muted);
+          text-align: center;
+        }
+
+        .conversation-row {
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 0.5rem;
+        }
+
         .conversation-item {
+          flex: 1;
           display: flex;
           flex-direction: column;
           text-align: left;
           padding: 0.75rem;
           border-radius: var(--radius-md);
-          margin-bottom: 0.5rem;
           transition: background 0.2s;
           background: transparent;
           border: 1px solid transparent;
@@ -233,6 +341,11 @@ export function ChatInterface({
 
         .conversation-item:hover {
           background: var(--color-surface-hover);
+        }
+
+        .conversation-item:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
 
         .conversation-item.active {
@@ -347,6 +460,11 @@ export function ChatInterface({
           border-color: var(--color-primary);
         }
 
+        .prompt-chip:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
         .input-area {
           padding: 1rem;
           border-top: 1px solid var(--color-border);
@@ -366,6 +484,14 @@ export function ChatInterface({
           100% { opacity: 0.2; }
         }
 
+        .loading-history {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          color: var(--color-text-muted);
+        }
+
         @media (max-width: 768px) {
           .assistant-layout {
             grid-template-columns: 1fr;
@@ -373,6 +499,10 @@ export function ChatInterface({
           .assistant-sidebar {
             display: none;
           }
+        }
+        .delete-confirm {
+          color: var(--color-error);
+          border-color: var(--color-error);
         }
       `}</style>
     </div>

@@ -56,34 +56,39 @@ export const openAIProvider: AIProvider = {
       return;
     }
 
-    const endpoint = baseUrl.replace(/\/$/, "") + "/chat/completions";
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: "system", content: request.system },
-          ...request.messages.map((m) => ({ role: m.role, content: m.content })),
-        ],
-        max_tokens: request.maxTokens,
-        temperature: request.temperature,
-        stream: true,
-      }),
-      signal: AbortSignal.timeout(30_000),
-    });
+    let response: Response;
+    try {
+      response = await fetch(baseUrl.replace(/\/$/, "") + "/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: "system", content: request.system },
+            ...request.messages.map((m) => ({ role: m.role, content: m.content })),
+          ],
+          max_tokens: request.maxTokens,
+          temperature: request.temperature,
+          stream: true,
+        }),
+        signal: AbortSignal.timeout(30_000),
+      });
+    } catch {
+      yield { error: "Gagal menghubungi AI provider. Cek koneksi atau coba lagi nanti." };
+      return;
+    }
 
     if (!response.ok) {
-      yield { error: "AI provider returned an error. Please try again." };
+      yield { error: "AI provider tidak merespons. Silakan coba lagi." };
       return;
     }
 
     const reader = response.body?.getReader();
     if (!reader) {
-      yield { error: "AI provider returned an empty response." };
+      yield { error: "AI provider mengembalikan respon kosong." };
       return;
     }
 

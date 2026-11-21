@@ -6,6 +6,7 @@
  */
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getUserTimezone, localDateToUtcStart, utcToLocalDate } from "@/lib/timezone";
 
 export type AssistantContext = {
   userTimezone: string;
@@ -49,16 +50,20 @@ export type AssistantContext = {
 export async function getAssistantContext(userId: string): Promise<AssistantContext> {
   const supabase = await createSupabaseServerClient();
 
-  // Get user timezone
-  const { data: prefs } = await supabase
-    .from("user_preferences")
-    .select("timezone")
-    .eq("user_id", userId)
-    .maybeSingle();
-  const userTimezone = prefs?.timezone ?? "UTC";
-
-  // Get current time in user's timezone for date boundaries
+  const userTimezone = await getUserTimezone(userId);
   const now = new Date();
+  const today = utcToLocalDate(now, userTimezone);
+  const todayStart = localDateToUtcStart(today, userTimezone);
+  const nextDay = new Date(`${today}T00:00:00Z`);
+  nextDay.setUTCDate(nextDay.getUTCDate() + 1);
+  const nextDayKey = nextDay.toISOString().slice(0, 10);
+  const tomorrowStart = localDateToUtcStart(nextDayKey, userTimezone);
+  const sevenDaysLaterDate = new Date(`${today}T00:00:00Z`);
+  sevenDaysLaterDate.setUTCDate(sevenDaysLaterDate.getUTCDate() + 7);
+  const sevenDaysLater = localDateToUtcStart(sevenDaysLaterDate.toISOString().slice(0, 10), userTimezone);
+  const recentReflectionStart = new Date(`${today}T00:00:00Z`);
+  recentReflectionStart.setUTCDate(recentReflectionStart.getUTCDate() - 6);
+  const recentReflectionDate = recentReflectionStart.toISOString().slice(0, 10);
 
   // Fetch all context in parallel
   const [
@@ -84,6 +89,8 @@ export async function getAssistantContext(userId: string): Promise<AssistantCont
       .select("id, title, description, scheduled_at, status")
       .eq("user_id", userId)
       .in("status", ["not_started", "in_progress", "rescheduled"])
+      .gte("scheduled_at", todayStart)
+      .lt("scheduled_at", tomorrowStart)
       .order("scheduled_at", { ascending: true, nullsFirst: false })
       .limit(10),
 
@@ -93,7 +100,8 @@ export async function getAssistantContext(userId: string): Promise<AssistantCont
       .select("id, title, description, scheduled_at, status")
       .eq("user_id", userId)
       .in("status", ["not_started", "in_progress", "rescheduled"])
-      .gte("scheduled_at", now.toISOString())
+      .gte("scheduled_at", tomorrowStart)
+      .lte("scheduled_at", sevenDaysLater)
       .order("scheduled_at", { ascending: true })
       .limit(10),
 
@@ -111,7 +119,7 @@ export async function getAssistantContext(userId: string): Promise<AssistantCont
       .from("daily_reflections")
       .select("reflection_date, answers")
       .eq("user_id", userId)
-      .gte("reflection_date", new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10))
+      .gte("reflection_date", recentReflectionDate)
       .order("reflection_date", { ascending: false })
       .limit(7),
 

@@ -8,6 +8,9 @@ const conversationSchema = z.object({
   title: z.string().trim().min(1).max(120),
 });
 
+const idSchema = z.string().uuid();
+const contentSchema = z.string().trim().min(1).max(12000);
+
 export async function createConversationAction(formData: FormData) {
   const supabase = await createSupabaseServerClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -36,7 +39,27 @@ export async function createConversationAction(formData: FormData) {
   return { data };
 }
 
+export async function getConversationMessagesAction(id: string) {
+  const parsedId = idSchema.safeParse(id);
+  if (!parsedId.success) return { error: "Percakapan tidak valid" };
+  const supabase = await createSupabaseServerClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: "Sesi tidak valid" };
+
+  const { data, error } = await supabase
+    .from("assistant_messages")
+    .select("id, role, content, created_at")
+    .eq("conversation_id", parsedId.data)
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: true });
+
+  if (error) return { error: "Gagal memuat riwayat percakapan" };
+  return { data };
+}
+
 export async function deleteConversationAction(id: string) {
+  const parsedId = idSchema.safeParse(id);
+  if (!parsedId.success) return { error: "Percakapan tidak valid" };
   const supabase = await createSupabaseServerClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { error: "Sesi tidak valid" };
@@ -44,7 +67,7 @@ export async function deleteConversationAction(id: string) {
   const { error } = await supabase
     .from("assistant_conversations")
     .delete()
-    .eq("id", id)
+    .eq("id", parsedId.data)
     .eq("user_id", user.id);
 
   if (error) return { error: "Gagal menghapus percakapan" };
@@ -58,6 +81,12 @@ export async function saveMessageAction(
   role: "user" | "assistant",
   content: string
 ) {
+  const parsedConversationId = idSchema.safeParse(conversationId);
+  const parsedContent = contentSchema.safeParse(content);
+  if (!parsedConversationId.success || !parsedContent.success) {
+    return { error: "Pesan tidak valid" };
+  }
+
   const supabase = await createSupabaseServerClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { error: "Sesi tidak valid" };
