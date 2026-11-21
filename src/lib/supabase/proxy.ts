@@ -28,9 +28,7 @@ export async function updateSupabaseSession(request: NextRequest) {
     },
   });
 
-  const { data, error } = await supabase.auth.getClaims();
-  if (error) {
-    throw error;
-  }
+  const { data } = await supabase.auth.getClaims();
+  // Invalid or expired cookie must fail closed, not crash every protected request.
   return { response, hasSession: Boolean(data?.claims?.sub) };
 }

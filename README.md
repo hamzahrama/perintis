@@ -81,4 +81,12 @@ Pemeriksaan dasar:
 npm run lint
 npm run typecheck
 npm run build
+npx prisma validate
+npx supabase migration list --local
 ```
+
+## Production deployment
+
+Deployment checklist, environment variable names, Supabase Auth setup, migration procedure, and Vercel steps: `docs/19-PRODUCTION-DEPLOYMENT.md`.
+
+Never commit `.env.local`, Supabase credentials, service-role keys, or demo credentials. Never run local seed against production.
