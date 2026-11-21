@@ -51,6 +51,7 @@ Tempat resmi menyimpan keputusan proyek. Perbarui dokumen ini setiap kali penggu
 | DEC-036 | Tooling dasar aplikasi | Gunakan npm; mulai dengan lint, typecheck, dan build. Jangan menambah test runner/library komponen/grafik sebelum ada kebutuhan dan persetujuan | FIX untuk setup dasar; library tambahan tetap OPEN |
 | DEC-037 | Setup Prisma | Atas instruksi eksplisit pengguna, tambahkan Prisma ORM 7 stable sebagai dependency development untuk konfigurasi/schema tooling; keputusan ini supersedes bagian “tanpa ORM tambahan” pada DEC-026. Tetap gunakan Supabase Auth SDK; SQL migration Supabase yang ada tetap sumber schema sampai ada keputusan migrasi. Jangan memakai Prisma untuk data privat sebelum strategi identitas user dan RLS diverifikasi. | FIX untuk setup tooling; integrasi aplikasi/migrasi schema tetap OPEN |
 | DEC-038 | Supabase pooler project | Gunakan endpoint pooler project Singapore `aws-1-ap-southeast-1` yang diberikan pengguna; transaction pooler untuk koneksi aplikasi dan session pooler untuk perintah Prisma CLI. Password hanya di `.env.local` dan tidak dicatat di repository. | FIX; konektivitas belum diuji |
+| DEC-039 | Timezone & Critical Fix Phase 1 | Konsolidasi timezone helper, validasi input strict, dan persistence notification | FIX |
 
 ## Resolusi item OPEN sebelumnya
 
@@ -140,6 +141,20 @@ Pengguna dapat mengubah proposal ini; OPEN terkait tetap berlaku sampai dikonfir
 - Disetujui oleh: agent (perlu konfirmasi pengguna)
 - Tanggal persetujuan: 2026-11-17
 - Batas biaya: N/A
+
+### DEC-039 — Timezone & Critical Fix Phase 1
+- Tanggal: 2026-11-21
+- Status: FIX
+- Konteks: Stabilisasi sprint 2-4 sebelum lanjut ke P2/Sprint 5.
+- Rekomendasi: Konsolidasi timezone helper, validasi input strict, dan persistence notification.
+- Keputusan final:
+  - Gunakan `localFieldsToUtc` untuk akurasi konversi manual timezone via Intl.
+  - Hapus API route reflection (duplicate).
+  - Simpan `read_at` notification secara permanen di database.
+  - Tangani error 23505 Postgres (duplicate key) pada habit log.
+- Dampak terhadap backlog: Menutup P0 bugs Sprint 2-4.
+- Disetujui oleh: agent (verifikasi build/lint/typecheck pass)
+- Tanggal persetujuan: 2026-11-21
 
 ## Template keputusan baru
 

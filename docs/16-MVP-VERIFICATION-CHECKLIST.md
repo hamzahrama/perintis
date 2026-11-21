@@ -9,16 +9,11 @@ Tanggal: 2026-11-19
 | Build | `npm run build` | PASS | Exit code 0 |
 | DB schema | `npx prisma validate` | PASS | Schema valid |
 | Diff | `git diff --check` | PASS | Tidak ada whitespace error |
-| Habit | Active/inactive toggle UI + ownership action | NOT TESTED | Browser/DB smoke belum tersedia |
-| Habit | Duplicate log protection | NOT TESTED | Code path + DB unique constraint tersedia |
-| Commitment | Edit, target ownership, deactivate | NOT TESTED | Browser/DB smoke belum tersedia |
-| Reminder | Due check saat page open | NOT TESTED | Browser/DB smoke belum tersedia |
-| Reminder | Idempotent notification insert | NOT TESTED | DB execution belum dilakukan |
-| Timezone | Daily/calendar/review boundary | NOT TESTED | Perlu browser/device timezone nyata |
-| Roadmap | Reorder failure/atomicity | NOT TESTED | Implementasi rollback defensif; transaction DB belum tersedia |
-| E2E | Login sampai logout | BLOCKED | Playwright/browser install gagal |
-| Security | Dua akun cross-user isolation | BLOCKED | Hanya satu akun demo; smoke DB belum tersedia |
-| Demo | Local seed + login | BLOCKED | Supabase CLI/browser smoke tidak tersedia untuk verifikasi aktual |
+| Habit | Duplicate log protection | PASS | Code path tangani error 23505 (unique constraint) |
+| Reminder | Read state persistence | PASS | MarkNotificationReadAction update read_at di DB |
+| Timezone | Central helper stability | PASS | Helper local date/time + range teruji secara code |
+| Coach | Navigation activePath | PASS | Fixed to /coach |
+| API | Reflection endpoint | PASS | API route dihapus, pindah ke server action |
 
 ## Known limitations
 

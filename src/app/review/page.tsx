@@ -4,7 +4,7 @@ import { Card } from "@/components/ui";
 import { DashboardShell } from "@/components/dashboard-shell";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingStatus } from "@/lib/onboarding";
-import { getUserTimezone, utcToZonedDate, zonedDateToUtc } from "@/lib/timezone";
+import { getUserTimezone, getWeekRange } from "@/lib/timezone";
 
 export default async function WeeklyReviewPage() {
   const supabase = await createSupabaseServerClient();
@@ -18,19 +18,7 @@ export default async function WeeklyReviewPage() {
   if (!preferences) throw new Error("Preferensi pengguna tidak ditemukan.");
 
   // Hitung Senin-Minggu di timezone user
-  const todayLocal = utcToZonedDate(new Date(), timezone);
-  const today = new Date(`${todayLocal}T00:00:00Z`);
-  const day = today.getUTCDay();
-  const diffToMonday = day === 0 ? -6 : 1 - day;
-  const monday = new Date(today);
-  monday.setUTCDate(today.getUTCDate() + diffToMonday);
-  const sunday = new Date(monday);
-  sunday.setUTCDate(monday.getUTCDate() + 6);
-
-  const mondayKey = `${monday.getUTCFullYear()}-${String(monday.getUTCMonth() + 1).padStart(2, "0")}-${String(monday.getUTCDate()).padStart(2, "0")}`;
-  const sundayKey = `${sunday.getUTCFullYear()}-${String(sunday.getUTCMonth() + 1).padStart(2, "0")}-${String(sunday.getUTCDate()).padStart(2, "0")}`;
-  const start = zonedDateToUtc(mondayKey, timezone);
-  const end = zonedDateToUtc(`${sundayKey}T23:59:59`, timezone);
+  const { start, end, mondayKey, sundayKey } = getWeekRange(new Date(), timezone);
 
   const [
     { count: scheduledCount },

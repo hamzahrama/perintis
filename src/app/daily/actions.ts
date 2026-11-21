@@ -6,11 +6,19 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export type ActivityFormState = { error?: string; success?: string };
 
+const datetimeLocalRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
 const activitySchema = z.object({
   title: z.string().trim().min(1, "Judul aktivitas wajib diisi.").max(200),
   description: z.string().trim().max(1000).optional().or(z.literal("")),
-  scheduledAt: z.string().trim().optional().or(z.literal("")),
-});
+  scheduledAt: z.string().trim().regex(datetimeLocalRegex, "Format tanggal/jam tidak valid.").optional().or(z.literal("")),
+}).refine(
+  (data) => {
+    if (!data.scheduledAt) return true;
+    const d = new Date(data.scheduledAt);
+    return !Number.isNaN(d.getTime());
+  },
+  { message: "Format tanggal/jam tidak valid." }
+);
 
 const validStatuses = ["not_started", "in_progress", "completed", "rescheduled", "skipped"] as const;
 type ValidStatus = (typeof validStatuses)[number];

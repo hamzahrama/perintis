@@ -140,23 +140,19 @@ export async function logHabitAction(_prev: HabitFormState, formData: FormData):
   if (!habit) return { error: "Habit tidak ditemukan." };
   if (!habit.is_active) return { error: "Habit tidak aktif." };
 
-  const { data: habitLog } = await supabase
-    .from("habit_logs")
-    .select("id")
-    .eq("habit_id", habitId)
-    .eq("user_id", user.id)
-    .eq("log_date", logDate)
-    .maybeSingle();
-  if (habitLog) return { error: "Sudah ada log untuk tanggal ini." };
-
-  // log_date disimpan sebagai DATE (YYYY-MM-DD) sesuai tanggal lokal user
+  // log_date disimpan sebagai DATE (YYYY-MM-DD) sesuai tanggal lokal user.
+  // Unique constraint (habit_id, log_date) di database yang menjadi proteksi utama;
+  // error duplikat ditangani eksplisit agar user mendapat pesan yang jelas.
   const { error } = await supabase.from("habit_logs").insert({
     habit_id: habitId,
     user_id: user.id,
     log_date: logDate,
     note: note || null,
   });
-  if (error) return { error: "Gagal mencatat habit." };
+  if (error) {
+    if (error.code === "23505") return { error: "Sudah ada log untuk tanggal ini." };
+    return { error: "Gagal mencatat habit." };
+  }
 
   revalidatePath("/habits");
   return { success: "Habit tercatat." };

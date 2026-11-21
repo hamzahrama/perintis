@@ -5,14 +5,11 @@ import { DashboardShell } from "@/components/dashboard-shell";
 import { Card } from "@/components/ui";
 import { getOnboardingStatus } from "@/lib/onboarding";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { formatForDisplay, validateTimezone } from "@/lib/timezone";
 
-function formatActivityDate(value: string | null) {
+function formatActivityDate(value: string | null, timezone: string) {
   if (!value) return "Belum dijadwalkan";
-
-  return new Intl.DateTimeFormat("id-ID", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value));
+  return formatForDisplay(value, timezone);
 }
 
 export default async function ProtectedPage() {
@@ -37,7 +34,7 @@ export default async function ProtectedPage() {
     { data: goals, error: goalsError },
     { data: activities, error: activitiesError },
   ] = await Promise.all([
-    supabase.from("user_preferences").select("theme").eq("user_id", user.id).maybeSingle(),
+    supabase.from("user_preferences").select("theme, timezone").eq("user_id", user.id).maybeSingle(),
     supabase.from("profiles").select("full_name").eq("user_id", user.id).maybeSingle(),
     supabase
       .from("goals")
@@ -63,6 +60,7 @@ export default async function ProtectedPage() {
   }
 
   const firstName = profile?.full_name?.trim().split(/\s+/)[0] ?? "Teman";
+  const timezone = validateTimezone(preferences.timezone);
   const activeGoals = goals ?? [];
   const plannedActivities = activities ?? [];
 
@@ -99,7 +97,7 @@ export default async function ProtectedPage() {
                       <h3>{activity.title}</h3>
                       <p>{activity.description || "Tidak ada catatan tambahan."}</p>
                     </div>
-                    <span className="item-meta">{formatActivityDate(activity.scheduled_at)}</span>
+                    <span className="item-meta">{formatActivityDate(activity.scheduled_at, timezone)}</span>
                   </li>
                 ))}
               </ul>

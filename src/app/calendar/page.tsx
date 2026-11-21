@@ -4,7 +4,7 @@ import { Card } from "@/components/ui";
 import { DashboardShell } from "@/components/dashboard-shell";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingStatus } from "@/lib/onboarding";
-import { getUserTimezone, utcToZonedDate, zonedDateToUtc } from "@/lib/timezone";
+import { getUserTimezone, getMonthRange, getTodayLocalString, utcToLocalDate } from "@/lib/timezone";
 
 function monthKeyOf(year: number, monthIndex: number) {
   return `${year}-${String(monthIndex + 1).padStart(2, "0")}`;
@@ -20,30 +20,28 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
   const { completed } = await getOnboardingStatus();
   if (!completed) redirect("/onboarding");
 
-  const match = /^(\d{4})-(\d{2})$/.exec(params.month ?? "");
-  const nowLocal = utcToZonedDate(new Date(), timezone);
+  const match = /^(\d{4})-(0[1-9]|1[0-2])$/.exec(params.month ?? "");
+  const nowLocal = getTodayLocalString(timezone);
   const year = match ? Number(match[1]) : Number(nowLocal.slice(0, 4));
   const monthIndex = match ? Number(match[2]) - 1 : Number(nowLocal.slice(5, 7)) - 1;
 
   const monthKey = monthKeyOf(year, monthIndex);
-  const start = zonedDateToUtc(`${monthKey}-01`, timezone);
-  const nextMonth = new Date(Date.UTC(year, monthIndex + 1, 1));
-  const end = zonedDateToUtc(
-    `${nextMonth.getUTCFullYear()}-${String(nextMonth.getUTCMonth() + 1).padStart(2, "0")}-01`,
-    timezone,
-  );
-  const selectedDate = /^\d{4}-\d{2}-\d{2}$/.test(params.date ?? "") ? params.date! : null;
+  const { start, end } = getMonthRange(year, monthIndex, timezone);
+  const lastDay = new Date(Date.UTC(year, monthIndex + 1, 0)).getUTCDate();
+  const selectedDate = new RegExp(`^${monthKey}-(0[1-9]|[12]\\d|3[01])$`).test(params.date ?? "")
+    && Number(params.date!.slice(-2)) <= lastDay
+    ? params.date!
+    : null;
 
   const [{ data: preferences }, { data: activities }, { data: habits }, { data: logs }] = await Promise.all([
     supabase.from("user_preferences").select("theme").eq("user_id", user.id).maybeSingle(),
     supabase.from("activities").select("id, title, scheduled_at, status").eq("user_id", user.id).gte("scheduled_at", start).lt("scheduled_at", end).order("scheduled_at"),
     supabase.from("habits").select("id, name").eq("user_id", user.id).eq("is_active", true),
-    supabase.from("habit_logs").select("id, habit_id, log_date, note").eq("user_id", user.id).gte("log_date", `${monthKey}-01`).lt("log_date", end.slice(0, 10)).order("log_date"),
+    supabase.from("habit_logs").select("id, habit_id, log_date, note").eq("user_id", user.id).gte("log_date", `${monthKey}-01`).lte("log_date", `${monthKey}-${String(lastDay).padStart(2, "0")}`).order("log_date"),
   ]);
   if (!preferences) throw new Error("Preferensi pengguna tidak ditemukan.");
 
   const first = new Date(Date.UTC(year, monthIndex, 1));
-  const lastDay = new Date(Date.UTC(year, monthIndex + 1, 0)).getUTCDate();
   const offset = (first.getUTCDay() + 6) % 7;
   const previousYear = monthIndex === 0 ? year - 1 : year;
   const previousMonth = monthIndex === 0 ? 11 : monthIndex - 1;
@@ -54,13 +52,13 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
   const dates = Array.from({ length: offset + lastDay }, (_, index) => index - offset + 1);
 
   const activityDays = new Set(
-    (activities ?? []).map((a) => (a.scheduled_at ? utcToZonedDate(a.scheduled_at, timezone) : null)).filter(Boolean),
+    (activities ?? []).map((a) => (a.scheduled_at ? utcToLocalDate(a.scheduled_at, timezone) : null)).filter(Boolean),
   );
   const logDays = new Set((logs ?? []).map((log) => log.log_date));
 
   const itemsForDate = selectedDate ? [
     ...(activities ?? [])
-      .filter((a) => a.scheduled_at && utcToZonedDate(a.scheduled_at, timezone) === selectedDate)
+      .filter((a) => a.scheduled_at && utcToLocalDate(a.scheduled_at, timezone) === selectedDate)
       .map((a) => ({ id: a.id, title: a.title, kind: "Aktivitas", status: a.status })),
     ...(logs ?? [])
       .filter((log) => log.log_date === selectedDate)

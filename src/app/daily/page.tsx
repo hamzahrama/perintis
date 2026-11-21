@@ -3,7 +3,7 @@ import { Card } from "@/components/ui";
 import { DashboardShell } from "@/components/dashboard-shell";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingStatus } from "@/lib/onboarding";
-import { formatForDisplay, getUserTimezone, utcToZonedDate } from "@/lib/timezone";
+import { formatForDisplay, getTodayLocalString, getUserTimezone, localDateToUtcEnd, localDateToUtcStart } from "@/lib/timezone";
 import { ActivityForm } from "./activity-form";
 import { ActivityStatusForm } from "./activity-status-form";
 
@@ -19,17 +19,17 @@ export default async function DailyPage() {
   const { data: preferences } = await supabase.from("user_preferences").select("theme").eq("user_id", user.id).maybeSingle();
   if (!preferences) throw new Error("Preferensi pengguna tidak ditemukan.");
 
-  // Tentukan hari ini (tanggal lokal user)
-  const todayLocal = utcToZonedDate(new Date(), timezone);
-  const todayStart = new Date(`${todayLocal}T00:00:00Z`);
-  const todayEnd = new Date(`${todayLocal}T23:59:59.999Z`);
+  // Tentukan hari ini (tanggal lokal user) menggunakan timezone user
+  const todayLocal = getTodayLocalString(timezone);
+  const todayStart = localDateToUtcStart(todayLocal, timezone);
+  const todayEnd = localDateToUtcEnd(todayLocal, timezone);
 
   const { data: activities, error } = await supabase
     .from("activities")
     .select("id, title, description, scheduled_at, status")
     .eq("user_id", user.id)
-    .gte("scheduled_at", todayStart.toISOString())
-    .lte("scheduled_at", todayEnd.toISOString())
+    .gte("scheduled_at", todayStart)
+    .lte("scheduled_at", todayEnd)
     .order("scheduled_at", { ascending: true, nullsFirst: false });
 
   if (error) throw new Error("Aktivitas belum dapat dimuat.");
