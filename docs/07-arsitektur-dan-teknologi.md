@@ -80,6 +80,9 @@ Detail kardinalitas, kolom, constraint, dan indeks harus dirancang sebelum migra
 - Jangan mempercayai user ID yang dikirim bebas dari client.
 - Gunakan zona waktu lokal pengguna untuk tampilan tanggal/ringkasan dan simpan timestamp secara konsisten.
 - Pisahkan seed/demo dari data pengguna; jangan membuat statistik palsu.
+- Pendampingan hybrid memiliki dua tanggung jawab: Structured Coach memakai data aktual PERINTIS untuk eksekusi rencana; Wise Personal Growth Mentor menyediakan percakapan AI dan riwayat persisten yang dibatasi pada user terautentikasi (DEC-040).
+- Kredensial AI hanya tersedia di server. Stream harus mengirim status akhir/error secara eksplisit; respons yang terpotong atau dibatalkan tidak boleh disimpan sebagai jawaban selesai.
+- Wise Personal Growth Mentor tidak boleh mengubah goal, habit, aktivitas, atau komitmen; perubahan memerlukan tindakan dan persetujuan eksplisit pengguna.
 
 ### Testing dan environment (rekomendasi setup)
 
@@ -103,6 +106,6 @@ Detail kardinalitas, kolom, constraint, dan indeks harus dirancang sebelum migra
 
 - Gunakan arsitektur modular secukupnya, jangan membuat abstraksi berlebihan.
 - Bangun satu alur end-to-end lebih dahulu: register → onboarding → goal → roadmap → daily task → reflection.
-- Personal Coach mengikuti keputusan FIX: panduan terstruktur, bukan AI live, dan percakapan tidak disimpan.
+- Structured Coach menyajikan panduan eksekusi yang relevan dengan data produk; Wise Personal Growth Mentor membantu pemahaman dan refleksi melalui chat interaktif (DEC-040).
 - Implementasikan fitur dengan kedalaman minimum yang dapat didemokan.
 - Jangan membangun infrastruktur kompleks sebelum kebutuhan MVP terbukti.

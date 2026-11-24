@@ -6,7 +6,7 @@ import { ChatInterface } from "./chat-interface";
 import { isAIConfigured } from "@/lib/ai/provider";
 
 export const metadata: Metadata = {
-  title: "Assistant | PERINTIS",
+  title: "Wise Personal Growth Mentor | PERINTIS",
 };
 
 export default async function AssistantPage() {
@@ -35,9 +35,9 @@ export default async function AssistantPage() {
     <DashboardShell initialTheme={preferences?.theme || "dark"} activePath="/assistant">
       <main className="assistant-container">
         <header className="page-header">
-          <h1 className="page-title">Personal Assistant</h1>
+          <h1 className="page-title">Wise Personal Growth Mentor</h1>
           <p className="page-description">
-            Pendamping setiamu untuk tumbuh lebih baik setiap hari.
+            Temani dirimu memahami tantangan dan menemukan arah pertumbuhanmu.
           </p>
         </header>
 

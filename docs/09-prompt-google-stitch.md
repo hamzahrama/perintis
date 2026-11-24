@@ -29,7 +29,7 @@ Buat halaman Dashboard untuk PERINTIS sebagai halaman pertama setelah login. Tam
 
 ## Prompt 02 — Personal Coach
 
-Buat halaman Personal Coach untuk MVP sebagai panduan terstruktur, bukan AI live atau layanan mentor manusia. Tampilkan pilihan topik/tantangan, prompt reflektif, dan 2–4 alternatif tindakan yang dapat dipilih, digabung, dibuat sendiri, ditunda, atau dilewati pengguna. Jangan tampilkan input chat bebas, riwayat percakapan, sesi konsultasi, atau klaim respons AI. Gunakan nada suportif, realistis, dan tidak menghakimi.
+Buat halaman Structured Coach untuk MVP sebagai panduan eksekusi terstruktur yang memakai data PERINTIS bila tersedia. Tampilkan pilihan topik/tantangan, prompt reflektif, dan 2–4 alternatif tindakan yang dapat dipilih, digabung, dibuat sendiri, ditunda, atau dilewati pengguna. Wise Personal Growth Mentor adalah pengalaman chat terpisah; jangan gabungkan riwayat/chat Mentor ke layar Structured Coach ini. Jangan tampilkan layanan mentor manusia atau sesi konsultasi. Gunakan nada suportif, realistis, dan tidak menghakimi.
 
 ## Prompt 03 — My Direction
 
@@ -98,7 +98,7 @@ Gunakan rekomendasi varian per fitur pada `docs/16-stitch-design-audit.md` sebag
 - Samakan sidebar dan navigasi global.
 - Samakan ukuran header, kartu, radius, tipografi, tombol, warna status, ikon, dan spacing.
 - Gunakan data dummy yang konsisten.
-- Coach MVP adalah panduan terstruktur: jangan tampilkan mentor manusia, jadwal konsultasi, Google Meet, AI live, atau riwayat percakapan.
+- Structured Coach adalah panduan eksekusi; Wise Personal Growth Mentor adalah pengalaman AI percakapan yang terpisah sesuai DEC-040. Jangan tampilkan mentor manusia, jadwal konsultasi, atau Google Meet.
 - Jangan menambahkan fitur di luar MVP.
 - Hilangkan klaim integrasi, keamanan, atau otomatisasi yang belum diimplementasikan.
 - Jangan tampilkan angka statistik sebagai data nyata; data MVP harus berasal dari data pengguna.

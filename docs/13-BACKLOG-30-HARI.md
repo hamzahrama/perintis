@@ -47,7 +47,7 @@ Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs
 
 | Hari | Fokus | Status | Catatan |
 |---|---|:---:|---|
-| 21–22 | Personal Coach | [-] | Panduan statis; tanpa AI live/chat bebas. |
+| 21–22 | Personal Coach | [-] | Structured Coach memakai data aktual; Wise Personal Growth Mentor menyediakan chat interaktif persisten (DEC-040). |
 | 23 | Daily Reflection | [x] | Form refleksi harian, simpan per user, validasi data. |
 | 24 | Weekly Growth Review | [-] | Rentang minggu memakai timezone user; smoke browser/DB belum. |
 | 25 | Progress Analytics | [-] | Route dan metrik aktual aktif; audit periode lokal dan smoke browser belum. |

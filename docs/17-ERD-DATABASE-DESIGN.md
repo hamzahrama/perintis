@@ -1,7 +1,7 @@
 # PERINTIS — ERD Database Design
 
 **Status:** Rancangan untuk review; bukan persetujuan schema final, Prisma models, atau migration.  
-**Sumber:** PRD, User Flow, Functional Specification, scope MVP, DEC-001–038, baseline ERD DEC-028, dan migration Supabase lokal yang ada. Tidak ada database introspection dalam penyusunan dokumen ini.
+**Sumber:** PRD, User Flow, Functional Specification, scope MVP, DEC-001–040, baseline ERD DEC-028, dan migration Supabase lokal yang ada. Tidak ada database introspection dalam penyusunan dokumen ini.
 
 ## 1. Batas rancangan
 
@@ -9,7 +9,7 @@
 - `auth.users` tetap dikelola Supabase Auth. Akun/password tidak diduplikasi ke tabel aplikasi.
 - Migration lokal yang diperiksa sudah mendefinisikan 15 tabel aplikasi di bawah. Ini adalah pemeriksaan file, bukan bukti schema remote sama atau sudah diterapkan.
 - Weekly Growth Review, Progress Analytics, Dashboard Overview, dan Calendar adalah agregasi dari data transaksi; tidak perlu tabel snapshot/duplikasi.
-- Personal Coach memakai konten dan prompt statis tanpa tabel percakapan. Pilihan Know Your Next Step tidak disimpan sebagai sesi terpisah; pilihan yang menjadi rencana disimpan sebagai roadmap step/activity.
+- Structured Coach menggunakan data domain PERINTIS yang ada. Wise Personal Growth Mentor menyimpan riwayat pada tabel percakapan/pesan aplikasi yang sudah tersedia; keputusan ini tidak mengubah schema. Pilihan Know Your Next Step tidak disimpan sebagai sesi terpisah; pilihan yang menjadi rencana disimpan sebagai roadmap step/activity.
 - Semua rekomendasi di dokumen ini berstatus **PROPOSED** kecuali dinyatakan sebagai keputusan **FIX** atau **OPEN** di Decision Log.
 
 ## 2. ERD
@@ -72,7 +72,7 @@ Semua ID entitas aplikasi adalah `uuid` dengan `gen_random_uuid()` kecuali `user
 ### Entitas yang sengaja tidak dibuat
 
 - `auth.users` tidak diduplikasi dan tidak dikelola Prisma.
-- Tidak ada tabel Coach conversation/message atau AI history (DEC-020/029).
+- Riwayat Wise Personal Growth Mentor memakai tabel aplikasi yang sudah ada; tidak ada tabel baru yang ditambahkan oleh DEC-040.
 - Tidak ada tabel Next Step session/options; simpan hanya step/activity yang dipilih menjadi rencana.
 - Tidak ada tabel Dashboard, Weekly Review, Analytics, atau Calendar; query/agregasi memakai tabel transaksi dan zona waktu pengguna (DEC-022).
 - Tidak ada tabel terpisah untuk reschedule; Activity diperbarui dan perubahan ditulis ke `activity_status_events`.
@@ -136,7 +136,7 @@ PK/unique constraint sudah menghasilkan beberapa indeks. Sebelum menambah indeks
 | Profile & Settings, Theme Customization | `profiles`, `user_preferences`. |
 | Onboarding & Assessment | `onboarding_responses`. |
 | Dashboard Overview | Agregasi `goals`, `roadmap_steps`, `activities`, `habits`, `habit_logs`, `goal_whys`; bukan tabel dashboard. |
-| Personal Coach | Materi/prompt statis; tidak ada riwayat persisted. |
+| Personal Coach | Structured Coach memakai data domain; Wise Personal Growth Mentor menggunakan `assistant_conversations` dan `assistant_messages` yang sudah ada (DEC-040). |
 | My Direction | `goals`. |
 | Remember Your Why | `goal_whys`. |
 | My Roadmap | `roadmaps`, `roadmap_steps`. |
@@ -185,7 +185,7 @@ PK/unique constraint sudah menghasilkan beberapa indeks. Sebelum menambah indeks
 
 - DEC-016: onboarding dapat dilanjutkan; selesai sebelum Goal dibuat.
 - DEC-017/018/019/023/031: maksimal satu roadmap aktif per Goal; satu Step dapat menghasilkan banyak Activity; status Activity; Habit dapat berdiri sendiri; Goal diarsipkan; reopen memakai Activity sama dan tercatat.
-- DEC-020/029: Coach statis/terkurasi, tanpa AI live dan tanpa riwayat.
+- DEC-020/029 adalah keputusan historis yang superseded oleh DEC-040: Structured Coach dan Wise Personal Growth Mentor berjalan berdampingan; riwayat Mentor disimpan pada tabel aplikasi yang sudah ada.
 - DEC-021/033: reminder in-app saja, due check saat aplikasi dibuka.
 - DEC-022/032: weekly dan analytics dihitung dari data aktual Senin–Minggu lokal, hitungan tanpa skor.
 - DEC-030: tidak ada UI hapus akun; purge administratif untuk demo, retensi publik tetap OPEN.

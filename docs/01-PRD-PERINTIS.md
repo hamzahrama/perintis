@@ -73,7 +73,7 @@ Mendukung pengguna untuk memulai kembali, menjadwalkan ulang, mengubah rencana, 
 ## 7. Model pendampingan
 
 Model yang dipilih adalah **hybrid guidance**:
-- Interaksi Personal Coach melalui panduan dan pilihan terstruktur; MVP tidak menggunakan AI live.
+- Pendampingan MVP menggabungkan Structured Coach berbasis fitur/data PERINTIS dan Wise Personal Growth Mentor untuk percakapan AI interaktif dengan riwayat tersimpan (DEC-040).
 - Panduan terstruktur dan otomatis melalui dashboard, roadmap, daily planner, habit tracker, reminder, serta refleksi.
 
 Karakter Personal Coach: suportif, tegas, terstruktur, realistis, adaptif, reflektif, dan berorientasi pada tujuan. Coach tidak menghakimi atau memaksakan keputusan.
@@ -125,7 +125,7 @@ Target angka kuantitatif belum ditetapkan dan tidak boleh dibuat seolah-olah sud
 
 ## 13. Keputusan dan hal yang masih belum diputuskan
 
-Keputusan produk/teknologi yang sudah FIX tercatat pada `docs/15-DECISION-LOG.md`, termasuk stack MVP, Supabase Auth/PostgreSQL, Coach terstruktur tanpa riwayat percakapan, reminder in-app, pengarsipan Goal, dan hitung dinamis untuk review/analytics. Dokumen arsitektur menjelaskan implementasi stack yang sudah disetujui.
+Keputusan produk/teknologi yang sudah FIX tercatat pada `docs/15-DECISION-LOG.md`, termasuk stack MVP, Supabase Auth/PostgreSQL, pendampingan hybrid (DEC-040), reminder in-app, pengarsipan Goal, dan hitung dinamis untuk review/analytics. Dokumen arsitektur menjelaskan implementasi stack yang sudah disetujui.
 
 Hal yang tetap OPEN:
 - Detail schema/migration setelah baseline ERD disetujui; zona waktu, target commitment, dan status Roadmap Step perlu ditetapkan.

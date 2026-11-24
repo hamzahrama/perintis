@@ -66,14 +66,7 @@ export async function getAssistantContext(userId: string): Promise<AssistantCont
   const recentReflectionDate = recentReflectionStart.toISOString().slice(0, 10);
 
   // Fetch all context in parallel
-  const [
-    { data: goals },
-    { data: todayActivities },
-    { data: upcomingActivities },
-    { data: habits },
-    { data: reflections },
-    { data: commitment },
-  ] = await Promise.all([
+  const results = await Promise.all([
     // Active goals
     supabase
       .from("goals")
@@ -132,6 +125,19 @@ export async function getAssistantContext(userId: string): Promise<AssistantCont
       .maybeSingle(),
   ]);
 
+  if (results.some((result) => result.error)) {
+    throw new Error("Gagal memuat konteks pengguna.");
+  }
+
+  const [
+    { data: goals },
+    { data: todayActivities },
+    { data: upcomingActivities },
+    { data: habits },
+    { data: reflections },
+    { data: commitment },
+  ] = results;
+
   return {
     userTimezone,
     activeGoals: goals ?? [],
@@ -185,11 +191,13 @@ export function formatContextForAI(context: AssistantContext): string {
   }
 
   if (context.recentReflections.length > 0) {
-    lines.push("REFLEKSI TERBARU:");
+    lines.push("REFLEKSI & KEMAJUAN TERBARU:");
     for (const r of context.recentReflections) {
       const wins = r.answers?.wins ? `"${r.answers.wins}"` : "—";
       const blockers = r.answers?.blockers ? `"${r.answers.blockers}"` : "—";
-      lines.push(`- ${r.reflection_date}: Berjalan baik: ${wins} | Hambatan: ${blockers}`);
+      lines.push(`- ${r.reflection_date}:`);
+      lines.push(`  Berhasil: ${wins}`);
+      lines.push(`  Hambatan: ${blockers}`);
     }
     lines.push("");
   }

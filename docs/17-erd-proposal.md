@@ -1,7 +1,7 @@
 # ERD Proposal — PERINTIS MVP
 
 **Status:** Disetujui pengguna sebagai baseline ERD konseptual (DEC-028); bukan schema final, SQL, atau izin migration. Keputusan yang tetap OPEN tercantum di bagian 7.  
-**Dasar:** keputusan FIX pada `docs/15-DECISION-LOG.md` dan flow/spec versi 0.2.
+**Dasar:** keputusan FIX pada `docs/15-DECISION-LOG.md` dan flow/spec versi 0.2, diperbarui oleh DEC-040.
 
 ## 1. Prinsip rancangan
 
@@ -9,7 +9,7 @@
 - Semua data privat membawa `user_id` yang mengacu ke `auth.users.id`, dan setiap query tetap memakai sesi terautentikasi serta RLS.
 - Foreign key komposit `(id, user_id)` menjaga relasi anak tidak dapat menunjuk data milik user lain.
 - Weekly Review, Progress Analytics, dan Calendar adalah hasil hitung/agregasi dari data transaksi; tidak dibuat tabel snapshot/duplikasi.
-- Coach tidak menyimpan percakapan. Opsi Next Step yang belum dipilih bersifat sementara; pilihan yang menjadi rencana disimpan sebagai roadmap step/activity.
+- Structured Coach menggunakan data domain yang sudah ada; Wise Personal Growth Mentor memakai tabel percakapan/pesan yang sudah ada sesuai DEC-040. Opsi Next Step yang belum dipilih bersifat sementara; pilihan yang menjadi rencana disimpan sebagai roadmap step/activity.
 - Status aktivitas mengikuti DEC-018/DEC-031. Riwayat status append-only mencatat reschedule dan reopen; aktivitas selesai/dilewati yang dibuka kembali memakai ID yang sama.
 
 ## 2. Diagram konseptual

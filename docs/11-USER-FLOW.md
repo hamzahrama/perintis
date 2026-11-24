@@ -124,14 +124,14 @@ flowchart TD
 
 ## 9. Flow Personal Coach
 
-1. Pengguna membuka Personal Coach.
-2. Pengguna memilih topik/skenario terkurasi untuk mendapatkan panduan.
-3. Coach menampilkan materi dan prompt terstruktur yang telah disiapkan; bukan respons AI live.
-4. Jika menyarankan tindakan, Coach menawarkan beberapa opsi konkret.
-5. Pengguna bebas memilih, menggabungkan, membuat opsi sendiri, menunda, atau melewati.
-6. Coach tidak menyimpan riwayat percakapan; pilihan yang menjadi rencana disimpan sebagai roadmap step/activity.
+1. Structured Coach membantu pengguna menjalankan goal, roadmap, habit, aktivitas, refleksi, dan review memakai data aktual yang tersedia.
+2. Pengguna membuka Wise Personal Growth Mentor saat ingin memahami diri, mengeksplorasi tantangan/motivasi, atau mempertimbangkan solusi.
+3. Pengguna mengirim pesan bebas; Mentor menggunakan riwayat tersimpan dalam urutan percakapan dan konteks PERINTIS milik user tersebut.
+4. Mentor memberi penjelasan dan contoh yang relevan, lalu membantu refleksi atau langkah praktis tanpa memaksakan pertanyaan.
+5. Pengguna tetap memutuskan tindakan. AI tidak mengubah goal, habit, aktivitas, jadwal, atau komitmen.
+6. Percakapan Mentor disimpan untuk user yang terautentikasi; hanya respons yang selesai dan berhasil disimpan menjadi riwayat.
 
-Interaksi ini ditetapkan pada DEC-029; tidak ada input chat bebas, AI live, atau penyimpanan riwayat.
+Structured Coach memberi arah; Wise Personal Growth Mentor memberi pemahaman. Keduanya mengikuti DEC-040.
 
 ## 10. Flow Profile & Settings
 
@@ -163,7 +163,7 @@ Keputusan alur yang disetujui:
 - Habit dapat berdiri sendiri atau dikaitkan ke goal.
 - Status aktivitas mencakup belum dimulai, sedang berjalan, selesai, dijadwalkan ulang, dan dilewati. Reschedule memperbarui jadwal dan status.
 - Refleksi setelah skip bersifat opsional.
-- Coach menggunakan panduan terstruktur tanpa riwayat percakapan tersimpan.
+- Structured Coach menggunakan panduan dan data aktual; Wise Personal Growth Mentor adalah chat interaktif dengan riwayat tersimpan (DEC-040).
 - Reminder terbatas pada notifikasi in-app saat jatuh tempo.
 - Reminder due diperiksa saat aplikasi dibuka (DEC-033).
 - Weekly Review dan Analytics memakai pekan Senin–Minggu lokal dengan hitungan aktivitas terjadwal/selesai/dilewati, log habit, dan refleksi; tanpa skor (DEC-032).

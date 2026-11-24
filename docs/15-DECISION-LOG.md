@@ -32,7 +32,7 @@ Tempat resmi menyimpan keputusan proyek. Perbarui dokumen ini setiap kali penggu
 | DEC-017 | Goal & Roadmap | Maksimal satu Roadmap aktif per Goal; satu langkah dapat dijadwalkan menjadi beberapa aktivitas | FIX |
 | DEC-018 | Status aktivitas | Status mencakup belum dimulai, sedang berjalan, selesai, dijadwalkan ulang, dan dilewati; reschedule memperbarui jadwal/status; refleksi setelah skip opsional | FIX |
 | DEC-019 | Relasi Habit | Habit dapat berdiri sendiri; hubungan dengan Goal opsional | FIX |
-| DEC-020 | Personal Coach MVP | Panduan terstruktur, bukan AI live; riwayat percakapan tidak disimpan | FIX |
+| DEC-020 | Personal Coach MVP | Keputusan historis: panduan terstruktur, bukan AI live; riwayat percakapan tidak disimpan | SUPERSEDED; lihat DEC-040 |
 | DEC-021 | Reminder MVP | Reminder/notifikasi in-app saat jatuh tempo; tanpa push, email, atau integrasi kalender eksternal | FIX |
 | DEC-022 | Weekly Review & Analytics | Dihitung dinamis dari data aktual menggunakan zona waktu lokal perangkat; data kurang ditampilkan dengan empty/limited state | FIX |
 | DEC-023 | Goal lifecycle | Goal diarsipkan, bukan dihapus melalui UI MVP; histori turunannya dipertahankan | FIX |
@@ -41,7 +41,7 @@ Tempat resmi menyimpan keputusan proyek. Perbarui dokumen ini setiap kali penggu
 | DEC-026 | Stack MVP & batas biaya | Next.js 16.4.x (gunakan patch stabil/security terbaru; versi rujukan 16.4.5), Node.js 24 LTS, TypeScript, Tailwind CSS 4; Supabase Auth + PostgreSQL/RLS; `@supabase/ssr` dan `@supabase/supabase-js` tanpa ORM tambahan; Zod; deploy Vercel Hobby; target biaya layanan $0 untuk demo pribadi | FIX |
 | DEC-027 | Acuan desain MVP | Rekomendasi kandidat per fitur pada `docs/16-stitch-design-audit.md` disetujui sebagai acuan implementasi; gunakan hanya konten sesuai scope dan adaptasi responsif sesuai DEC-014/015. Mockup mentah tidak diubah atau dianggap sebagai UI berfungsi | FIX |
 | DEC-028 | ERD konseptual | Proposal `docs/17-erd-proposal.md` disetujui sebagai baseline konseptual; bukan schema/migration. Keputusan privasi, region, trigger reminder, dan detail yang ditandai OPEN tetap berlaku | FIX |
-| DEC-029 | Interaksi Personal Coach | Pengguna memilih topik/skenario terkurasi dengan materi dan prompt statis; tanpa input chat bebas, AI live, atau penyimpanan riwayat | FIX |
+| DEC-029 | Interaksi Personal Coach | Keputusan historis: topik/skenario terkurasi dengan materi dan prompt statis; tanpa input chat bebas, AI live, atau penyimpanan riwayat | SUPERSEDED; lihat DEC-040 |
 | DEC-030 | Privasi dan penghapusan data MVP | Tanpa ekspor atau UI hapus akun; permintaan penghapusan diproses manual dengan purge akun dan data terkait. Kebijakan retensi harus ditetapkan sebelum rilis publik | FIX untuk demo; retensi rilis publik tetap OPEN |
 | DEC-031 | Membuka kembali aktivitas | Pengguna dapat membuka kembali aktivitas selesai/dilewati yang sama; status kembali ke `not_started`, jadwal dipertahankan, dan perubahan dicatat di riwayat tanpa duplikasi | FIX |
 | DEC-032 | Periode dan metrik evaluasi | Periode Senin–Minggu berdasarkan zona waktu lokal; hitung aktivitas terjadwal/selesai/skip, log habit, dan refleksi. Tampilkan hitungan saja, tanpa skor | FIX; sumber zona waktu masih perlu ditetapkan |
@@ -52,6 +52,7 @@ Tempat resmi menyimpan keputusan proyek. Perbarui dokumen ini setiap kali penggu
 | DEC-037 | Setup Prisma | Atas instruksi eksplisit pengguna, tambahkan Prisma ORM 7 stable sebagai dependency development untuk konfigurasi/schema tooling; keputusan ini supersedes bagian “tanpa ORM tambahan” pada DEC-026. Tetap gunakan Supabase Auth SDK; SQL migration Supabase yang ada tetap sumber schema sampai ada keputusan migrasi. Jangan memakai Prisma untuk data privat sebelum strategi identitas user dan RLS diverifikasi. | FIX untuk setup tooling; integrasi aplikasi/migrasi schema tetap OPEN |
 | DEC-038 | Supabase pooler project | Gunakan endpoint pooler project Singapore `aws-1-ap-southeast-1` yang diberikan pengguna; transaction pooler untuk koneksi aplikasi dan session pooler untuk perintah Prisma CLI. Password hanya di `.env.local` dan tidak dicatat di repository. | FIX; konektivitas belum diuji |
 | DEC-039 | Timezone & Critical Fix Phase 1 | Konsolidasi timezone helper, validasi input strict, dan persistence notification | FIX |
+| DEC-040 | Model pendampingan hybrid | Structured Coach dan Wise Personal Growth Mentor berjalan berdampingan. Structured Coach membantu eksekusi menggunakan data aktual PERINTIS; Wise Personal Growth Mentor menyediakan chat AI interaktif, konteks percakapan, dan riwayat persisten per user. Persona Mentor tetap tenang, thoughtful, jujur, hangat, matang, empatik, tidak menghakimi, dan berbahasa Indonesia alami. AI tidak mengubah goal, habit, aktivitas, jadwal, atau komitmen tanpa tindakan dan persetujuan eksplisit pengguna. Tidak menambah item di luar scope MVP. DEC-020/029 dipertahankan sebagai sejarah dan superseded. | FIX |
 
 ## Resolusi item OPEN sebelumnya
 

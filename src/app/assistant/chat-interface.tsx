@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Button, Notice, TextInput } from "@/components/ui";
-import { SUGGESTED_PROMPTS } from "@/lib/ai/prompts";
+import { SUGGESTED_PROMPTS, getSuggestedFollowups } from "@/lib/ai/prompts";
+import { buildAssistantRequestMessages } from "@/lib/ai/conversation";
+import { consumeAssistantEventStream } from "@/lib/ai/stream-protocol";
 import {
   createConversationAction,
   deleteConversationAction,
@@ -15,6 +17,7 @@ type Message = {
   role: "user" | "assistant";
   content: string;
   created_at?: string;
+  deliveryStatus?: "interrupted" | "not-saved";
 };
 
 type Conversation = {
@@ -94,7 +97,11 @@ export function ChatInterface({
   async function handleSendMessage(text: string) {
     if (!text.trim() || isLoading || !isConfigured) return;
 
-    const userMessage: Message = { role: "user", content: text };
+    const userMessage: Message = {
+      id: crypto.randomUUID(),
+      role: "user",
+      content: text,
+    };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     setInput("");
@@ -105,6 +112,10 @@ export function ChatInterface({
     const signal = abortRef.current.signal;
 
     let currentConversationId = activeId;
+    let assistantContent = "";
+    let assistantMessageId: string | null = null;
+    let assistantStarted = false;
+    let assistantCompleted = false;
 
     try {
       if (!currentConversationId) {
@@ -114,18 +125,54 @@ export function ChatInterface({
         }
         currentConversationId = result.data.id;
         setActiveId(currentConversationId);
-        setConversations([result.data, ...conversations]);
+        const newConversation = result.data;
+        setConversations((previous) => [
+          newConversation,
+          ...previous.filter(
+            (conversation) => conversation.id !== newConversation.id,
+          ),
+        ]);
       }
 
       if (!currentConversationId) {
         throw new Error("Percakapan tidak ditemukan");
       }
 
-      await saveMessageAction(currentConversationId, "user", text);
+      let savedUserMessage;
+      try {
+        savedUserMessage = await saveMessageAction(
+          currentConversationId,
+          "user",
+          text,
+        );
+      } catch {
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === userMessage.id
+              ? { ...message, deliveryStatus: "not-saved" }
+              : message,
+          ),
+        );
+        throw new Error("Pesan pengguna gagal disimpan. Coba kirim ulang.");
+      }
+      if (savedUserMessage.error || !savedUserMessage.success) {
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === userMessage.id
+              ? { ...message, deliveryStatus: "not-saved" }
+              : message,
+          ),
+        );
+        throw new Error(
+          savedUserMessage.error || "Pesan pengguna gagal disimpan.",
+        );
+      }
 
+      const requestMessages = buildAssistantRequestMessages(messages, text);
       const response = await fetch("/api/assistant", {
         method: "POST",
-        body: JSON.stringify({ messages: newMessages }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: requestMessages }),
         signal,
       });
 
@@ -138,41 +185,99 @@ export function ChatInterface({
         throw new Error(errData.error || "Gagal menghubungi assistant");
       }
 
-      const reader = response.body?.getReader();
-      if (!reader) throw new Error("Gagal membaca respon streaming");
+      if (!response.body) throw new Error("Gagal membaca respon streaming");
 
-      let assistantContent = "";
-      setMessages([...newMessages, { role: "assistant", content: "" }]);
+      assistantStarted = true;
+      assistantMessageId = crypto.randomUUID();
+      const assistantMessage: Message = {
+        id: assistantMessageId,
+        role: "assistant",
+        content: "",
+      };
+      setMessages([...newMessages, assistantMessage]);
 
-      const decoder = new TextDecoder();
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+      await consumeAssistantEventStream(
+        response.body,
+        (textChunk) => {
+          assistantContent += textChunk;
+          setMessages([
+            ...newMessages,
+            { ...assistantMessage, content: assistantContent },
+          ]);
+        },
+        signal,
+      );
+      assistantCompleted = true;
 
-        const chunk = decoder.decode(value);
-        assistantContent += chunk;
-
-        setMessages([...newMessages, { role: "assistant", content: assistantContent }]);
-      }
-
-      await saveMessageAction(currentConversationId, "assistant", assistantContent);
-
-    } catch (err: unknown) {
-      if (err instanceof DOMException && err.name === "AbortError") {
+      let savedAssistantMessage;
+      try {
+        savedAssistantMessage = await saveMessageAction(
+          currentConversationId,
+          "assistant",
+          assistantContent,
+        );
+      } catch {
+        setMessages([
+          ...newMessages,
+          {
+            ...assistantMessage,
+            content: assistantContent,
+            deliveryStatus: "not-saved",
+          },
+        ]);
+        setError(
+          "Jawaban selesai, tetapi gagal disimpan. Jawaban ini tidak akan dipakai sebagai riwayat pada pesan berikutnya.",
+        );
         return;
       }
-      const msg = err instanceof Error ? err.message : "Terjadi kesalahan. Silakan coba lagi.";
+      if (savedAssistantMessage.error || !savedAssistantMessage.success) {
+        setMessages([
+          ...newMessages,
+          {
+            ...assistantMessage,
+            content: assistantContent,
+            deliveryStatus: "not-saved",
+          },
+        ]);
+        setError(
+          savedAssistantMessage.error ||
+            "Jawaban selesai, tetapi gagal disimpan. Jawaban ini tidak akan dipakai sebagai riwayat pada pesan berikutnya.",
+        );
+      }
+
+    } catch (err: unknown) {
+      const wasCancelled =
+        err instanceof DOMException && err.name === "AbortError";
+      if (assistantStarted && assistantMessageId) {
+        setMessages([
+          ...newMessages,
+          {
+            id: assistantMessageId,
+            role: "assistant",
+            content: assistantContent,
+            deliveryStatus: assistantCompleted ? "not-saved" : "interrupted",
+          },
+        ]);
+      }
+      const msg = wasCancelled
+        ? "Generasi dihentikan. Jawaban terputus dan belum disimpan."
+        : assistantCompleted
+          ? "Jawaban selesai, tetapi gagal disimpan. Jawaban ini tidak akan dipakai sebagai riwayat pada pesan berikutnya."
+        : err instanceof Error
+          ? err.message
+          : "Terjadi kesalahan. Silakan coba lagi.";
       setError(msg);
     } finally {
       setIsLoading(false);
+      abortRef.current = null;
     }
   }
 
   const handleStop = () => {
     if (abortRef.current) {
+      setError("Menghentikan generasi...");
       abortRef.current.abort();
     }
-    setIsLoading(false);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -181,6 +286,21 @@ export function ChatInterface({
       handleSendMessage(input);
     }
   };
+
+  const lastUserMsg = messages.length > 0
+    ? [...messages].reverse().find((m) => m.role === "user")?.content ?? ""
+    : "";
+  const lastAssistantMsg = messages.length > 0
+    ? [...messages].reverse().find((m) => m.role === "assistant")?.content ?? ""
+    : "";
+  const followups = getSuggestedFollowups({ lastUserMessage: lastUserMsg, lastAssistantMessage: lastAssistantMsg });
+
+  const showFollowups = () =>
+    !isLoading &&
+    messages.length > 0 &&
+    messages[messages.length - 1].role === "assistant" &&
+    !messages[messages.length - 1].deliveryStatus &&
+    followups.length > 0;
 
   return (
     <div className="assistant-layout">
@@ -266,12 +386,43 @@ export function ChatInterface({
               </div>
             </div>
           ) : (
-            messages.map((m, i) => (
-              <div key={m.id ?? i} className={`message-bubble ${m.role}`}>
-                <div className="avatar">{m.role === "user" ? "👤" : "🌱"}</div>
-                <div className="content">{m.content}</div>
-              </div>
-            ))
+            <>
+              {messages.map((m, i) => (
+                <div key={m.id ?? i} className={`message-bubble ${m.role}`}>
+                  <div className="avatar">{m.role === "user" ? "👤" : "🌱"}</div>
+                  <div className="content">
+                    {m.content}
+                    {m.deliveryStatus === "interrupted" && (
+                      <p className="message-status">
+                        Respons terputus dan belum disimpan.
+                      </p>
+                    )}
+                    {m.deliveryStatus === "not-saved" && (
+                      <p className="message-status">
+                        Pesan ini belum tersimpan dan tidak dipakai sebagai riwayat.
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+              {showFollowups() && (
+                <div className="suggested-followups">
+                  <p className="followup-label">Lanjutkan obrolan:</p>
+                  <div className="suggested-prompts suggested-prompts--inline">
+                    {followups.map((prompt) => (
+                      <button
+                        key={prompt}
+                        className="prompt-chip"
+                        onClick={() => handleSendMessage(prompt)}
+                        disabled={!isConfigured || isLoading}
+                      >
+                        {prompt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
           )}
           {isLoading && (
             <div className="message-bubble assistant">
@@ -439,6 +590,12 @@ export function ChatInterface({
           white-space: pre-wrap;
         }
 
+        .message-status {
+          margin-top: 0.5rem;
+          color: var(--color-text-muted);
+          font-size: 0.75rem;
+        }
+
         .message-bubble.user .content {
           background: var(--color-primary);
           color: white;
@@ -468,19 +625,50 @@ export function ChatInterface({
           max-width: 500px;
         }
 
+        .suggested-prompts--inline {
+          justify-content: flex-start;
+          margin-top: 0.5rem;
+          max-width: 100%;
+        }
+
         .prompt-chip {
-          padding: 0.5rem 1rem;
-          border-radius: 2rem;
+          padding: 0.5rem 0.75rem;
+          border-radius: var(--radius-md);
           border: 1px solid var(--color-border);
-          background: transparent;
-          font-size: 0.85rem;
+          background: var(--color-surface);
+          font-size: 0.8rem;
           cursor: pointer;
           transition: all 0.2s;
+          color: var(--color-text);
         }
 
         .prompt-chip:hover {
           background: var(--color-surface-hover);
           border-color: var(--color-primary);
+          transform: translateY(-1px);
+        }
+
+        .prompt-chip--primary {
+          border-color: var(--color-primary);
+          color: var(--color-primary);
+          font-weight: 500;
+        }
+
+        .suggested-followups {
+          margin-top: -0.5rem;
+          padding-left: 2.75rem;
+          animation: fadeIn 0.3s ease-out;
+        }
+
+        .followup-label {
+          font-size: 0.75rem;
+          color: var(--color-text-muted);
+          margin-bottom: 0.25rem;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(5px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         .prompt-chip:disabled {

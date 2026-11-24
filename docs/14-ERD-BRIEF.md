@@ -22,7 +22,7 @@ Kandidat berikut adalah bahan diskusi, bukan keputusan final:
 | Reminder | Reminder, Notification | Preferensi/jadwal dan catatan pengiriman bila benar-benar dibutuhkan |
 | Reflection | DailyReflection | Refleksi harian; Weekly Review dihitung dari data aktual tanpa snapshot (DEC-022) |
 | Commitment | Commitment | Komitmen sukarela pengguna |
-| Coach | Tidak ada tabel percakapan | DEC-020 menetapkan panduan terstruktur tanpa AI live dan tanpa menyimpan riwayat percakapan |
+| Wise Personal Growth Mentor | `assistant_conversations`, `assistant_messages` | Riwayat percakapan persisten dan dibatasi pada user terautentikasi (DEC-040); Structured Coach menggunakan data domain yang sudah ada |
 
 ## 3. Pertanyaan desain data
 
@@ -34,7 +34,7 @@ Agent wajib mengusulkan jawaban dan menjelaskan trade-off untuk:
 5. Reschedule dan reopen memperbarui aktivitas yang sama serta mencatat event status; aktivitas selesai/dilewati dapat dibuka kembali ke `not_started`, jadwal tetap (DEC-031).
    Matriks transisi status lainnya masih OPEN-014.
 6. Weekly Review/Analytics dihitung dinamis per Senin–Minggu lokal dengan hitungan aktivitas terjadwal/selesai/dilewati, log habit, dan refleksi (DEC-032).
-7. Coach tidak menyimpan percakapan (DEC-020/029); pilihan Next Step tersimpan sebagai step/activity.
+7. Structured Coach memakai data domain; Wise Personal Growth Mentor menggunakan tabel percakapan/pesan yang sudah ada (DEC-040); pilihan Next Step tersimpan sebagai step/activity.
 8. Reminder dan notification dipisah; due check dilakukan saat aplikasi dibuka (DEC-033).
 9. Goal diarsipkan; permintaan hapus akun demo diproses manual tanpa ekspor/UI delete, retensi publik tetap OPEN (DEC-030).
 10. Strategi penyimpanan zona waktu IANA masih OPEN-022.
@@ -49,7 +49,7 @@ Agent wajib mengusulkan jawaban dan menjelaskan trade-off untuk:
 - Jangan membuat tabel untuk setiap komponen UI.
 - Jangan menyimpan rahasia autentikasi secara manual jika provider auth mengelolanya.
 - Jangan membuat entitas AI/notification kompleks sebelum mekanismenya diputuskan.
-- Jangan membuat tabel CoachConversation/CoachMessage; riwayat percakapan tidak disimpan (DEC-020).
+- Riwayat Wise Personal Growth Mentor menggunakan tabel percakapan/pesan yang sudah ada dan harus mempertahankan ownership user; tidak menambah schema database pada keputusan DEC-040.
 - Pastikan relasi mendukung seluruh alur MVP, bukan hanya satu halaman.
 
 ## 5. Output yang harus diberikan agent
