@@ -28,7 +28,18 @@ export async function updateSupabaseSession(request: NextRequest) {
     },
   });
 
-  const { data } = await supabase.auth.getClaims();
-  // Invalid or expired cookie must fail closed, not crash every protected request.
-  return { response, hasSession: Boolean(data?.claims?.sub) };
+  try {
+    // Use getUser() so proxy matches protected Server Components (which call
+    // getUser()), refreshes expired tokens when possible, clears dead session
+    // cookies, and rejects server-revoked sessions before redirecting.
+    const { data, error } = await supabase.auth.getUser();
+    return {
+      response,
+      hasSession: !error && Boolean(data.user),
+    };
+  } catch {
+    // Malformed or invalid auth cookies must fail closed. Preserve any
+    // Set-Cookie cleanup headers emitted before/during failure.
+    return { response, hasSession: false };
+  }
 }
