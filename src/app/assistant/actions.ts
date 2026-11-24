@@ -94,10 +94,10 @@ export async function saveMessageAction(
   const { error } = await supabase
     .from("assistant_messages")
     .insert({
-      conversation_id: conversationId,
+      conversation_id: parsedConversationId.data,
       user_id: user.id,
       role,
-      content,
+      content: parsedContent.data,
     });
 
   if (error) return { error: "Gagal menyimpan pesan" };

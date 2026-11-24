@@ -3,7 +3,8 @@ create table public.assistant_conversations (
   user_id uuid not null references auth.users (id) on delete cascade,
   title text not null default 'Percakapan baru' check (length(btrim(title)) between 1 and 120),
   created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  updated_at timestamptz not null default now(),
+  unique (id, user_id)
 );
 
 create table public.assistant_messages (
@@ -16,7 +17,6 @@ create table public.assistant_messages (
   foreign key (conversation_id, user_id) references public.assistant_conversations (id, user_id) on delete cascade
 );
 
-alter table public.assistant_conversations add constraint assistant_conversations_id_user_key unique (id, user_id);
 create index assistant_conversations_user_updated_idx on public.assistant_conversations (user_id, updated_at desc);
 create index assistant_messages_conversation_created_idx on public.assistant_messages (conversation_id, created_at);
 create index assistant_messages_user_created_idx on public.assistant_messages (user_id, created_at desc);

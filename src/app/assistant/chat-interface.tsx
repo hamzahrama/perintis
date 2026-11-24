@@ -38,6 +38,7 @@ export function ChatInterface({
   const [isLoadingHistory, setIsLoadingHistory] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -183,11 +184,14 @@ export function ChatInterface({
 
   return (
     <div className="assistant-layout">
-      <aside className="assistant-sidebar">
+      <aside className={`assistant-sidebar${mobileDrawerOpen ? " assistant-sidebar--open" : ""}`}>
         <Button
           variant="secondary"
           className="w-full mb-4"
-          onClick={handleNewConversation}
+          onClick={() => {
+            handleNewConversation();
+            setMobileDrawerOpen(false);
+          }}
           disabled={isLoading}
         >
           + Percakapan Baru
@@ -200,7 +204,10 @@ export function ChatInterface({
               <div key={c.id} className="conversation-row">
                 <button
                   className={`conversation-item ${activeId === c.id ? "active" : ""}`}
-                  onClick={() => loadConversation(c.id)}
+                  onClick={() => {
+                    loadConversation(c.id);
+                    setMobileDrawerOpen(false);
+                  }}
                   disabled={isLoading}
                 >
                   <span className="title">{c.title}</span>
@@ -219,6 +226,22 @@ export function ChatInterface({
           )}
         </div>
       </aside>
+      {mobileDrawerOpen && (
+        <div
+          className="assistant-overlay"
+          onClick={() => setMobileDrawerOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+      <Button
+        className="assistant-mobile-toggle"
+        variant="secondary"
+        onClick={() => setMobileDrawerOpen((prev) => !prev)}
+        aria-expanded={mobileDrawerOpen}
+        aria-controls="assistant-sidebar"
+      >
+        {mobileDrawerOpen ? "Tutup" : "Riwayat Percakapan"}
+      </Button>
 
       <section className="assistant-chat">
         <div className="messages-container" ref={scrollRef}>
@@ -497,6 +520,60 @@ export function ChatInterface({
             grid-template-columns: 1fr;
           }
           .assistant-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            max-width: 85vw;
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            z-index: 50;
+            transform: translateX(-100%);
+            transition: transform 0.2s ease;
+            box-shadow: var(--shadow-lg);
+            padding: 1.5rem 1rem 1rem;
+            padding-right: 1rem;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+          }
+          .assistant-sidebar.assistant-sidebar--open {
+            transform: translateX(0);
+          }
+          .assistant-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 40;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+          }
+          .assistant-overlay:not([hidden]) {
+            opacity: 1;
+            visibility: visible;
+          }
+          .assistant-mobile-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 140px;
+          }
+          .assistant-chat {
+            border-radius: var(--radius-lg);
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+          }
+        }
+        @media (min-width: 769px) {
+          .assistant-mobile-toggle {
+            display: none;
+          }
+          .assistant-overlay {
             display: none;
           }
         }

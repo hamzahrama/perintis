@@ -13,15 +13,18 @@ create or replace function public.consume_assistant_rate_limit(
   p_window_seconds integer
 ) returns table (allowed boolean, retry_after integer)
 language plpgsql
-security invoker
-set search_path = public
+security definer
+set search_path = ''
 as $$
 declare
   current_row public.assistant_rate_limits%rowtype;
   elapsed integer;
 begin
-  if p_user_id is null or p_user_id <> (select auth.uid()) then
-    return query select false, p_window_seconds;
+  if p_user_id is null
+    or p_user_id <> (select auth.uid())
+    or p_limit <> 20
+    or p_window_seconds <> 60 then
+    return query select false, 60;
     return;
   end if;
 
