@@ -1,15 +1,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-const conversationSchema = z.object({
-  title: z.string().trim().min(1).max(120),
-});
-
-const idSchema = z.string().uuid();
-const contentSchema = z.string().trim().min(1).max(4000);
+import { conversationSchema, idSchema, contentSchema } from "@/lib/assistant/schemas";
 
 export async function createConversationAction(formData: FormData) {
   const supabase = await createSupabaseServerClient();

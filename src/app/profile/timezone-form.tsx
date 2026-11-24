@@ -26,7 +26,17 @@ export function TimezoneForm() {
           maxLength={100}
           required
         />
-        {detected && <p style={{ marginTop: "0.25rem", fontSize: "0.875rem", color: "var(--muted)" }}>Terdeteksi otomatis: {detected}</p>}
+        {detected && (
+          <p
+            style={{
+              marginTop: "0.25rem",
+              fontSize: "0.875rem",
+              color: "var(--color-muted)",
+            }}
+          >
+            Terdeteksi otomatis: {detected}
+          </p>
+        )}
       </label>
       {state.error && <Notice tone="error">{state.error}</Notice>}
       {state.success && <Notice tone="success">{state.success}</Notice>}
@@ -38,7 +48,15 @@ export function TimezoneForm() {
 export function TimezoneDisplay({ timezone }: { timezone: string | null }) {
   if (!timezone) return null;
   return (
-    <div style={{ marginTop: "1rem", padding: "1rem", background: "var(--card-bg)", borderRadius: "var(--radius)", border: "1px solid var(--border)" }}>
+    <div
+      style={{
+        marginTop: "1rem",
+        padding: "1rem",
+        background: "var(--color-surface)",
+        borderRadius: "var(--radius-lg)",
+        border: "1px solid var(--color-border)",
+      }}
+    >
       <strong>Zona waktu aktif:</strong> <code>{timezone}</code>
     </div>
   );

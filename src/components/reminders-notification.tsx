@@ -15,7 +15,7 @@ function MarkReadButton({ notificationId }: { notificationId: string }) {
   return (
     <form action={action}>
       <input type="hidden" name="notificationId" value={notificationId} />
-      {state.error && <p style={{ color: "var(--error)", fontSize: "0.75rem", margin: "0.25rem 0 0" }}>{state.error}</p>}
+      {state.error && <p style={{ color: "var(--color-error)", fontSize: "0.75rem", margin: "0.25rem 0 0" }}>{state.error}</p>}
       <button className="button button--ghost button--small" disabled={pending} type="submit">
         {pending ? "Menandai..." : "Tutup"}
       </button>

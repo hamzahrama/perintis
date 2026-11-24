@@ -60,7 +60,7 @@ export default async function WeeklyReviewPage() {
           </Card>
           <Card className="dashboard-panel">
             <h2 className="section-title">Aktivitas Dilewati</h2>
-            <p style={{ fontSize: "2rem", fontWeight: "bold", margin: "1rem 0", color: "var(--muted)" }}>{skippedCount ?? 0}</p>
+            <p style={{ fontSize: "2rem", fontWeight: "bold", margin: "1rem 0", color: "var(--color-muted)" }}>{skippedCount ?? 0}</p>
             <p>Pelaksanaan yang kamu lewati tanpa hukuman.</p>
           </Card>
           <Card className="dashboard-panel">
