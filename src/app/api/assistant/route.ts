@@ -26,7 +26,7 @@ function validateRequest(
       .array(
         z.object({
           role: z.enum(["user", "assistant"]),
-          content: z.string().trim().min(1).max(2000),
+          content: z.string().trim().min(1).max(4000),
         }),
       )
       .min(1)
@@ -35,7 +35,7 @@ function validateRequest(
 
   const parsed = schema.safeParse(body);
   if (!parsed.success) {
-    return { ok: false, error: "Data permintaan tidak valid." };
+    return { ok: false, error: "Pesan terlalu panjang (maksimal 4.000 karakter per pesan)." };
   }
   return { ok: true, messages: parsed.data.messages };
 }

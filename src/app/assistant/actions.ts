@@ -9,7 +9,7 @@ const conversationSchema = z.object({
 });
 
 const idSchema = z.string().uuid();
-const contentSchema = z.string().trim().min(1).max(12000);
+const contentSchema = z.string().trim().min(1).max(4000);
 
 export async function createConversationAction(formData: FormData) {
   const supabase = await createSupabaseServerClient();

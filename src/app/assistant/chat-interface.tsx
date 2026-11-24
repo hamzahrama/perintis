@@ -119,7 +119,10 @@ export function ChatInterface({
 
     try {
       if (!currentConversationId) {
-        const result = await createConversationAction(new FormData());
+        const title = text.slice(0, 30) + (text.length > 30 ? "..." : "");
+        const formData = new FormData();
+        formData.append("title", title);
+        const result = await createConversationAction(formData);
         if (result.error || !result.data) {
           throw new Error(result.error || "Gagal membuat percakapan");
         }
@@ -327,6 +330,7 @@ export function ChatInterface({
                   onClick={() => {
                     loadConversation(c.id);
                     setMobileDrawerOpen(false);
+                    setDeleteConfirm(null);
                   }}
                   disabled={isLoading}
                 >
@@ -336,7 +340,7 @@ export function ChatInterface({
                 <button
                   className={`button button--ghost button--sm ${deleteConfirm === c.id ? "delete-confirm" : ""}`}
                   onClick={() => handleDeleteConversation(c.id)}
-                  disabled={isLoading || deleteConfirm === c.id}
+                  disabled={isLoading}
                   aria-label={deleteConfirm === c.id ? "Konfirmasi hapus" : "Hapus percakapan"}
                 >
                   {deleteConfirm === c.id ? "✓" : "🗑"}
@@ -450,14 +454,20 @@ export function ChatInterface({
             handleSendMessage(input);
           }}
         >
-          <TextInput
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Ketik pesan... (Shift+Enter untuk baris baru)"
-            disabled={!isConfigured || isLoading}
-            autoFocus
-          />
+          <div className="input-group">
+            <TextInput
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Ketik pesan... (Shift+Enter untuk baris baru)"
+              disabled={!isConfigured || isLoading}
+              autoFocus
+              maxLength={4000}
+            />
+            <div className="char-counter">
+              {input.length}/4000
+            </div>
+          </div>
           {isLoading ? (
             <Button type="button" variant="secondary" onClick={handleStop}>
               Hentikan
@@ -680,7 +690,36 @@ export function ChatInterface({
           padding: 1rem;
           border-top: 1px solid var(--color-border);
           display: flex;
+          align-items: flex-start;
           gap: 0.75rem;
+        }
+
+        .input-group {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .char-counter {
+          font-size: 0.7rem;
+          color: var(--color-text-muted);
+          text-align: right;
+          padding-right: 0.25rem;
+        }
+
+        .sidebar-group {
+          margin-bottom: 1.5rem;
+        }
+
+        .sidebar-group-title {
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: var(--color-text-tertiary);
+          padding: 0 0.75rem;
+          margin-bottom: 0.5rem;
         }
 
         .loading-dots span {
