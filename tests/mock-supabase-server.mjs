@@ -95,6 +95,11 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  if (path === "/__test/reset" && req.method === "GET") {
+    res.end(JSON.stringify({ ok: true, status: "ready" }));
+    return;
+  }
+
   res.statusCode = 404;
   res.end(JSON.stringify({ message: "not found" }));
 });
