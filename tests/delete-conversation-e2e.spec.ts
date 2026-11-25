@@ -40,6 +40,12 @@ async function resetMock(request: { post: (u: string) => Promise<unknown> }) {
   await request.post(`${MOCK}/__test/reset`);
 }
 
+// Tunggu halaman hingga semua sumber daya dimuat dan React selesai hydrasi.
+// Klik sebelum hydrasi akan gagal karena onClick belum terpasang.
+async function waitForPageReady(page: Page) {
+  await page.waitForLoadState("networkidle", { timeout: 30_000 });
+}
+
 function row(page: Page, title: string) {
   return page.locator(".conversation-row", { hasText: title });
 }
@@ -49,6 +55,7 @@ test.describe("Delete conversation — browser E2E (mock Supabase HTTP)", () => 
     await resetMock({ post: (u) => page.request.post(u) });
     await signIn(page);
     await page.goto("/assistant");
+    await waitForPageReady(page);
 
     const delBtn = row(page, CONV_A).getByRole("button", { name: "Hapus percakapan" });
     await expect(delBtn).toBeVisible();
@@ -63,6 +70,7 @@ test.describe("Delete conversation — browser E2E (mock Supabase HTTP)", () => 
     await resetMock({ post: (u) => page.request.post(u) });
     await signIn(page);
     await page.goto("/assistant");
+    await waitForPageReady(page);
 
     await row(page, CONV_A).getByRole("button", { name: "Hapus percakapan" }).click();
     await page.getByRole("button", { name: "+ Percakapan Baru" }).click();
@@ -77,6 +85,7 @@ test.describe("Delete conversation — browser E2E (mock Supabase HTTP)", () => 
     await resetMock({ post: (u) => page.request.post(u) });
     await signIn(page);
     await page.goto("/assistant");
+    await waitForPageReady(page);
 
     await row(page, CONV_A).getByRole("button", { name: "Hapus percakapan" }).click();
     await row(page, CONV_B).locator(".conversation-item").click();
@@ -92,6 +101,7 @@ test.describe("Delete conversation — browser E2E (mock Supabase HTTP)", () => 
     await resetMock({ post: (u) => page.request.post(u) });
     await signIn(page);
     await page.goto("/assistant");
+    await waitForPageReady(page);
 
     await row(page, CONV_A).getByRole("button", { name: "Hapus percakapan" }).click();
     await row(page, CONV_A).getByRole("button", { name: "Konfirmasi hapus" }).click();
@@ -115,6 +125,7 @@ test.describe("Delete conversation — browser E2E (mock Supabase HTTP)", () => 
     await page.request.post(`${MOCK}/__test/deleteFailNext`);
     await signIn(page);
     await page.goto("/assistant");
+    await waitForPageReady(page);
 
     await row(page, CONV_A).getByRole("button", { name: "Hapus percakapan" }).click();
     await row(page, CONV_A).getByRole("button", { name: "Konfirmasi hapus" }).click();
