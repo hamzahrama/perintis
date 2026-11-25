@@ -6,13 +6,13 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 import type { GoalFormState } from "./goal-form";
 
-const goalSchema = z.object({
+export const goalSchema = z.object({
   goalId: z.string().trim().min(1),
   title: z.string().trim().min(1, "Judul tidak boleh kosong.").max(200),
   description: z.string().trim().max(1000).optional().or(z.literal("")),
   category: z.string().trim().max(100).optional().or(z.literal("")),
   target_date: z.string().trim().optional().or(z.literal("")),
-  status: z.enum(["active", "archived"]),
+  status: z.enum(["active", "archived"]).default("active"),
 });
 
 export async function createGoalAction(
@@ -26,7 +26,6 @@ export async function createGoalAction(
       description: formData.get("description") ?? "",
       category: formData.get("category") ?? "",
       target_date: formData.get("target_date") ?? "",
-      status: formData.get("status"),
     });
 
   if (!parsed.success) {
