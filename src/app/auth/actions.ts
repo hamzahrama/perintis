@@ -4,6 +4,7 @@ import { z } from "zod";
 import { redirect } from "next/navigation";
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getOnboardingStatus } from "@/lib/onboarding";
 
 import type { AuthFormState } from "./auth-form";
 
@@ -59,7 +60,7 @@ export async function registerAction(
     };
   }
 
-  redirect("/dashboard");
+  redirect("/onboarding");
 }
 
 export async function loginAction(
@@ -82,7 +83,8 @@ export async function loginAction(
     return { error: "Email atau password tidak sesuai." };
   }
 
-  redirect("/dashboard");
+  const { completed } = await getOnboardingStatus();
+  redirect(completed ? "/dashboard" : "/onboarding");
 }
 
 export async function logoutAction() {

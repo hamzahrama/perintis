@@ -46,13 +46,13 @@ Dokumen ini menjelaskan perilaku yang diharapkan dari setiap bagian aplikasi. In
 ## 3. Personal Growth
 
 ### 3.1 Personal Coach — P1
-- Pengguna memilih topik/skenario terkurasi dan mendapat panduan statis yang sudah disiapkan (DEC-029).
-- Coach menggunakan panduan terstruktur, bukan AI live atau chat bebas yang menghasilkan jawaban dinamis.
-- Coach mengarahkan pengguna memahami masalah dan memilih tindakan dengan nada suportif, realistis, tidak menghakimi.
-- Saran tindakan sebaiknya 2–4 opsi konkret.
-- Pengguna bebas memilih, menggabungkan, membuat opsi sendiri, menunda, atau melewati.
-- Riwayat percakapan Coach tidak disimpan setelah sesi berakhir.
-- Tidak ada input chat bebas; UI tidak boleh mengklaim personalisasi AI.
+- Personal Coach terdiri dari Structured Coach dan Wise Personal Growth Mentor (DEC-040).
+- Structured Coach membantu eksekusi rencana melalui Daily Guidance, goal/roadmap progression, habit tracking, next steps, reflection, review, reminder, commitment, dan feedback berdasarkan data PERINTIS yang tersedia.
+- Wise Personal Growth Mentor menyediakan chat bebas untuk memahami diri, mengeksplorasi tantangan/motivasi, mengambil keputusan, serta membangun solusi berkelanjutan.
+- Mentor mempertahankan persona tenang, thoughtful, jujur, hangat, matang, empatik, tidak menghakimi, dan berbahasa Indonesia alami; ia memberi penjelasan/contoh relevan tanpa memaksakan pertanyaan.
+- Riwayat chat Mentor disimpan per user terautentikasi dan dipakai berurutan; pesan yang gagal disimpan, dibatalkan, atau terpotong tidak dianggap sebagai riwayat selesai.
+- AI tidak boleh mengubah goal, habit, aktivitas, jadwal, atau commitment. Pengguna harus menyetujui dan melakukan perubahan melalui fitur terkait.
+- Structured Coach memberi arah; Wise Personal Growth Mentor memberi pemahaman. Keduanya tidak menambah fitur di luar scope MVP.
 
 ### 3.2 My Direction (Goal Management) — P0
 - Pengguna dapat membuat, melihat, mengubah, dan mengarsipkan goal.
@@ -199,4 +199,4 @@ Functional spec ini sengaja belum mengunci:
 - Status minimum Roadmap Step (OPEN-024); proposal saat ini hanya dipakai di schema development. Field onboarding/reflection sebelum task UI terkait.
 - Verifikasi ketersediaan Supabase Singapore sebelum provisioning.
 
-Stack, provider authentication, Coach tanpa AI live/riwayat, dan batas reminder in-app telah diputuskan. Catat perubahan keputusan di Decision Log sebelum implementasi terkait.
+Stack, provider authentication, pendampingan hybrid (DEC-040), dan batas reminder in-app telah diputuskan. Keputusan Coach statis DEC-020/029 dipertahankan sebagai sejarah dan ditandai superseded di Decision Log.

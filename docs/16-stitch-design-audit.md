@@ -43,7 +43,7 @@ Rekomendasi varian dan batas scope pada tabel berikut disetujui pengguna. Terapk
 
 ## 3. Konflik dan risiko desain yang harus ditangani saat implementasi
 
-1. **Personal Coach:** beberapa desain mengklaim AI live, menyimpan/menampilkan riwayat, menyediakan mentor manusia, konsultasi, dan Google Meet. Ini bertentangan dengan DEC-020 dan bukan scope MVP.
+1. **Structured Coach:** beberapa desain mencampur panduan dengan klaim mentor manusia, konsultasi, dan Google Meet; elemen tersebut tetap di luar scope. Chat AI dan riwayat adalah pengalaman Wise Personal Growth Mentor yang terpisah sesuai DEC-040, bukan bagian layar Structured Coach.
 2. **Integrasi/fitur tambahan:** ada login Google, komunitas, resource/PDF, audio, kalender/meeting eksternal, timer, dan pengaturan notifikasi suara. Jangan implementasikan tanpa persetujuan scope.
 3. **Klaim tanpa dukungan:** enkripsi end-to-end, perlindungan data, status mentor online, sinkronisasi otomatis, dan rekomendasi AI tidak bisa dinyatakan berfungsi dari mockup.
 4. **Statistik/data seed:** angka streak, kesehatan/energi, progress, jumlah aktivitas, dan tanggal berbeda antar mockup. Angka ini hanya contoh visual; jangan ditampilkan sebagai data real.

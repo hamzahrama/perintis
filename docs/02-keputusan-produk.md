@@ -23,7 +23,7 @@ Dokumen ini memisahkan keputusan yang sudah disepakati dari ide yang masih berup
 | Desain | Desktop-first, kemudian mobile responsive |
 | Scope | Menggunakan daftar MVP yang telah dipilih; tidak menambah fitur tanpa persetujuan |
 | Stack aplikasi MVP | DEC-026 sebagaimana diperbarui DEC-037: Node.js 24 LTS, Next.js App Router 16.4.x, TypeScript, Tailwind CSS 4, Supabase Auth/PostgreSQL dengan RLS, Supabase SDK untuk Auth dan akses aplikasi saat ini, Prisma 7 untuk konfigurasi/schema tooling, Zod, dan Vercel Hobby; target biaya layanan $0 untuk demo pribadi |
-| Personal Coach MVP | Panduan terstruktur, bukan AI live; riwayat percakapan tidak disimpan (DEC-020) |
+| Pendampingan MVP | Structured Coach dan Wise Personal Growth Mentor saling melengkapi; Mentor menyediakan chat AI dengan riwayat tersimpan (DEC-040) |
 | Reminder MVP | Notifikasi in-app saat jatuh tempo; tanpa push, email, atau kalender eksternal (DEC-021) |
 | Evaluasi | Senin–Minggu lokal; hitungan aktivitas, log habit, refleksi tanpa skor (DEC-032) |
 | Theme Customization | Toggle Dark/Light, Dark default (DEC-035) |
@@ -51,9 +51,7 @@ Dokumen ini memisahkan keputusan yang sudah disepakati dari ide yang masih berup
 - Rekomendasi varian Stitch disetujui sebagai acuan implementasi (DEC-027); tujuh area belum memiliki kandidat mobile dan mockup perlu dibersihkan dari konten di luar scope.
 - Baseline ERD konseptual disetujui (DEC-028), tetapi schema/migration dan beberapa aturan privasi/data masih OPEN. Lihat `docs/15-DECISION-LOG.md`.
 
-Provider AI tidak diperlukan untuk Personal Coach MVP karena Coach menggunakan panduan terstruktur.
-
-Interaksi Personal Coach ditetapkan pada DEC-029: pengguna memilih topik/skenario terkurasi dengan materi dan prompt statis; tidak ada input chat bebas, AI live, atau penyimpanan riwayat.
+Keputusan awal DEC-020 dan DEC-029 yang membatasi Coach menjadi statis tetap tercatat sebagai sejarah, tetapi telah digantikan oleh DEC-040. Structured Coach tetap menggunakan panduan dan data aktual PERINTIS; Wise Personal Growth Mentor menjadi pengalaman chat AI yang terpisah dan menyimpan riwayat.
 
 Untuk demo, tidak tersedia ekspor atau UI penghapusan akun; permintaan penghapusan diproses manual (DEC-030). Retensi sebelum rilis publik tetap OPEN. Detail keputusan teknis tercatat di Decision Log.
 

@@ -53,6 +53,12 @@ Jika nama file berbeda, cari dokumen dengan fungsi yang sama. Repository dan dok
 ## Verification
 Setelah perubahan, jalankan pemeriksaan yang tersedia dan relevan, seperti lint, typecheck, tests, dan build. Laporkan hasil sebenarnya. Jangan menandai backlog DONE tanpa acceptance criteria yang terverifikasi.
 
+## Version control
+- Setelah setiap perubahan task yang lolos pemeriksaan relevan, buat commit Git terpisah.
+- Pesan commit wajib ringkas, spesifik, dan menjelaskan perubahan yang dilakukan; gunakan format Conventional Commits bila sesuai, misalnya `feat: add onboarding assessment` atau `fix: protect profile route`.
+- Jangan commit secret, token, password, `.env.local`, file kredensial demo, atau artefak lokal.
+- Jangan membuat commit bila pemeriksaan relevan gagal; laporkan kegagalan dan perbaiki dulu atau minta keputusan pengguna.
+
 ## Reporting
 Setiap task report harus menyebut:
 - task yang dikerjakan,

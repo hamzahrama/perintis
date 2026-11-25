@@ -20,7 +20,7 @@
 - Semua tabel privat harus dibatasi pada user login. Jangan mempercayai user ID dari client tanpa memverifikasi sesi.
 - Database Supabase memakai RLS untuk tabel aplikasi privat; tidak menggunakan service-role key di browser.
 - Goal diarsipkan, Habit dinonaktifkan, histori dijaga; tidak ada UI hapus akun pada demo. Permintaan penghapusan diproses manual (DEC-023/030).
-- Personal Coach tidak menyimpan riwayat; Calendar/analytics/review adalah agregasi data transaksi.
+- Wise Personal Growth Mentor menyimpan riwayat pada tabel percakapan/pesan yang sudah ada dengan ownership user terautentikasi; Structured Coach memakai data domain. Calendar/analytics/review tetap agregasi data transaksi (DEC-040).
 - Prisma 7 telah disetujui sebagai tooling schema, tetapi Prisma untuk operasi privat belum disetujui (DEC-037).
 
 ### Rekomendasi PROPOSED

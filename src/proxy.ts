@@ -30,7 +30,22 @@ export async function proxy(request: NextRequest) {
   const { response, hasSession } = await updateSupabaseSession(request);
   const pathname = request.nextUrl.pathname;
 
-  if (pathname.startsWith("/dashboard") && !hasSession) {
+  if (
+    (pathname.startsWith("/dashboard") ||
+      pathname.startsWith("/profile") ||
+      pathname.startsWith("/goals") ||
+      pathname.startsWith("/daily") ||
+      pathname.startsWith("/habits") ||
+      pathname.startsWith("/reminders") ||
+      pathname.startsWith("/commitment") ||
+      pathname.startsWith("/calendar") ||
+      pathname.startsWith("/coach") ||
+      pathname.startsWith("/reflection") ||
+      pathname.startsWith("/review") ||
+      pathname.startsWith("/analytics") ||
+      pathname.startsWith("/assistant")) &&
+    !hasSession
+  ) {
     return redirectWithSessionCookies(request, response, "/login");
   }
 
@@ -45,5 +60,21 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/register", "/dashboard/:path*"],
+  matcher: [
+    "/login",
+    "/register",
+    "/dashboard/:path*",
+    "/profile/:path*",
+    "/goals/:path*",
+    "/daily/:path*",
+    "/habits/:path*",
+    "/reminders/:path*",
+    "/commitment/:path*",
+    "/calendar/:path*",
+    "/coach/:path*",
+    "/reflection/:path*",
+    "/review/:path*",
+    "/analytics/:path*",
+    "/assistant/:path*",
+  ],
 };

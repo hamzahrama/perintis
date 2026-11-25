@@ -25,7 +25,7 @@
 - [x] Satu Roadmap aktif per Goal; satu langkah dapat menghasilkan beberapa aktivitas terjadwal.
 - [x] Habit dapat mandiri atau terkait Goal secara opsional.
 - [x] Status aktivitas mencakup belum dimulai, berjalan, selesai, dijadwalkan ulang, dan dilewati; refleksi setelah skip opsional.
-- [x] Personal Coach menggunakan panduan terstruktur tanpa menyimpan riwayat percakapan.
+- [x] Keputusan awal Coach statis tercatat pada DEC-020/029; kini digantikan arah hybrid Structured Coach + Wise Personal Growth Mentor dengan riwayat persisten (DEC-040).
 - [x] Reminder dibatasi pada notifikasi in-app saat jatuh tempo.
 - [x] Weekly Review dan Analytics dihitung dinamis dengan zona waktu lokal perangkat.
 - [x] Periode Senin–Minggu dan metrik hitungan tanpa skor ditetapkan (DEC-032).
@@ -78,7 +78,7 @@ Pekerjaan tersisa:
 - [ ] Meninjau minimum password 8 karakter yang dipakai pada development sebelum provisioning remote (OPEN-025).
 - [ ] Menyetujui library UI/grafik/test runner tambahan hanya jika dibutuhkan (OPEN-019).
 - [ ] Menentukan strategi sinkronisasi Prisma dengan migration SQL/RLS Supabase dan user-scoping sebelum memakai Prisma untuk query aplikasi; jangan gunakan koneksi database privileged untuk data privat tanpa penegakan ownership.
-- Interaksi Coach sudah ditetapkan pada DEC-029: topik/skenario terkurasi dengan materi statis, tanpa input bebas/AI live/riwayat.
+- DEC-020/029 adalah keputusan historis dan telah superseded oleh DEC-040; Structured Coach dan Wise Personal Growth Mentor berjalan berdampingan.
 
 ## 5. Hal yang jangan dilakukan tanpa persetujuan
 
