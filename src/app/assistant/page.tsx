@@ -48,8 +48,8 @@ export default async function AssistantPage() {
           </div>
         )}
 
-        <ChatInterface 
-          initialConversations={conversations || []} 
+        <ChatInterface
+          initialConversations={conversations || []}
           isConfigured={configured}
         />
       </main>

@@ -1,7 +1,7 @@
 # PHASE 2 FINAL VERIFICATION — AI ASSISTANT
 
-**Baseline:** `41c9968`  
-**Branch:** `verify/ai-phase-2`  
+**Baseline:** `41c9968`
+**Branch:** `verify/ai-phase-2`
 **Date:** 2026-11-24
 
 ## 1. MIGRATION & DATABASE (P0)
@@ -44,7 +44,7 @@
 - [NOT TESTED] **Mobile Real Device**: Verifikasi interaksi touch pada drawer sidebar.
 
 ## 8. DEPLOYMENT READINESS
-**READY FOR PREVIEW DEPLOYMENT**  
+**READY FOR PREVIEW DEPLOYMENT**
 Langkah manual wajib sebelum Launch:
 1. Run `supabase db reset` lokal.
 2. Verify rate limit counter di DB saat beban tinggi.

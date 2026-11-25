@@ -46,3 +46,6 @@ next-env.d.ts
 /supabase/.temp
 
 /src/generated/prisma
+
+# Playwright test artifacts
+test-results/

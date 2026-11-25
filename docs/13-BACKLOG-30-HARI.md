@@ -1,6 +1,6 @@
 # Product Backlog — PERINTIS (30 Hari)
 
-Status: `[ ]` belum · `[-]` dikerjakan · `[x]` selesai dan diverifikasi.  
+Status: `[ ]` belum · `[-]` dikerjakan · `[x]` selesai dan diverifikasi.
 Prioritas: P0 inti · P1 penting · P2 bila waktu cukup. Detail keputusan: `docs/15-DECISION-LOG.md`.
 
 ## Sprint 0 — Alignment (Hari 1–3)
