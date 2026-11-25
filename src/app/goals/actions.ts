@@ -6,7 +6,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 import type { GoalFormState } from "./goal-form";
 
-export const goalSchema = z.object({
+const goalSchema = z.object({
   goalId: z.string().trim().min(1),
   title: z.string().trim().min(1, "Judul tidak boleh kosong.").max(200),
   description: z.string().trim().max(1000).optional().or(z.literal("")),
