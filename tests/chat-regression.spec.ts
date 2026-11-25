@@ -1,5 +1,10 @@
 import { expect, test } from "@playwright/test";
-import { contentSchema, conversationSchema, idSchema } from "../src/lib/assistant/schemas";
+import {
+  contentSchema,
+  conversationSchema,
+  idSchema,
+} from "../src/lib/assistant/schemas";
+import { deleteConversationAction } from "../src/app/assistant/actions";
 
 test.describe("Chat Regression & Integrity", () => {
   test.describe("Message length validation (4,000 char boundary)", () => {
@@ -26,14 +31,40 @@ test.describe("Chat Regression & Integrity", () => {
 
   test.describe("Conversation ID & Title validation", () => {
     test("validates UUID for conversation ID", () => {
-      expect(idSchema.safeParse("123e4567-e89b-12d3-a456-426614174000").success).toBe(true);
+      expect(
+        idSchema.safeParse("123e4567-e89b-12d3-a456-426614174000").success,
+      ).toBe(true);
       expect(idSchema.safeParse("invalid-uuid").success).toBe(false);
     });
 
     test("validates conversation title boundaries", () => {
-      expect(conversationSchema.safeParse({ title: "Valid Title" }).success).toBe(true);
+      expect(conversationSchema.safeParse({ title: "Valid Title" }).success).toBe(
+        true,
+      );
       expect(conversationSchema.safeParse({ title: "" }).success).toBe(false);
-      expect(conversationSchema.safeParse({ title: "a".repeat(121) }).success).toBe(false);
+      expect(conversationSchema.safeParse({ title: "a".repeat(121) }).success).toBe(
+        false,
+      );
     });
+  });
+});
+
+test.describe("Delete conversation — server action (no mocks)", () => {
+  // Exercises the real deleteConversationAction: invalid IDs must be rejected
+  // before the auth/DB step. This is server behavior, not just schema shape.
+  test("rejects malformed conversation IDs before touching auth or database", async () => {
+    const invalidIds = [
+      "",
+      "   ",
+      "not-a-uuid",
+      "123",
+      "123e4567-e89b-12d3-a456",
+      "a".repeat(40),
+    ];
+
+    for (const id of invalidIds) {
+      const result = await deleteConversationAction(id);
+      expect(result).toEqual({ error: "Percakapan tidak valid" });
+    }
   });
 });
