@@ -92,6 +92,9 @@ export default async function GoalsPage() {
                     </div>
                   </article>
                   <div className="goal-actions">
+                    <a href={`/goals/${goal.id}`} className="button button--secondary">
+                      Detail &amp; Why
+                    </a>
                     <a href={`/goals/${goal.id}/edit`} className="button button--secondary">
                       Edit
                     </a>
@@ -136,6 +139,9 @@ export default async function GoalsPage() {
                     </div>
                   </article>
                   <div className="goal-actions">
+                    <a href={`/goals/${goal.id}`} className="button button--secondary">
+                      Detail &amp; Why
+                    </a>
                     <a href={`/goals/${goal.id}/edit`} className="button button--secondary">
                       Edit
                     </a>

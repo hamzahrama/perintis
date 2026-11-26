@@ -137,9 +137,9 @@ export default async function ProtectedPage() {
       <div className="dashboard-content dashboard-overview">
         {/* === PRIORITAS 1: Greeting & Konteks Hari Ini === */}
         <header
-          className="dashboard-header"
+          className="dashboard-welcome"
           style={{
-            background: "var(--color-surface)",
+            paddingBottom: "1.25rem",
             borderBottom: "1px solid var(--color-border)",
           }}
         >

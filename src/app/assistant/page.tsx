@@ -33,7 +33,7 @@ export default async function AssistantPage() {
 
   return (
     <DashboardShell initialTheme={preferences?.theme || "dark"} activePath="/assistant">
-      <main className="assistant-container">
+      <div className="dashboard-content assistant-container">
         <header className="page-header">
           <h1 className="page-title">Wise Personal Growth Mentor</h1>
           <p className="page-description">
@@ -52,7 +52,7 @@ export default async function AssistantPage() {
           initialConversations={conversations || []}
           isConfigured={configured}
         />
-      </main>
+      </div>
     </DashboardShell>
   );
 }

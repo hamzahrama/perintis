@@ -485,8 +485,8 @@ export function ChatInterface({
           display: grid;
           grid-template-columns: 260px 1fr;
           gap: 1.5rem;
-          height: calc(100vh - 200px);
-          min-height: 500px;
+          height: clamp(24rem, calc(100dvh - 14rem), 46rem);
+          min-height: 24rem;
         }
 
         .assistant-sidebar {
@@ -745,6 +745,8 @@ export function ChatInterface({
         @media (max-width: 768px) {
           .assistant-layout {
             grid-template-columns: 1fr;
+            height: calc(100dvh - 13rem);
+            min-height: 22rem;
           }
           .assistant-sidebar {
             position: fixed;
