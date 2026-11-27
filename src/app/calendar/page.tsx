@@ -5,6 +5,7 @@ import { DashboardShell } from "@/components/dashboard-shell";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingStatus } from "@/lib/onboarding";
 import { getUserTimezone, getMonthRange, getTodayLocalString, utcToLocalDate } from "@/lib/timezone";
+import CalendarToolbar from "./Toolbar";
 
 function monthKeyOf(year: number, monthIndex: number) {
   return `${year}-${String(monthIndex + 1).padStart(2, "0")}`;
@@ -77,10 +78,13 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
         </header>
 
         <Card className="goals-create-card">
-          <div className="calendar-toolbar">
-            <Link className="button button--secondary" href={`/calendar?month=${previousKey}`}>Bulan sebelumnya</Link>
-            <h2>{new Intl.DateTimeFormat("id-ID", { month: "long", year: "numeric", timeZone: timezone }).format(first)}</h2>
-            <Link className="button button--secondary" href={`/calendar?month=${nextKey}`}>Bulan berikutnya</Link>
+          <div className="calendar-toolbar flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <Link className="button button--secondary" href={`/calendar?month=${previousKey}`}>Bulan sebelumnya</Link>
+              <h2>{new Intl.DateTimeFormat("id-ID", { month: "long", year: "numeric", timeZone: timezone }).format(first)}</h2>
+              <Link className="button button--secondary" href={`/calendar?month=${nextKey}`}>Bulan berikutnya</Link>
+            </div>
+            <CalendarToolbar monthKey={monthKey} selectedDate={selectedDate} todayDate={nowLocal} />
           </div>
           <div className="calendar-grid" role="grid" aria-label="Kalender bulanan">
             {["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"].map((day) => (
